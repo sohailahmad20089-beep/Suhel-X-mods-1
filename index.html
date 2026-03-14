@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SUHEL X MODS</title>
+    <title>HEX PRIME PANEL</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .hidden { display: none; }
-        body { background-color: #f8f9fa; font-family: sans-serif; }
+        body { background-color: #f8f9fa; font-family: 'Inter', sans-serif; }
     </style>
 </head>
 <body>
 
-    <nav class="bg-[#007bff] p-4 text-white flex justify-between items-center shadow-md">
+    <nav class="bg-[#1a73e8] p-4 text-white flex justify-between items-center shadow-md">
         <div class="flex items-center gap-2">
-            <i class="fas fa-cube"></i>
-            <span class="font-bold uppercase tracking-wide">SUHEL X MODS</span>
+            <i class="fas fa-shield-alt"></i>
+            <span class="font-bold tracking-widest uppercase">HEX PRIME</span>
         </div>
         <i class="fas fa-bars"></i>
     </nav>
@@ -25,109 +25,93 @@
 
         <div id="createPanel" class="bg-white rounded shadow-sm border border-gray-200">
             <div class="p-4 border-b text-center">
-                <h2 class="text-gray-600 text-sm font-bold uppercase">SUHEL X MODS - Global</h2>
+                <h2 class="text-gray-600 text-sm font-bold uppercase">Create License - Global</h2>
             </div>
             <div class="p-4 space-y-4">
                 <div class="flex items-center border rounded bg-gray-50 p-2">
                     <i class="fas fa-gamepad text-gray-400 w-8"></i>
-                    <select class="w-full bg-transparent outline-none text-sm">
-                        <option>Free Fire</option>
-                    </select>
+                    <select class="w-full bg-transparent outline-none text-sm"><option>Free Fire</option></select>
                 </div>
                 <div class="flex items-center border rounded bg-gray-50 p-2">
                     <i class="fas fa-mobile-alt text-gray-400 w-8"></i>
                     <input type="text" value="1" readonly class="w-full bg-transparent outline-none text-sm">
-                    <span class="text-gray-400 text-xs">device</span>
+                    <span class="text-gray-400 text-xs px-1">device</span>
                 </div>
-                <div class="flex items-center border rounded bg-gray-50 p-2">
-                    <i class="fas fa-calendar-alt text-gray-400 w-8"></i>
-                    <select class="w-full bg-transparent outline-none text-sm">
-                        <option>1 Days</option>
-                    </select>
-                </div>
-                <div class="flex items-center border rounded bg-gray-50 p-2">
-                    <i class="fas fa-gem text-gray-400 w-8"></i>
-                    <select class="w-full bg-transparent outline-none text-sm">
-                        <option>FREE</option>
-                    </select>
-                </div>
-
-                <button onclick="generateNow()" class="w-full bg-[#007bff] text-white py-2 rounded shadow-md font-bold flex justify-center items-center gap-2">
-                    <i class="fas fa-sign-in-alt"></i> Generate
+                <button onclick="generateNow()" class="w-full bg-[#1a73e8] text-white py-2.5 rounded shadow-md font-bold flex justify-center items-center gap-2">
+                    <i class="fas fa-key"></i> Generate Key
                 </button>
             </div>
         </div>
 
         <div id="successPanel" class="hidden space-y-4">
-            <div class="bg-[#e2f0e6] border border-[#d4e9da] rounded-lg p-5 text-center">
-                <div class="bg-[#28a745] text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
+            <div class="bg-[#e6f4ea] border border-[#ceead6] rounded-lg p-5 text-center">
+                <div class="bg-[#1e8e3e] text-white w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2 shadow-sm">
                     <i class="fas fa-check"></i>
                 </div>
-                <h2 class="text-[#155724] font-bold">Key Generated Successfully!</h2>
-                <p class="text-[#155724] text-[11px]">Your free key from SUHEL X MODS is ready.</p>
+                <h2 class="text-[#137333] font-bold">Key Generated Successfully!</h2>
+                <p class="text-[#137333] text-[11px]">Your free key is ready to use.</p>
             </div>
 
             <div class="bg-white rounded shadow-sm border border-gray-200 overflow-hidden">
-                <div class="bg-[#007bff] text-white p-2 text-center text-xs font-bold flex justify-center items-center gap-2">
-                    <i class="fas fa-key"></i> Key Details
+                <div class="bg-[#1a73e8] text-white p-2 text-center text-xs font-bold flex justify-center items-center gap-2">
+                    <i class="fas fa-id-card"></i> Key Details
                 </div>
                 <div class="p-5 text-center">
-                    <p class="text-[10px] text-gray-400 font-bold mb-2 uppercase tracking-widest">Your Key</p>
+                    <p class="text-[10px] text-gray-400 font-bold mb-2 uppercase tracking-widest">YOUR KEY</p>
                     <div class="flex border rounded overflow-hidden mb-6">
                         <input id="keyOutput" type="text" readonly class="w-full p-2 text-center font-mono font-bold text-gray-700 bg-gray-50 outline-none">
                         <button onclick="copyKey()" class="bg-blue-50 border-l px-4 text-blue-600"><i class="far fa-copy"></i></button>
                     </div>
 
                     <div class="grid grid-cols-2 gap-y-6 border-b pb-6">
-                        <div><i class="fas fa-gamepad text-blue-500 mb-1"></i><p class="text-[9px] text-gray-400 uppercase font-bold">Game</p><p class="text-xs font-bold">Free Fire</p></div>
-                        <div><i class="fas fa-calendar-alt text-green-500 mb-1"></i><p class="text-[9px] text-gray-400 uppercase font-bold">Duration</p><p class="text-xs font-bold">1 Days</p></div>
-                        <div><i class="fas fa-mobile-alt text-blue-400 mb-1"></i><p class="text-[9px] text-gray-400 uppercase font-bold">Devices</p><p class="text-xs font-bold">1 Device</p></div>
-                        <div><i class="fas fa-gem text-yellow-500 mb-1"></i><p class="text-[9px] text-gray-400 uppercase font-bold">Type</p><span class="bg-gray-500 text-white text-[9px] px-2 rounded font-bold uppercase">Free</span></div>
+                        <div class="text-center"><i class="fas fa-gamepad text-blue-500 mb-1"></i><p class="text-[9px] text-gray-400 uppercase font-bold">Game</p><p class="text-xs font-bold text-gray-800">Free Fire</p></div>
+                        <div class="text-center"><i class="fas fa-calendar-alt text-green-500 mb-1"></i><p class="text-[9px] text-gray-400 uppercase font-bold">Duration</p><p class="text-xs font-bold text-gray-800">1 Days</p></div>
                     </div>
 
                     <div class="text-left pt-6 text-[11px] text-gray-500">
                         <p class="font-bold mb-3"><i class="far fa-info-circle mr-1"></i> Key Status</p>
                         <div class="grid grid-cols-2 gap-y-3">
                             <div><p>Status:</p><span class="bg-green-700 text-white px-2 py-0.5 rounded text-[9px] font-bold">Active</span></div>
-                            <div><p>Created:</p><p id="cTime" class="font-bold text-black"></p></div>
-                            <div><p>Expires:</p><p id="eTime" class="font-bold text-black"></p></div>
-                            <div><p>Provider:</p><p class="font-bold text-black">SUHEL X MODS</p></div>
+                            <div><p>Provider:</p><p class="font-bold text-black uppercase">HEX PRIME</p></div>
                         </div>
                     </div>
                 </div>
-            </div>
-
-            <div class="bg-[#d1ecf1] border border-[#bee5eb] p-4 rounded-lg text-[#0c5460] text-[11px]">
-                <p class="font-bold flex items-center gap-1 mb-1"><i class="far fa-lightbulb"></i> Important Notice</p>
-                <ul class="list-disc pl-4 space-y-1">
-                    <li>Save this key: This page can only be accessed once.</li>
-                    <li>Duration starts: The 1-day period begins when you first login.</li>
-                </ul>
             </div>
         </div>
     </div>
 
     <script>
-        const myKeys = ["75482190", "65487280", "72453184", "245188999"];
+        // AAPKI DI HUI 2 KEYS
+        const myKeys = ["5184507", "7545849"];
+
+        // One device, One key logic using localStorage
+        window.onload = function() {
+            const savedKey = localStorage.getItem('hexPrimeUserKey');
+            if (savedKey) {
+                showKeyScreen(savedKey);
+            }
+        };
 
         function generateNow() {
+            let userKey = localStorage.getItem('hexPrimeUserKey');
+            if (!userKey) {
+                userKey = myKeys[Math.floor(Math.random() * myKeys.length)];
+                localStorage.setItem('hexPrimeUserKey', userKey);
+            }
+            showKeyScreen(userKey);
+        }
+
+        function showKeyScreen(key) {
+            document.getElementById('keyOutput').value = key;
             document.getElementById('createPanel').classList.add('hidden');
             document.getElementById('successPanel').classList.remove('hidden');
-
-            const randomKey = myKeys[Math.floor(Math.random() * myKeys.length)];
-            document.getElementById('keyOutput').value = randomKey;
-
-            const now = new Date();
-            const exp = new Date(now.getTime() + (24 * 60 * 60 * 1000));
-            document.getElementById('cTime').innerText = now.toLocaleString();
-            document.getElementById('eTime').innerText = exp.toLocaleString();
         }
 
         function copyKey() {
             const input = document.getElementById('keyOutput');
             input.select();
             document.execCommand('copy');
-            alert("SUHEL X MODS: Key Copied!");
+            alert("Key Copied!");
         }
     </script>
 </body>
