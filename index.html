@@ -3,126 +3,108 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viral Boost SMM</title>
+    <title>StarSMM - Automatic Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; flex-direction: column; align-items: center; padding: 10px; margin: 0; }
         
-        /* Logo Styling */
-        .logo-container { margin-top: 20px; text-align: center; }
-        .logo-box { background: linear-gradient(135deg, #38bdf8, #2563eb); padding: 10px 25px; border-radius: 50px; box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); border: 2px solid white; }
-        .logo-text { font-size: 24px; font-weight: 900; letter-spacing: 1px; color: white; text-transform: uppercase; }
+        /* Logo Section */
+        .logo-box { background: linear-gradient(135deg, #38bdf8, #2563eb); padding: 12px 30px; border-radius: 50px; margin: 20px 0; border: 2px solid white; box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
+        .logo-text { font-size: 22px; font-weight: 900; letter-spacing: 1px; }
 
-        .support-bar { width: 100%; max-width: 400px; background: #1e293b; border-radius: 12px; padding: 10px; margin-top: 15px; border: 1px solid #334155; text-align: center; }
-        .support-links { display: flex; gap: 10px; margin-top: 8px; padding: 5px; }
-        .support-btn { flex: 1; padding: 10px; border-radius: 8px; text-decoration: none; color: white; font-size: 13px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .tg-btn { background: #0088cc; } .wa-btn { background: #25d366; }
+        .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid #334155; box-sizing: border-box; }
+        h2 { text-align: center; color: #38bdf8; margin: 0 0 15px 0; font-size: 20px; }
         
-        .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid #334155; box-sizing: border-box; margin-top: 15px; }
-        h2 { text-align: center; color: #38bdf8; margin: 0 0 15px 0; }
         label { display: block; margin: 12px 0 5px; font-weight: bold; font-size: 14px; color: #94a3b8; }
         input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; margin-bottom: 10px; outline: none; }
         
         .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 22px; border: 2px solid #38bdf8; margin: 15px 0; }
-        .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; }
-        
-        /* Notice Box Styling */
-        .notice-card { background: rgba(251, 191, 36, 0.1); padding: 15px; border-radius: 12px; width: 100%; max-width: 400px; border: 1px solid #fbbf24; box-sizing: border-box; margin-top: 15px; }
-        .notice-title { color: #fbbf24; font-weight: bold; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
-        .notice-text { font-size: 13px; line-height: 1.5; color: #cbd5e1; }
+        .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; }
+        .btn-pay:active { transform: scale(0.98); }
 
+        /* QR Section */
         #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
         .qr-img { width: 220px; border-radius: 10px; margin: 10px 0; border: 4px solid white; background: white; }
-        #success-msg { display: none; background: #065f46; color: #34d399; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: center; font-weight: bold; }
+
+        /* Notice Box */
+        .notice-card { background: rgba(251, 191, 36, 0.1); padding: 15px; border-radius: 12px; width: 100%; max-width: 400px; border: 1px solid #fbbf24; box-sizing: border-box; margin-top: 15px; font-size: 13px; line-height: 1.5; color: #cbd5e1; }
     </style>
 </head>
 <body>
 
-<div class="logo-container">
-    <div class="logo-box">
-        <span class="logo-text">MD SUHEL</span>
-    </div>
-</div>
-
-<div class="support-bar">
-    <div style="color: #38bdf8; font-weight: bold; font-size: 14px;">☎️ Customer Care Support</div>
-    <div class="support-links">
-        <a href="https://t.me/Suheloowner" target="_blank" class="support-btn tg-btn"><i class="fab fa-telegram"></i> Telegram</a>
-        <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank" class="support-btn wa-btn"><i class="fab fa-whatsapp"></i> Channel</a>
-    </div>
+<div class="logo-box">
+    <span class="logo-text">MD SUHEL</span>
 </div>
 
 <div class="card">
-    <h2>🚀 Viral Boost SMM</h2>
+    <h2>🚀 StarSMM Auto-Panel</h2>
     
-    <label>Instagram Link:</label>
+    <label>Target Instagram Link:</label>
     <input type="text" id="targetLink" placeholder="Paste link here...">
 
-    <label>Service:</label>
+    <label>Select Service:</label>
     <select id="serviceType" onchange="calculate()">
-        <option value="0.001">Insta Views (₹1 per 1k)</option>
-        <option value="0.01">Insta Likes (₹10 per 1k)</option>
-        <option value="0.03">Insta Followers (₹30 per 1k)</option>
+        <option value="300|Real & Active Followers|101">Instagram Followers (Real) - ₹300/1k</option>
+        <option value="150|Worldwide Followers|30067">Instagram Followers (Global) - ₹150/1k</option>
     </select>
 
     <label>Quantity:</label>
-    <input type="number" id="qty" value="1000" min="100" max="1000000" oninput="calculate()">
+    <input type="number" id="qty" value="1000" min="100" max="100000" oninput="calculate()">
     
-    <div class="price-box" id="priceDisp">Amount: ₹1.00</div>
+    <div class="price-box" id="priceDisp">Total Amount: ₹300.00</div>
     
-    <button class="btn-pay" id="payBtn" onclick="showQR()">Pay Now</button>
+    <button class="btn-pay" id="payBtn" onclick="showQR()">Proceed to Pay</button>
 
     <div id="qr-section">
-        <p style="color:#fbbf24; font-weight:bold;">Scan & Pay: ₹<span id="amtText">1.00</span></p>
+        <p style="color:#fbbf24; font-weight:bold;">Scan & Pay: ₹<span id="amtText">300.00</span></p>
         <img src="" id="qrImg" class="qr-img">
         <p style="font-size:12px; margin-bottom: 10px;">UPI: 7388720012@fam</p>
         
-        <input type="text" id="utr" placeholder="Enter 12 Digit UTR">
+        <input type="text" id="utr" placeholder="Enter 12 Digit UTR Number">
         <button class="btn-pay" style="background:#2563eb;" id="finalBtn" onclick="sendOrder()">Confirm Order</button>
     </div>
-
-    <div id="success-msg">✅ Order Recieved! Check Sheet.</div>
 </div>
 
 <div class="notice-card">
-    <div class="notice-title">⚠️ Important Notice</div>
-    <div class="notice-text">
-        * Apna 12 digit <b>UTR number</b> bilkul sahi daalein.<br>
-        * Video ya Profile ka <b>Link</b> check karke hi daalein.<br>
-        * Koi problem ho toh <b>WhatsApp</b> ya <b>Telegram</b> par message karein.<br>
-        * Order confirm hone ke baad service <b>10 minute</b> ke andar start ho jayegi.
-    </div>
+    <b style="color:#fbbf24;">⚠️ Important:</b><br>
+    1. Sahi UTR number hi daalein, varna order reject ho jayega.<br>
+    2. Payment ke baad order automatic 10 min mein start hoga.<br>
+    3. Link ek baar check kar lein submit karne se pehle.
 </div>
 
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzIaNLCdW0btGW2HIOTzhRZst2ST-3EUiwygZWd3CwFrWaEh8dvbY2cokyIaSJYNShq/exec';
+    // Aapka Naya URL yahan lag gaya hai
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwQEkC0xD12SOyJTjhmz_NZG6vYHCFCfnDQnlj6Gpi0kCUYnmfH2gNUb56p7JXnTqRa/exec';
 
     function calculate() {
-        let rate = document.getElementById("serviceType").value;
-        let q = document.getElementById("qty").value;
-        let total = (q * rate).toFixed(2);
-        document.getElementById("priceDisp").innerText = "Amount: ₹" + total;
+        let valData = document.getElementById("serviceType").value.split('|');
+        let ratePer1k = parseFloat(valData[0]);
+        let q = parseInt(document.getElementById("qty").value) || 0;
+        
+        let total = ((q / 1000) * ratePer1k).toFixed(2);
+        
+        document.getElementById("priceDisp").innerText = "Total Amount: ₹" + total;
         document.getElementById("amtText").innerText = total;
         document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=7388720012@fam%26am=${total}%26cu=INR`;
     }
     calculate();
 
     function showQR() {
-        if(document.getElementById("targetLink").value == "") { alert("Bhai Link daalo!"); return; }
+        if(!document.getElementById("targetLink").value) { alert("Pehle link daalo bhai!"); return; }
         document.getElementById("qr-section").style.display = "block";
         document.getElementById("payBtn").style.display = "none";
     }
 
     async function sendOrder() {
         let utr = document.getElementById("utr").value;
-        if(utr.length < 10) { alert("Sahi UTR daalo!"); return; }
+        if(utr.length < 10) { alert("Sahi 12-digit UTR daalo!"); return; }
         
-        document.getElementById("finalBtn").innerText = "Sending...";
+        document.getElementById("finalBtn").innerText = "Ordering... Please Wait";
         document.getElementById("finalBtn").disabled = true;
 
-        let sName = document.getElementById("serviceType").options[document.getElementById("serviceType").selectedIndex].text;
+        let valData = document.getElementById("serviceType").value.split('|');
         let q = document.getElementById("qty").value;
-        let total = (q * document.getElementById("serviceType").value).toFixed(2);
+        let total = ((q / 1000) * parseFloat(valData[0])).toFixed(2);
 
         try {
             await fetch(scriptURL, {
@@ -130,15 +112,17 @@
                 mode: 'no-cors',
                 body: JSON.stringify({
                     link: document.getElementById("targetLink").value,
-                    service: sName + " [Qty: " + q + "]",
+                    serviceName: valData[1],
+                    serviceID: valData[2],
+                    qty: q,
                     amount: total,
                     utr: utr
                 })
             });
-            document.getElementById("qr-section").style.display = "none";
-            document.getElementById("success-msg").style.display = "block";
+            alert("✅ Order Recieved! StarOfSMM system ko bhej diya gaya hai.");
+            location.reload();
         } catch (e) {
-            alert("Error!");
+            alert("Kuch error aaya, please support se baat karein.");
             document.getElementById("finalBtn").disabled = false;
         }
     }
