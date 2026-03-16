@@ -3,111 +3,71 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viral Boost SMM - Wallet</title>
+    <title>Viral Boost - Wallet System</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; flex-direction: column; align-items: center; padding: 10px; margin: 0; }
-        .support-bar { width: 100%; max-width: 400px; background: #1e293b; border-radius: 12px; padding: 12px; margin-bottom: 15px; border: 1px solid #334155; text-align: center; }
-        .support-links { display: flex; gap: 10px; margin-top: 8px; }
-        .support-btn { flex: 1; padding: 10px; border-radius: 8px; text-decoration: none; color: white; font-size: 13px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
-        .tg-btn { background: #0088cc; } .wa-btn { background: #25d366; }
-        
-        .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid #334155; margin-bottom: 20px; box-sizing: border-box; }
-        .wallet-box { background: linear-gradient(135deg, #0ea5e9, #2563eb); padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4); }
-        h2, h3 { margin: 10px 0; text-align: center; color: #38bdf8; }
-        
-        label { display: block; margin: 12px 0 5px; font-weight: bold; font-size: 14px; color: #94a3b8; }
-        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; box-sizing: border-box; outline: none; }
-        
-        .btn { width: 100%; padding: 14px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid #334155; margin-bottom: 20px; }
+        .wallet-box { background: linear-gradient(135deg, #0ea5e9, #2563eb); padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
+        h3 { margin: 5px 0; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; box-sizing: border-box; }
+        .btn { width: 100%; padding: 12px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; margin-top: 5px; }
         .btn-check { background: #38bdf8; color: #0f172a; }
-        .btn-order { background: #22c55e; color: white; margin-top: 10px; }
-        .btn-order:disabled { background: #475569; cursor: not-allowed; }
-        
-        #order-section { display: none; border-top: 1px dashed #334155; padding-top: 15px; }
-        #loading { display: none; color: #fbbf24; font-size: 14px; margin-top: 10px; }
+        .btn-order { background: #22c55e; color: white; }
+        #order-section { display: none; }
     </style>
 </head>
 <body>
 
-<div class="support-bar">
-    <div style="color: #38bdf8; font-weight: bold; font-size: 14px;">☎️ Customer Care & Add Balance</div>
-    <div class="support-links">
-        <a href="https://t.me/Suheloowner" target="_blank" class="support-btn tg-btn"><i class="fab fa-telegram"></i> Telegram</a>
-        <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank" class="support-btn wa-btn"><i class="fab fa-whatsapp"></i> Channel</a>
-    </div>
-</div>
-
 <div class="card">
     <div class="wallet-box">
-        <p style="font-size: 14px; margin: 0; opacity: 0.9;">Available Balance</p>
-        <h2 id="dispBalance" style="color: white; font-size: 32px; margin: 5px 0;">₹0.00</h2>
-        <p id="dispUser" style="font-size: 12px; margin: 0; opacity: 0.8;"></p>
+        <p style="font-size: 14px; opacity: 0.9;">My Wallet Balance</p>
+        <h2 id="dispBalance">₹0.00</h2>
+        <p id="dispUser" style="font-size: 12px;"></p>
     </div>
 
-    <label>User ID (Mobile Number):</label>
-    <input type="number" id="userID" placeholder="Enter Registered Number">
-    <button class="btn btn-check" id="loginBtn" onclick="checkBalance()">Login / Check Balance</button>
-    <div id="loading">Connecting to server...</div>
+    <label>Mobile Number (User ID):</label>
+    <input type="number" id="userID" placeholder="ID daalein (Ex: 7388...)">
+    <button class="btn btn-check" onclick="checkBalance()">Login / Refresh Balance</button>
 </div>
 
 <div class="card" id="order-section">
-    <h3>🚀 Place Your Order</h3>
-    <label>Target Link:</label>
-    <input type="text" id="targetLink" placeholder="Paste Instagram Link here...">
+    <h3>🛒 Create Order</h3>
+    <label>Insta Link:</label>
+    <input type="text" id="targetLink" placeholder="Link yahan paste karein...">
 
-    <label>Select Service:</label>
+    <label>Service:</label>
     <select id="mainService">
-        <optgroup label="-- VIEWS --">
-            <option value="1|Views: 1,000">1,000 Views - ₹1</option>
-            <option value="200|Views: 1M">1M Views - ₹200</option>
-        </optgroup>
-        <optgroup label="-- FOLLOWERS (No Refill) --">
-            <option value="30|Followers: 1k">1,000 Followers - ₹30</option>
-            <option value="250|Followers: 10k">10,000 Followers - ₹250</option>
-        </optgroup>
-        <optgroup label="-- FOLLOWERS (5% Drop) --">
-            <option value="50|Followers(5%): 1k">1,000 Followers - ₹50</option>
-            <option value="450|Followers(5%): 10k">10,000 Followers - ₹450</option>
-        </optgroup>
+        <option value="1|Views: 1,000">1,000 Views - ₹1</option>
+        <option value="30|Followers: 1k">1,000 Followers - ₹30</option>
+        <option value="45|Followers(10%Drop): 1k">1,000 Followers (10% Drop) - ₹45</option>
     </select>
 
-    <button class="btn btn-order" id="orderBtn" onclick="placeOrder()">Confirm & Deduct Balance</button>
+    <button class="btn btn-order" id="orderBtn" onclick="placeOrder()">Buy Now (Wallet)</button>
+    <p style="font-size: 11px; color: #94a3b8; text-align: center; margin-top: 10px;">Paisa wallet se kat jayega.</p>
 </div>
 
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzLbN02vrlSZFB6A10tZB3qC06O_kNMKvsD1hqAAKV6OYPQEZdVOhuRbuuiPBQrA44/exec';
+    const scriptURL = 'YOUR_NEW_DEPLOY_URL_HERE'; // Naya URL yahan daalein
     let currentBalance = 0;
 
     async function checkBalance() {
         let id = document.getElementById("userID").value;
-        if(id.length < 10) { alert("Please enter valid 10-digit mobile number!"); return; }
+        if(id.length < 10) { alert("Sahi Mobile No. daalo!"); return; }
         
-        document.getElementById("loading").style.display = "block";
-        document.getElementById("loginBtn").disabled = true;
-
+        document.getElementById("dispBalance").innerText = "Loading...";
+        
         try {
             let response = await fetch(scriptURL, {
                 method: 'POST',
                 body: JSON.stringify({ action: "checkBalance", userID: id })
             });
             let result = await response.json();
-            
-            if(result.found) {
-                currentBalance = result.balance;
-                document.getElementById("dispBalance").innerText = "₹" + currentBalance.toFixed(2);
-                document.getElementById("dispUser").innerText = "ID: " + id;
-                document.getElementById("order-section").style.display = "block";
-                window.scrollTo(0, document.body.scrollHeight);
-            } else {
-                alert("User not found! Please contact admin to add balance.");
-            }
-        } catch(e) { 
-            alert("Server connection error!"); 
-        } finally {
-            document.getElementById("loading").style.display = "none";
-            document.getElementById("loginBtn").disabled = false;
-        }
+            currentBalance = result.balance;
+            document.getElementById("dispBalance").innerText = "₹" + currentBalance;
+            document.getElementById("dispUser").innerText = "User ID: " + id;
+            document.getElementById("order-section").style.display = "block";
+        } catch(e) { alert("Error! ID nahi mili."); }
     }
 
     async function placeOrder() {
@@ -117,28 +77,19 @@
         let id = document.getElementById("userID").value;
         let link = document.getElementById("targetLink").value;
 
-        if(link.length < 5) { alert("Invalid Link!"); return; }
-        if(currentBalance < price) { alert("Low Balance! Please recharge your wallet."); return; }
-
-        if(!confirm(`Order ${service} for ₹${price}?`)) return;
+        if(currentBalance < price) { alert("Paisa kam hai! Recharge karein."); return; }
+        if(link == "") { alert("Link daalein!"); return; }
 
         document.getElementById("orderBtn").innerText = "Processing...";
-        document.getElementById("orderBtn").disabled = true;
-
+        
         try {
             await fetch(scriptURL, {
                 method: 'POST',
                 body: JSON.stringify({ action: "placeOrder", userID: id, amount: price, service: service, link: link })
             });
-            alert("Order Placed Successfully!");
-            checkBalance(); // Refresh balance
-            document.getElementById("targetLink").value = "";
-        } catch(e) { 
-            alert("Order Failed! Check internet."); 
-        } finally {
-            document.getElementById("orderBtn").innerText = "Confirm & Deduct Balance";
-            document.getElementById("orderBtn").disabled = false;
-        }
+            alert("Order Success! Paisa wallet se kat gaya.");
+            checkBalance(); // Balance update
+        } catch(e) { alert("Order Failed!"); }
     }
 </script>
 </body>
