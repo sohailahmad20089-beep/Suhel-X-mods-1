@@ -7,7 +7,13 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; flex-direction: column; align-items: center; padding: 10px; margin: 0; }
-        .support-bar { width: 100%; max-width: 400px; background: #1e293b; border-radius: 12px; padding: 10px; margin-top: 10px; border: 1px solid #334155; text-align: center; }
+        
+        /* Logo Styling */
+        .logo-container { margin-top: 20px; text-align: center; }
+        .logo-box { background: linear-gradient(135deg, #38bdf8, #2563eb); padding: 10px 25px; border-radius: 50px; box-shadow: 0 0 15px rgba(56, 189, 248, 0.5); border: 2px solid white; }
+        .logo-text { font-size: 24px; font-weight: 900; letter-spacing: 1px; color: white; text-transform: uppercase; }
+
+        .support-bar { width: 100%; max-width: 400px; background: #1e293b; border-radius: 12px; padding: 10px; margin-top: 15px; border: 1px solid #334155; text-align: center; }
         .support-links { display: flex; gap: 10px; margin-top: 8px; padding: 5px; }
         .support-btn { flex: 1; padding: 10px; border-radius: 8px; text-decoration: none; color: white; font-size: 13px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
         .tg-btn { background: #0088cc; } .wa-btn { background: #25d366; }
@@ -20,12 +26,23 @@
         .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 22px; border: 2px solid #38bdf8; margin: 15px 0; }
         .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; }
         
+        /* Notice Box Styling */
+        .notice-card { background: rgba(251, 191, 36, 0.1); padding: 15px; border-radius: 12px; width: 100%; max-width: 400px; border: 1px solid #fbbf24; box-sizing: border-box; margin-top: 15px; }
+        .notice-title { color: #fbbf24; font-weight: bold; font-size: 16px; margin-bottom: 8px; display: flex; align-items: center; gap: 8px; }
+        .notice-text { font-size: 13px; line-height: 1.5; color: #cbd5e1; }
+
         #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
         .qr-img { width: 220px; border-radius: 10px; margin: 10px 0; border: 4px solid white; background: white; }
         #success-msg { display: none; background: #065f46; color: #34d399; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: center; font-weight: bold; }
     </style>
 </head>
 <body>
+
+<div class="logo-container">
+    <div class="logo-box">
+        <span class="logo-text">MD SUHEL</span>
+    </div>
+</div>
 
 <div class="support-bar">
     <div style="color: #38bdf8; font-weight: bold; font-size: 14px;">☎️ Customer Care Support</div>
@@ -67,6 +84,16 @@
     <div id="success-msg">✅ Order Recieved! Check Sheet.</div>
 </div>
 
+<div class="notice-card">
+    <div class="notice-title">⚠️ Important Notice</div>
+    <div class="notice-text">
+        * Apna 12 digit <b>UTR number</b> bilkul sahi daalein.<br>
+        * Video ya Profile ka <b>Link</b> check karke hi daalein.<br>
+        * Koi problem ho toh <b>WhatsApp</b> ya <b>Telegram</b> par message karein.<br>
+        * Order confirm hone ke baad service <b>10 minute</b> ke andar start ho jayegi.
+    </div>
+</div>
+
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbzIaNLCdW0btGW2HIOTzhRZst2ST-3EUiwygZWd3CwFrWaEh8dvbY2cokyIaSJYNShq/exec';
 
@@ -81,7 +108,7 @@
     calculate();
 
     function showQR() {
-        if(document.getElementById("targetLink").value == "") { alert("Link daalo!"); return; }
+        if(document.getElementById("targetLink").value == "") { alert("Bhai Link daalo!"); return; }
         document.getElementById("qr-section").style.display = "block";
         document.getElementById("payBtn").style.display = "none";
     }
