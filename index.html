@@ -1,72 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="hi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HEX PRIME PANEL</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Sasta SMM Panel - Fast Views</title>
     <style>
-        body { background-color: #f4f6f9; font-family: 'Inter', sans-serif; }
-        .card-shadow { box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background-color: #f4f7f6; display: flex; justify-content: center; padding: 20px; }
+        .card { background: white; padding: 25px; border-radius: 15px; box-shadow: 0 10px 25px rgba(0,0,0,0.1); width: 100%; max-width: 400px; }
+        h2 { color: #007bff; text-align: center; margin-bottom: 20px; }
+        label { font-weight: bold; display: block; margin: 10px 0 5px; }
+        input, select { width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        .price-tag { background: #e7f3ff; color: #007bff; padding: 10px; border-radius: 8px; text-align: center; font-weight: bold; margin-top: 15px; font-size: 18px; }
+        button { width: 100%; background: #28a745; color: white; border: none; padding: 15px; border-radius: 8px; margin-top: 20px; cursor: pointer; font-size: 18px; font-weight: bold; }
+        #qr-section { display: none; text-align: center; margin-top: 20px; border-top: 2px dashed #ddd; padding-top: 20px; }
+        .qr-img { width: 200px; height: 200px; margin-bottom: 10px; border: 2px solid #333; }
+        .utr-box { border: 2px solid #ffc107; background: #fffbeb; }
     </style>
 </head>
 <body>
 
-    <nav class="bg-[#1a73e8] p-4 text-white flex justify-between items-center shadow-md">
-        <div class="flex items-center gap-2">
-            <i class="fas fa-shield-alt text-lg"></i>
-            <span class="font-bold tracking-wide uppercase text-sm">HEX PRIME PANEL</span>
-        </div>
-        <i class="fas fa-bars"></i>
-    </nav>
+<div class="card">
+    <h2>🚀 Viral Boost Views</h2>
+    
+    <label>Video Link Dalein:</label>
+    <input type="text" id="videoLink" placeholder="https://www.instagram.com/reel/...">
 
-    <div class="max-w-md mx-auto p-4 space-y-4">
+    <label>Views Select Karein:</label>
+    <select id="quantity" onchange="calculatePrice()">
+        <option value="0">--- Select Karein ---</option>
+        <option value="5">20k Views - ₹5</option>
+        <option value="12">50k Views - ₹12</option>
+        <option value="22">100k Views - ₹22</option>
+        <option value="100">500k Views - ₹100</option>
+    </select>
+
+    <div class="price-tag" id="totalPrice">Total Amount: ₹0</div>
+
+    <button onclick="showPayment()">Pay Now & Order</button>
+
+    <div id="qr-section">
+        <h3>Pay ₹<span id="payAmount">0</span> via QR Code</h3>
+        <img src="https://via.placeholder.com/200" alt="QR Code" class="qr-img">
+        <p style="font-size: 12px; color: red;">*Payment karne ke baad 12-digit UTR/Ref No. niche dalein</p>
         
-        <div class="bg-[#ebebeb] border border-gray-300 rounded p-3 flex justify-between items-center text-gray-700 text-sm">
-            <span>Welcome Friend</span>
-            <i class="fas fa-times text-gray-500 cursor-pointer"></i>
-        </div>
-
-        <div class="bg-white rounded card-shadow border border-gray-200">
-            <div class="p-4 border-b">
-                <h2 class="text-gray-600 text-[13px] font-medium">Create License - Global</h2>
-            </div>
-            
-            <div class="p-4 space-y-3">
-                <div class="flex border rounded overflow-hidden">
-                    <div class="bg-[#f1f3f4] px-3 flex items-center border-r"><i class="fas fa-gamepad text-gray-500 text-xs"></i></div>
-                    <select class="w-full p-2 text-sm bg-white outline-none"><option>Free Fire Max</option></select>
-                </div>
-
-                <div class="flex border rounded overflow-hidden">
-                    <div class="bg-[#f1f3f4] px-3 flex items-center border-r"><i class="fas fa-mobile-alt text-gray-500 text-xs"></i></div>
-                    <div class="w-full p-2 text-sm flex justify-between bg-white">
-                        <span>1</span>
-                        <span class="text-gray-400">device</span>
-                    </div>
-                </div>
-
-                <div class="flex border rounded overflow-hidden">
-                    <div class="bg-[#f1f3f4] px-3 flex items-center border-r"><i class="fas fa-calendar-alt text-gray-500 text-xs"></i></div>
-                    <select class="w-full p-2 text-sm bg-white outline-none"><option>1 Days</option></select>
-                </div>
-
-                <div class="flex border rounded overflow-hidden">
-                    <div class="bg-[#f1f3f4] px-3 flex items-center border-r"><i class="fas fa-gem text-gray-500 text-xs"></i></div>
-                    <select class="w-full p-2 text-sm bg-white outline-none"><option>FREE</option></select>
-                </div>
-
-                <a href="https://just2earn.com/jzhvCf5" class="w-full bg-[#1a73e8] text-white py-2 rounded text-sm font-bold flex justify-center items-center gap-2 mt-4 hover:bg-blue-700 transition-colors">
-                    <i class="fas fa-sign-in-alt"></i> Generate
-                </a>
-            </div>
-        </div>
-
-        <div class="text-center text-[10px] text-gray-400 pt-10">
-            © 2026 - HEX PRIME PANEL
-        </div>
+        <label>UTR Number (Transaction ID):</label>
+        <input type="text" id="utrNumber" class="utr-box" placeholder="123456789012">
+        
+        <button style="background: #007bff;" onclick="submitToWhatsApp()">Confirm Order on WhatsApp</button>
     </div>
+</div>
+
+<script>
+    function calculatePrice() {
+        let price = document.getElementById("quantity").value;
+        document.getElementById("totalPrice").innerText = "Total Amount: ₹" + price;
+        document.getElementById("payAmount").innerText = price;
+    }
+
+    function showPayment() {
+        let link = document.getElementById("videoLink").value;
+        let qty = document.getElementById("quantity").value;
+        
+        if(link === "" || qty == "0") {
+            alert("Pehle link aur quantity sahi se bharein!");
+            return;
+        }
+        document.getElementById("qr-section").style.display = "block";
+    }
+
+    function submitToWhatsApp() {
+        let link = document.getElementById("videoLink").value;
+        let price = document.getElementById("quantity").value;
+        let utr = document.getElementById("utrNumber").value;
+        
+        if(utr.length < 10) {
+            alert("Please sahi UTR Number dalein!");
+            return;
+        }
+
+        // Yahan apna mobile number dalein (91 ke saath)
+        let myNumber = "919876543210"; 
+        let message = `New Order Request:%0ALink: ${link}%0AAmount Paid: ₹${price}%0AUTR No: ${utr}`;
+        
+        window.open(`https://wa.me/${myNumber}?text=${message}`, '_blank');
+    }
+</script>
 
 </body>
 </html>
