@@ -3,93 +3,134 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viral Boost - Wallet System</title>
+    <title>Viral Boost SMM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; flex-direction: column; align-items: center; padding: 10px; margin: 0; }
-        .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid #334155; margin-bottom: 20px; }
-        .wallet-box { background: linear-gradient(135deg, #0ea5e9, #2563eb); padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px; }
-        h3 { margin: 5px 0; }
-        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; box-sizing: border-box; }
-        .btn { width: 100%; padding: 12px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; margin-top: 5px; }
-        .btn-check { background: #38bdf8; color: #0f172a; }
-        .btn-order { background: #22c55e; color: white; }
-        #order-section { display: none; }
+        .support-bar { width: 100%; max-width: 400px; background: #1e293b; border-radius: 12px; padding: 12px; margin-bottom: 15px; border: 1px solid #334155; text-align: center; }
+        .support-links { display: flex; gap: 10px; margin-top: 8px; padding: 5px; }
+        .support-btn { flex: 1; padding: 10px; border-radius: 8px; text-decoration: none; color: white; font-size: 13px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .tg-btn { background: #0088cc; } .wa-btn { background: #25d366; }
+        
+        .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid #334155; box-sizing: border-box; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        h2 { text-align: center; color: #38bdf8; margin-top: 0; }
+        label { display: block; margin: 12px 0 5px; font-weight: bold; font-size: 14px; color: #94a3b8; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; margin-bottom: 10px; outline: none; }
+        
+        .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 22px; border: 2px solid #38bdf8; margin: 15px 0; }
+        .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; }
+        
+        #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
+        .qr-img { width: 220px; border-radius: 10px; margin: 10px 0; border: 4px solid white; background: white; }
+        #success-msg { display: none; background: #065f46; color: #34d399; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: center; font-weight: bold; border: 1px solid #059669; }
     </style>
 </head>
 <body>
 
-<div class="card">
-    <div class="wallet-box">
-        <p style="font-size: 14px; opacity: 0.9;">My Wallet Balance</p>
-        <h2 id="dispBalance">₹0.00</h2>
-        <p id="dispUser" style="font-size: 12px;"></p>
+<div class="support-bar">
+    <div style="color: #38bdf8; font-weight: bold; font-size: 14px; margin-top: 5px;">☎️ Customer Care Support</div>
+    <div class="support-links">
+        <a href="https://t.me/Suheloowner" target="_blank" class="support-btn tg-btn"><i class="fab fa-telegram"></i> Telegram</a>
+        <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank" class="support-btn wa-btn"><i class="fab fa-whatsapp"></i> Channel</a>
     </div>
-
-    <label>Mobile Number (User ID):</label>
-    <input type="number" id="userID" placeholder="ID daalein (Ex: 7388...)">
-    <button class="btn btn-check" onclick="checkBalance()">Login / Refresh Balance</button>
 </div>
 
-<div class="card" id="order-section">
-    <h3>🛒 Create Order</h3>
-    <label>Insta Link:</label>
-    <input type="text" id="targetLink" placeholder="Link yahan paste karein...">
+<div class="card">
+    <h2>🚀 Viral Boost SMM</h2>
+    
+    <label>Instagram Link:</label>
+    <input type="text" id="targetLink" placeholder="Video ya Profile link dalein...">
 
-    <label>Service:</label>
-    <select id="mainService">
-        <option value="1|Views: 1,000">1,000 Views - ₹1</option>
-        <option value="30|Followers: 1k">1,000 Followers - ₹30</option>
-        <option value="45|Followers(10%Drop): 1k">1,000 Followers (10% Drop) - ₹45</option>
+    <label>Service Chunein:</label>
+    <select id="mainService" onchange="updatePrice()">
+        <optgroup label="-- VIEWS --">
+            <option value="1|1,000 Views">1,000 Views - ₹1</option>
+            <option value="200|1,000,000 Views">1,000,000 Views - ₹200</option>
+        </optgroup>
+        <optgroup label="-- LIKES --">
+            <option value="10|1,000 Likes">1,000 Likes - ₹10</option>
+            <option value="20|2,000 Likes">2,000 Likes - ₹20</option>
+            <option value="750|100,000 Likes">100,000 Likes - ₹750</option>
+        </optgroup>
+        <optgroup label="-- FOLLOWERS --">
+            <option value="5|100 Followers (No Refill)">100 Followers (No Refill) - ₹5</option>
+            <option value="30|1,000 Followers (No Refill)">1,000 Followers (No Refill) - ₹30</option>
+            <option value="50|1,000 Followers (5% Drop)">1,000 Followers (5% Drop) - ₹50</option>
+            <option value="400|5,000 Followers (100% Drop)">5,000 Followers (100% Drop) - ₹400</option>
+        </optgroup>
     </select>
 
-    <button class="btn btn-order" id="orderBtn" onclick="placeOrder()">Buy Now (Wallet)</button>
-    <p style="font-size: 11px; color: #94a3b8; text-align: center; margin-top: 10px;">Paisa wallet se kat jayega.</p>
+    <div class="price-box" id="priceDisplay">Total: ₹1</div>
+    
+    <button class="btn-pay" id="payBtn" onclick="showQR()">Payment Karein</button>
+
+    <div id="qr-section">
+        <p style="color:#fbbf24; font-weight:bold;">Scan & Pay: ₹<span id="amtText">1</span></p>
+        <img src="" id="qrImg" class="qr-img">
+        <p style="font-size:12px; margin-bottom: 10px;">UPI ID: 7388720012@fam</p>
+        
+        <input type="text" id="utr" placeholder="12 Digit UTR Number">
+        <button class="btn-pay" style="background:#2563eb;" id="finalBtn" onclick="sendToSheet()">Confirm Order</button>
+    </div>
+
+    <div id="success-msg">✅ Your order confirmed!<br>Please wait 1 hour.</div>
 </div>
 
 <script>
-    const scriptURL = 'YOUR_NEW_DEPLOY_URL_HERE'; // Naya URL yahan daalein
-    let currentBalance = 0;
+    // Aapka naya URL yahan hai
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwKgo1I7pERLdq5dRpONCuTdDS1wo_1MOPhFJVl_ztswURoFoVmWog6PNOFxynDdYbw/exec';
 
-    async function checkBalance() {
-        let id = document.getElementById("userID").value;
-        if(id.length < 10) { alert("Sahi Mobile No. daalo!"); return; }
-        
-        document.getElementById("dispBalance").innerText = "Loading...";
-        
-        try {
-            let response = await fetch(scriptURL, {
-                method: 'POST',
-                body: JSON.stringify({ action: "checkBalance", userID: id })
-            });
-            let result = await response.json();
-            currentBalance = result.balance;
-            document.getElementById("dispBalance").innerText = "₹" + currentBalance;
-            document.getElementById("dispUser").innerText = "User ID: " + id;
-            document.getElementById("order-section").style.display = "block";
-        } catch(e) { alert("Error! ID nahi mili."); }
+    function updatePrice() {
+        let price = document.getElementById("mainService").value.split('|')[0];
+        document.getElementById("priceDisplay").innerText = "Total: ₹" + price;
+        document.getElementById("amtText").innerText = price;
+        document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=7388720012@fam%26am=${price}%26cu=INR`;
+    }
+    // Pehli baar price load karne ke liye
+    updatePrice();
+
+    function showQR() {
+        if(document.getElementById("targetLink").value == "") { 
+            alert("Bhai link toh daalo!"); 
+            return; 
+        }
+        document.getElementById("qr-section").style.display = "block";
+        document.getElementById("payBtn").style.display = "none";
+        window.scrollTo(0, document.body.scrollHeight);
     }
 
-    async function placeOrder() {
-        let valData = document.getElementById("mainService").value.split('|');
-        let price = parseInt(valData[0]);
-        let service = valData[1];
-        let id = document.getElementById("userID").value;
-        let link = document.getElementById("targetLink").value;
-
-        if(currentBalance < price) { alert("Paisa kam hai! Recharge karein."); return; }
-        if(link == "") { alert("Link daalein!"); return; }
-
-        document.getElementById("orderBtn").innerText = "Processing...";
+    async function sendToSheet() {
+        let utr = document.getElementById("utr").value;
+        if(utr.length < 10) { 
+            alert("Sahi 12 digit UTR number daalein!"); 
+            return; 
+        }
         
+        let btn = document.getElementById("finalBtn");
+        btn.innerText = "Processing...";
+        btn.disabled = true;
+
+        let valData = document.getElementById("mainService").value.split('|');
+
         try {
             await fetch(scriptURL, {
                 method: 'POST',
-                body: JSON.stringify({ action: "placeOrder", userID: id, amount: price, service: service, link: link })
+                mode: 'no-cors',
+                body: JSON.stringify({
+                    link: document.getElementById("targetLink").value,
+                    service: valData[1],
+                    amount: valData[0],
+                    utr: utr
+                })
             });
-            alert("Order Success! Paisa wallet se kat gaya.");
-            checkBalance(); // Balance update
-        } catch(e) { alert("Order Failed!"); }
+            
+            document.getElementById("qr-section").style.display = "none";
+            document.getElementById("success-msg").style.display = "block";
+        } catch (e) {
+            alert("Error! Sheet update nahi hui.");
+            btn.disabled = false;
+            btn.innerText = "Confirm Order";
+        }
     }
 </script>
 </body>
