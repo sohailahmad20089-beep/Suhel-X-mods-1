@@ -3,95 +3,99 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viral Boost - Smart Calculator</title>
+    <title>Viral Boost SMM</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; flex-direction: column; align-items: center; padding: 10px; margin: 0; }
-        .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid #334155; box-sizing: border-box; }
+        .support-bar { width: 100%; max-width: 400px; background: #1e293b; border-radius: 12px; padding: 10px; margin-top: 10px; border: 1px solid #334155; text-align: center; }
+        .support-links { display: flex; gap: 10px; margin-top: 8px; padding: 5px; }
+        .support-btn { flex: 1; padding: 10px; border-radius: 8px; text-decoration: none; color: white; font-size: 13px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
+        .tg-btn { background: #0088cc; } .wa-btn { background: #25d366; }
+        
+        .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid #334155; box-sizing: border-box; margin-top: 15px; }
         h2 { text-align: center; color: #38bdf8; margin: 0 0 15px 0; }
         label { display: block; margin: 12px 0 5px; font-weight: bold; font-size: 14px; color: #94a3b8; }
         input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; margin-bottom: 10px; outline: none; }
+        
         .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 22px; border: 2px solid #38bdf8; margin: 15px 0; }
         .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; }
+        
         #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
         .qr-img { width: 220px; border-radius: 10px; margin: 10px 0; border: 4px solid white; background: white; }
-        .info-text { font-size: 11px; color: #fbbf24; margin-top: -5px; margin-bottom: 10px; }
+        #success-msg { display: none; background: #065f46; color: #34d399; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: center; font-weight: bold; }
     </style>
 </head>
 <body>
 
-<div class="card" style="margin-top: 20px;">
-    <h2>🚀 Viral Boost SMM</h2>
-    
-    <label>Instagram Link:</label>
-    <input type="text" id="targetLink" placeholder="Video ya Profile link...">
-
-    <label>Service Chunein:</label>
-    <select id="serviceType" onchange="calculatePrice()">
-        <option value="0.001">Instagram Views (₹1 per 1k)</option>
-        <option value="0.01">Instagram Likes (₹10 per 1k)</option>
-        <option value="0.03">Instagram Followers (₹30 per 1k)</option>
-    </select>
-
-    <label>Kitna Chahiye? (Quantity):</label>
-    <input type="number" id="quantity" placeholder="Min: 100, Max: 1000000" min="100" max="1000000" value="1000" oninput="calculatePrice()">
-    <p class="info-text">Minimum 100 aur Maximum 1,000,000 daal sakte hain.</p>
-
-    <div class="price-box" id="priceDisplay">Total Amount: ₹1</div>
-    
-    <button class="btn-pay" id="payBtn" onclick="showPayment()">Payment Karein</button>
-
-    <div id="qr-section">
-        <p style="color:#fbbf24; font-weight:bold;">Scan & Pay: ₹<span id="amtText">1</span></p>
-        <img src="" id="qrImg" class="qr-img">
-        <p style="font-size:12px; margin-bottom: 10px;">UPI ID: 7388720012@fam</p>
-        
-        <input type="text" id="utr" placeholder="12 Digit UTR Number">
-        <button class="btn-pay" style="background:#2563eb;" id="finalBtn" onclick="submitOrder()">Confirm Order</button>
+<div class="support-bar">
+    <div style="color: #38bdf8; font-weight: bold; font-size: 14px;">☎️ Customer Care Support</div>
+    <div class="support-links">
+        <a href="https://t.me/Suheloowner" target="_blank" class="support-btn tg-btn"><i class="fab fa-telegram"></i> Telegram</a>
+        <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank" class="support-btn wa-btn"><i class="fab fa-whatsapp"></i> Channel</a>
     </div>
 </div>
 
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzLbN02vrlSZFB6A10tZB3qC06O_kNMKvsD1hqAAKV6OYPQEZdVOhuRbuuiPBQrA44/exec';
+<div class="card">
+    <h2>🚀 Viral Boost SMM</h2>
+    
+    <label>Instagram Link:</label>
+    <input type="text" id="targetLink" placeholder="Paste link here...">
 
-    function calculatePrice() {
+    <label>Service:</label>
+    <select id="serviceType" onchange="calculate()">
+        <option value="0.001">Insta Views (₹1 per 1k)</option>
+        <option value="0.01">Insta Likes (₹10 per 1k)</option>
+        <option value="0.03">Insta Followers (₹30 per 1k)</option>
+    </select>
+
+    <label>Quantity:</label>
+    <input type="number" id="qty" value="1000" min="100" max="1000000" oninput="calculate()">
+    
+    <div class="price-box" id="priceDisp">Amount: ₹1.00</div>
+    
+    <button class="btn-pay" id="payBtn" onclick="showQR()">Pay Now</button>
+
+    <div id="qr-section">
+        <p style="color:#fbbf24; font-weight:bold;">Scan & Pay: ₹<span id="amtText">1.00</span></p>
+        <img src="" id="qrImg" class="qr-img">
+        <p style="font-size:12px; margin-bottom: 10px;">UPI: 7388720012@fam</p>
+        
+        <input type="text" id="utr" placeholder="Enter 12 Digit UTR">
+        <button class="btn-pay" style="background:#2563eb;" id="finalBtn" onclick="sendOrder()">Confirm Order</button>
+    </div>
+
+    <div id="success-msg">✅ Order Recieved! Check Sheet.</div>
+</div>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzIaNLCdW0btGW2HIOTzhRZst2ST-3EUiwygZWd3CwFrWaEh8dvbY2cokyIaSJYNShq/exec';
+
+    function calculate() {
         let rate = document.getElementById("serviceType").value;
-        let qty = document.getElementById("quantity").value;
-        
-        // Agar quantity 100 se kam ho to min 100 maane
-        if (qty < 100 && qty != "") { qty = 100; }
-        
-        let total = (qty * rate).toFixed(2); // Paisa calculation
-        
-        document.getElementById("priceDisplay").innerText = "Total Amount: ₹" + total;
+        let q = document.getElementById("qty").value;
+        let total = (q * rate).toFixed(2);
+        document.getElementById("priceDisp").innerText = "Amount: ₹" + total;
         document.getElementById("amtText").innerText = total;
-        
-        // QR Code update
         document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=7388720012@fam%26am=${total}%26cu=INR`;
     }
+    calculate();
 
-    function showPayment() {
-        let link = document.getElementById("targetLink").value;
-        let qty = document.getElementById("quantity").value;
-
-        if(link == "") { alert("Bhai link toh daalo!"); return; }
-        if(qty < 100) { alert("Kam se kam 100 quantity honi chahiye!"); return; }
-
+    function showQR() {
+        if(document.getElementById("targetLink").value == "") { alert("Link daalo!"); return; }
         document.getElementById("qr-section").style.display = "block";
         document.getElementById("payBtn").style.display = "none";
     }
 
-    async function submitOrder() {
+    async function sendOrder() {
         let utr = document.getElementById("utr").value;
-        if(utr.length < 10) { alert("Sahi UTR number daalein!"); return; }
+        if(utr.length < 10) { alert("Sahi UTR daalo!"); return; }
         
-        let btn = document.getElementById("finalBtn");
-        btn.innerText = "Processing...";
-        btn.disabled = true;
+        document.getElementById("finalBtn").innerText = "Sending...";
+        document.getElementById("finalBtn").disabled = true;
 
-        let serviceName = document.getElementById("serviceType").options[document.getElementById("serviceType").selectedIndex].text;
-        let qty = document.getElementById("quantity").value;
-        let total = (qty * document.getElementById("serviceType").value).toFixed(2);
+        let sName = document.getElementById("serviceType").options[document.getElementById("serviceType").selectedIndex].text;
+        let q = document.getElementById("qty").value;
+        let total = (q * document.getElementById("serviceType").value).toFixed(2);
 
         try {
             await fetch(scriptURL, {
@@ -99,16 +103,16 @@
                 mode: 'no-cors',
                 body: JSON.stringify({
                     link: document.getElementById("targetLink").value,
-                    service: serviceName + " (Qty: " + qty + ")",
+                    service: sName + " [Qty: " + q + "]",
                     amount: total,
                     utr: utr
                 })
             });
-            alert("Order Success! Hum jaldi process karenge.");
-            location.reload(); // Page refresh order ke baad
+            document.getElementById("qr-section").style.display = "none";
+            document.getElementById("success-msg").style.display = "block";
         } catch (e) {
             alert("Error!");
-            btn.disabled = false;
+            document.getElementById("finalBtn").disabled = false;
         }
     }
 </script>
