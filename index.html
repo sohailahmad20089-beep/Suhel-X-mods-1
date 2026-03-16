@@ -7,87 +7,58 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f172a; color: white; display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; }
-        
-        /* Top Share Bar */
-        .share-container { width: 100%; max-width: 400px; display: flex; justify-content: space-between; align-items: center; background: #1e293b; padding: 10px 15px; border-radius: 12px; margin-bottom: 15px; border: 1px solid #334155; box-sizing: border-box; }
-        .share-icons { display: flex; gap: 15px; }
-        .share-icons i { font-size: 20px; cursor: pointer; transition: 0.3s; }
-
-        /* Main Card */
         .card { background: #1e293b; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 100%; max-width: 400px; border: 1px solid #334155; box-sizing: border-box; }
-        h2 { text-align: center; color: #38bdf8; margin: 0 0 20px 0; font-size: 22px; }
+        h2 { text-align: center; color: #38bdf8; margin: 0 0 20px 0; }
         label { display: block; margin: 15px 0 5px; font-weight: bold; font-size: 14px; color: #94a3b8; }
         input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; font-size: 16px; }
-        
         .price-box { background: #0ea5e9; color: white; padding: 10px; border-radius: 8px; text-align: center; font-weight: bold; margin-top: 15px; font-size: 18px; }
         .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 15px; border-radius: 8px; margin-top: 20px; cursor: pointer; font-size: 18px; font-weight: bold; }
-        
-        /* Payment Section */
         #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
         .qr-img { width: 240px; border-radius: 10px; margin: 10px 0; border: 4px solid white; background: white; }
-        .utr-input { border: 2px solid #f59e0b !important; margin-top: 10px; }
-        .btn-confirm { background: #2563eb; margin-top: 15px; }
     </style>
 </head>
 <body>
 
-<div class="share-container">
-    <span style="font-size: 14px; color: #94a3b8;">Dosto ko share karein:</span>
-    <div class="share-icons">
-        <i class="fab fa-whatsapp" onclick="shareWhatsApp()" style="color: #25d366;"></i>
-        <i class="fas fa-copy" onclick="copyLink()" style="color: #cbd5e1;"></i>
-    </div>
-</div>
-
-<div class="card">
+<div class="card" style="margin-top: 20px;">
     <h2>🚀 Viral Boost Views</h2>
-    
-    <label>Insta Video Link:</label>
+    <label>Instagram Video Link:</label>
     <input type="text" id="videoLink" placeholder="Yahan link paste karein...">
 
-    <label>Views Kitne Chahiye?</label>
+    <label>Views Chunein:</label>
     <select id="quantity" onchange="updatePrice()">
         <option value="0">-- Select Karein --</option>
         <option value="5">20,000 Views - ₹5</option>
         <option value="12">50,000 Views - ₹12</option>
         <option value="22">100,000 Views - ₹22</option>
-        <option value="100">500,000 Views - ₹100</option>
     </select>
 
     <div class="price-box" id="priceDisplay">Total: ₹0</div>
-
-    <button class="btn-pay" onclick="openPayment()">Abhi Order Karein</button>
+    <button class="btn-pay" onclick="openPayment()">Payment Karein</button>
 
     <div id="qr-section">
-        <p style="color: #fbbf24; font-weight: bold;">Scan karke ₹<span id="amountText">0</span> Pay Karein</p>
+        <p style="color: #fbbf24; font-weight: bold;">Scan Karein: ₹<span id="amountText">0</span></p>
         <img src="" id="qrImage" alt="Payment QR" class="qr-img">
-        <p style="font-size: 12px; color: #cbd5e1;">UPI ID: 7388720012@fam</p>
-
-        <label>UTR / Transaction ID Dalein:</label>
-        <input type="text" id="utr" class="utr-input" placeholder="12 Digit UTR Number">
+        <p style="font-size: 12px; color: #94a3b8;">UPI ID: 7388720012@fam</p>
         
-        <button class="btn-pay btn-confirm" id="finalBtn" onclick="processOrder()">Confirm Order</button>
+        <input type="text" id="utr" placeholder="12 Digit UTR Number" style="border: 2px solid #f59e0b !important; margin-top: 10px;">
+        <button class="btn-pay" style="background: #2563eb;" id="finalBtn" onclick="processOrder()">Confirm Order</button>
     </div>
 </div>
 
 <script>
-    // Aapka Google Script URL
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbzeofEAYt1zsADReIddCP4Wfy4EkUJW412N4Keu0T6a5nxU3uWC1n7MYMKKXb_kng/exec';
+    // Aapka Web App URL
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbw8v6Ery9elqBXZYTsq79dLu4EKzs-9027c6QIKbCutB92MiI6eISjQ-bB44FJ3TXQ/exec'; 
 
     function updatePrice() {
         let p = document.getElementById("quantity").value;
         document.getElementById("priceDisplay").innerText = "Total: ₹" + p;
         document.getElementById("amountText").innerText = p;
-        // QR Code generation
         document.getElementById("qrImage").src = `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=upi://pay?pa=7388720012@fam%26am=${p}%26cu=INR`;
     }
 
     function openPayment() {
-        let link = document.getElementById("videoLink").value;
-        let qty = document.getElementById("quantity").value;
-        if(link == "" || qty == "0") {
-            alert("Bhai Link aur Views toh choose karo!");
-            return;
+        if(document.getElementById("videoLink").value == "" || document.getElementById("quantity").value == "0") {
+            alert("Bhai Link aur Views toh select karo!"); return;
         }
         document.getElementById("qr-section").style.display = "block";
     }
@@ -98,12 +69,9 @@
         let utr = document.getElementById("utr").value;
         let price = document.getElementById("quantity").value;
 
-        if(utr.length < 10) {
-            alert("Sahi UTR number daalein!");
-            return;
-        }
-
-        document.getElementById("finalBtn").innerText = "Saving Order...";
+        if(utr.length < 10) { alert("Sahi UTR number daalein!"); return; }
+        
+        document.getElementById("finalBtn").innerText = "Saving to Sheet...";
         document.getElementById("finalBtn").disabled = true;
 
         // 1. Google Sheet mein data bhejna
@@ -113,27 +81,21 @@
                 mode: 'no-cors',
                 body: JSON.stringify({ link: link, views: qtyText, amount: price, utr: utr })
             });
-        } catch (e) { console.error("Error saving to sheet", e); }
+            console.log("Success: Data sent to sheet");
+        } catch (e) { 
+            console.log("Error:", e); 
+        }
 
         // 2. WhatsApp par redirect
-        let adminNo = "917388720013";
-        let msg = `*Naya Order Aaya Hai!*%0A%0A*Service:* ${qtyText}%0A*Link:* ${link}%0A*Price:* ₹${price}%0A*UTR:* ${utr}`;
-        window.open(`https://wa.me/${adminNo}?text=${msg}`, '_blank');
-        
-        document.getElementById("finalBtn").innerText = "Confirm Order";
-        document.getElementById("finalBtn").disabled = false;
-    }
-
-    // Share Functions
-    function copyLink() {
-        navigator.clipboard.writeText(window.location.href);
-        alert("Website link copy ho gaya!");
-    }
-
-    function shareWhatsApp() {
-        window.open(`https://wa.me/?text=Bhai saste views yahan se lo: ${window.location.href}`, '_blank');
+        setTimeout(() => {
+            let adminNo = "917388720013";
+            let msg = `*Naya Order!*%0A*Views:* ${qtyText}%0A*Link:* ${link}%0A*UTR:* ${utr}`;
+            window.open(`https://wa.me/${adminNo}?text=${msg}`, '_blank');
+            
+            document.getElementById("finalBtn").innerText = "Confirm Order";
+            document.getElementById("finalBtn").disabled = false;
+        }, 1000);
     }
 </script>
-
 </body>
 </html>
