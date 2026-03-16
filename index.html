@@ -3,40 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Viral Boost SMM</title>
+    <title>Viral Boost SMM - Wallet</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', Arial, sans-serif; background: #0f172a; color: white; display: flex; flex-direction: column; align-items: center; padding: 10px; margin: 0; }
-        
-        /* Support Bar */
+        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; flex-direction: column; align-items: center; padding: 10px; margin: 0; }
         .support-bar { width: 100%; max-width: 400px; background: #1e293b; border-radius: 12px; padding: 12px; margin-bottom: 15px; border: 1px solid #334155; text-align: center; }
         .support-links { display: flex; gap: 10px; margin-top: 8px; }
         .support-btn { flex: 1; padding: 10px; border-radius: 8px; text-decoration: none; color: white; font-size: 13px; font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 5px; }
         .tg-btn { background: #0088cc; } .wa-btn { background: #25d366; }
-
-        /* Main Card */
-        .card { background: #1e293b; padding: 20px; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.5); width: 100%; max-width: 400px; border: 1px solid #334155; box-sizing: border-box; }
-        h2 { text-align: center; color: #38bdf8; margin: 0 0 15px 0; }
+        
+        .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid #334155; margin-bottom: 20px; box-sizing: border-box; }
+        .wallet-box { background: linear-gradient(135deg, #0ea5e9, #2563eb); padding: 15px; border-radius: 12px; text-align: center; margin-bottom: 20px; box-shadow: 0 4px 15px rgba(37, 99, 235, 0.4); }
+        h2, h3 { margin: 10px 0; text-align: center; color: #38bdf8; }
+        
         label { display: block; margin: 12px 0 5px; font-weight: bold; font-size: 14px; color: #94a3b8; }
-        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; font-size: 15px; margin-bottom: 15px; outline: none; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; box-sizing: border-box; outline: none; }
         
-        .price-box { background: #0ea5e9; color: white; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 20px; border: 2px solid #38bdf8; margin-bottom: 10px; }
+        .btn { width: 100%; padding: 14px; border-radius: 8px; border: none; font-weight: bold; cursor: pointer; font-size: 16px; transition: 0.3s; }
+        .btn-check { background: #38bdf8; color: #0f172a; }
+        .btn-order { background: #22c55e; color: white; margin-top: 10px; }
+        .btn-order:disabled { background: #475569; cursor: not-allowed; }
         
-        /* Buttons */
-        .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; display: block; }
-        .btn-confirm { background: #2563eb; margin-top: 10px; }
-        
-        /* QR Section */
-        #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
-        .qr-img { width: 220px; border-radius: 10px; margin: 10px 0; border: 4px solid white; background: white; }
-        
-        #success-msg { display: none; background: #065f46; color: #34d399; padding: 20px; border-radius: 8px; margin-top: 20px; text-align: center; font-weight: bold; border: 1px solid #059669; }
+        #order-section { display: none; border-top: 1px dashed #334155; padding-top: 15px; }
+        #loading { display: none; color: #fbbf24; font-size: 14px; margin-top: 10px; }
     </style>
 </head>
 <body>
 
 <div class="support-bar">
-    <div style="color: #38bdf8; font-weight: bold; font-size: 14px;">☎️ Customer Care Support</div>
+    <div style="color: #38bdf8; font-weight: bold; font-size: 14px;">☎️ Customer Care & Add Balance</div>
     <div class="support-links">
         <a href="https://t.me/Suheloowner" target="_blank" class="support-btn tg-btn"><i class="fab fa-telegram"></i> Telegram</a>
         <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank" class="support-btn wa-btn"><i class="fab fa-whatsapp"></i> Channel</a>
@@ -44,116 +39,105 @@
 </div>
 
 <div class="card">
-    <h2>🚀 Viral Boost SMM</h2>
-    
-    <label>Insta Link (Profile/Video):</label>
-    <input type="text" id="targetLink" placeholder="Link paste karein...">
+    <div class="wallet-box">
+        <p style="font-size: 14px; margin: 0; opacity: 0.9;">Available Balance</p>
+        <h2 id="dispBalance" style="color: white; font-size: 32px; margin: 5px 0;">₹0.00</h2>
+        <p id="dispUser" style="font-size: 12px; margin: 0; opacity: 0.8;"></p>
+    </div>
 
-    <label>Service & Quantity Chunein:</label>
-    <select id="mainService" onchange="calculatePrice()">
-        <optgroup label="-- INSTAGRAM VIEWS --">
+    <label>User ID (Mobile Number):</label>
+    <input type="number" id="userID" placeholder="Enter Registered Number">
+    <button class="btn btn-check" id="loginBtn" onclick="checkBalance()">Login / Check Balance</button>
+    <div id="loading">Connecting to server...</div>
+</div>
+
+<div class="card" id="order-section">
+    <h3>🚀 Place Your Order</h3>
+    <label>Target Link:</label>
+    <input type="text" id="targetLink" placeholder="Paste Instagram Link here...">
+
+    <label>Select Service:</label>
+    <select id="mainService">
+        <optgroup label="-- VIEWS --">
             <option value="1|Views: 1,000">1,000 Views - ₹1</option>
-            <option value="8|Views: 10,000">10,000 Views - ₹8</option>
-            <option value="200|Views: 1M">1,000,000 Views - ₹200</option>
+            <option value="200|Views: 1M">1M Views - ₹200</option>
         </optgroup>
-        <optgroup label="-- INSTAGRAM LIKES --">
-            <option value="10|Likes: 1,000">1,000 Likes - ₹10</option>
-            <option value="20|Likes: 2,000">2,000 Likes - ₹20</option>
-            <option value="750|Likes: 100k">100,000 Likes - ₹750</option>
+        <optgroup label="-- FOLLOWERS (No Refill) --">
+            <option value="30|Followers: 1k">1,000 Followers - ₹30</option>
+            <option value="250|Followers: 10k">10,000 Followers - ₹250</option>
         </optgroup>
-        <optgroup label="-- FOLLOWERS (NO REFILL) --">
-            <option value="5|Followers(NoRefill): 100">100 Followers - ₹5</option>
-            <option value="30|Followers(NoRefill): 1k">1,000 Followers - ₹30</option>
-            <option value="250|Followers(NoRefill): 10k">10,000 Followers - ₹250</option>
-            <option value="2000|Followers(NoRefill): 100k">100,000 Followers - ₹2,000</option>
-        </optgroup>
-        <optgroup label="-- FOLLOWERS (10% DROP) --">
-            <option value="10|Followers(10%Drop): 100">100 Followers - ₹10</option>
-            <option value="45|Followers(10%Drop): 1k">1,000 Followers - ₹45</option>
-            <option value="400|Followers(10%Drop): 10k">10,000 Followers - ₹400</option>
-            <option value="3200|Followers(10%Drop): 100k">100,000 Followers - ₹3,200</option>
-        </optgroup>
-        <optgroup label="-- FOLLOWERS (5% DROP) --">
-            <option value="13|Followers(5%Drop): 100">100 Followers - ₹13</option>
-            <option value="50|Followers(5%Drop): 1k">1,000 Followers - ₹50</option>
-            <option value="450|Followers(5%Drop): 10k">10,000 Followers - ₹450</option>
-            <option value="4000|Followers(5%Drop): 100k">100,000 Followers - ₹4,000</option>
-        </optgroup>
-        <optgroup label="-- FOLLOWERS (100% DROP) --">
-            <option value="400|Followers(100%Drop): 5k">5,000 Followers - ₹400</option>
+        <optgroup label="-- FOLLOWERS (5% Drop) --">
+            <option value="50|Followers(5%): 1k">1,000 Followers - ₹50</option>
+            <option value="450|Followers(5%): 10k">10,000 Followers - ₹450</option>
         </optgroup>
     </select>
 
-    <div class="price-box" id="priceDisplay">Amount: ₹1</div>
-    
-    <button class="btn-pay" id="payBtn" onclick="openPayment()">Abhi Order Karein</button>
-
-    <div id="qr-section">
-        <p style="font-weight:bold; color:#fbbf24; margin-bottom: 10px;">Pay ₹<span id="amtText">1</span> to 7388720012@fam</p>
-        <img src="" id="qrImg" class="qr-img">
-        
-        <label>12 Digit UTR Number Dalein:</label>
-        <input type="text" id="utr" placeholder="Transaction ID / UTR" maxlength="12">
-        
-        <button class="btn-pay btn-confirm" id="finalBtn" onclick="process()">Confirm My Order</button>
-    </div>
-
-    <div id="success-msg">
-        <i class="fas fa-check-circle" style="font-size: 30px;"></i><br>
-        ✅ Order Confirmed! Please wait 1 hour.
-    </div>
+    <button class="btn btn-order" id="orderBtn" onclick="placeOrder()">Confirm & Deduct Balance</button>
 </div>
 
 <script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbw8v6Ery9elqBXZYTsq79dLu4EKzs-9027c6QIKbCutB92MiI6eISjQ-bB44FJ3TXQ/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbzLbN02vrlSZFB6A10tZB3qC06O_kNMKvsD1hqAAKV6OYPQEZdVOhuRbuuiPBQrA44/exec';
+    let currentBalance = 0;
 
-    function calculatePrice() {
-        let val = document.getElementById("mainService").value.split('|')[0];
-        document.getElementById("priceDisplay").innerText = "Amount: ₹" + val;
-        document.getElementById("amtText").innerText = val;
-        document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=7388720012@fam%26am=${val}%26cu=INR`;
-    }
-    // Initial call
-    calculatePrice();
+    async function checkBalance() {
+        let id = document.getElementById("userID").value;
+        if(id.length < 10) { alert("Please enter valid 10-digit mobile number!"); return; }
+        
+        document.getElementById("loading").style.display = "block";
+        document.getElementById("loginBtn").disabled = true;
 
-    function openPayment() {
-        if(document.getElementById("targetLink").value.length < 5) {
-            alert("Bhai sahi Instagram link toh daalo!"); return;
+        try {
+            let response = await fetch(scriptURL, {
+                method: 'POST',
+                body: JSON.stringify({ action: "checkBalance", userID: id })
+            });
+            let result = await response.json();
+            
+            if(result.found) {
+                currentBalance = result.balance;
+                document.getElementById("dispBalance").innerText = "₹" + currentBalance.toFixed(2);
+                document.getElementById("dispUser").innerText = "ID: " + id;
+                document.getElementById("order-section").style.display = "block";
+                window.scrollTo(0, document.body.scrollHeight);
+            } else {
+                alert("User not found! Please contact admin to add balance.");
+            }
+        } catch(e) { 
+            alert("Server connection error!"); 
+        } finally {
+            document.getElementById("loading").style.display = "none";
+            document.getElementById("loginBtn").disabled = false;
         }
-        document.getElementById("qr-section").style.display = "block";
-        document.getElementById("payBtn").style.display = "none";
-        // Scroll to QR
-        window.scrollTo(0, document.body.scrollHeight);
     }
 
-    async function process() {
-        let utr = document.getElementById("utr").value;
-        if(utr.length < 10) { alert("Sahi 12 Digit UTR Number daalo!"); return; }
-        
-        let finalBtn = document.getElementById("finalBtn");
-        finalBtn.innerText = "Processing Order...";
-        finalBtn.disabled = true;
-        
+    async function placeOrder() {
         let valData = document.getElementById("mainService").value.split('|');
-        let price = valData[0];
+        let price = parseInt(valData[0]);
         let service = valData[1];
+        let id = document.getElementById("userID").value;
+        let link = document.getElementById("targetLink").value;
+
+        if(link.length < 5) { alert("Invalid Link!"); return; }
+        if(currentBalance < price) { alert("Low Balance! Please recharge your wallet."); return; }
+
+        if(!confirm(`Order ${service} for ₹${price}?`)) return;
+
+        document.getElementById("orderBtn").innerText = "Processing...";
+        document.getElementById("orderBtn").disabled = true;
 
         try {
             await fetch(scriptURL, {
-                method: 'POST', mode: 'no-cors',
-                body: JSON.stringify({ 
-                    link: document.getElementById("targetLink").value, 
-                    views: service, 
-                    amount: price, 
-                    utr: utr 
-                })
+                method: 'POST',
+                body: JSON.stringify({ action: "placeOrder", userID: id, amount: price, service: service, link: link })
             });
-            document.getElementById("qr-section").style.display = "none";
-            document.getElementById("success-msg").style.display = "block";
+            alert("Order Placed Successfully!");
+            checkBalance(); // Refresh balance
+            document.getElementById("targetLink").value = "";
         } catch(e) { 
-            alert("Connection error! Sheet check karein."); 
-            finalBtn.disabled = false;
-            finalBtn.innerText = "Confirm My Order";
+            alert("Order Failed! Check internet."); 
+        } finally {
+            document.getElementById("orderBtn").innerText = "Confirm & Deduct Balance";
+            document.getElementById("orderBtn").disabled = false;
         }
     }
 </script>
