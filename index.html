@@ -9,31 +9,38 @@
         :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --whatsapp: #25d366; --telegram: #0088cc; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; padding-bottom: 80px; }
         
+        /* Login Overlay */
+        #login-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: var(--bg); z-index: 1000; display: flex; align-items: center; justify-content: center; }
+        .login-box { background: var(--card); padding: 30px; border-radius: 15px; width: 90%; max-width: 350px; text-align: center; border: 1px solid #334155; }
+        .login-box h2 { color: var(--primary); margin-bottom: 20px; }
+
         @keyframes rainbow {
             0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
             50% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
             100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
         }
 
-        .header-top { width: 100%; max-width: 450px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px 0; }
-        .logo-box { background: rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.2); }
+        /* Main Panel Content (Hidden until login) */
+        #main-content { display: none; width: 100%; max-width: 450px; flex-direction: column; align-items: center; }
+
+        .header-top { width: 100%; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px 0; }
+        .logo-box { background: rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.2); width: fit-content; margin: 0 auto; }
         .changing-text { font-weight: 900; letter-spacing: 2px; font-size: 16px; animation: rainbow 3s linear infinite; }
 
-        .trust-banner { width: 95%; max-width: 430px; background: linear-gradient(90deg, #1e293b, #334155); border-left: 5px solid #fbbf24; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 13px; line-height: 1.4; border: 1px solid rgba(251, 191, 36, 0.3); }
+        .trust-banner { width: 100%; background: linear-gradient(90deg, #1e293b, #334155); border-left: 5px solid #fbbf24; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 13px; border: 1px solid rgba(251, 191, 36, 0.3); box-sizing: border-box; }
 
-        /* Share Section */
-        .share-box { width: 95%; max-width: 430px; display: flex; gap: 10px; margin-bottom: 15px; }
+        .share-box { width: 100%; display: flex; gap: 10px; margin-bottom: 15px; }
         .share-btn { flex: 1; padding: 10px; border-radius: 8px; border: none; color: white; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; text-decoration: none; font-size: 12px; }
         .wa-btn { background: var(--whatsapp); }
         .tg-btn { background: var(--telegram); }
         .cp-btn { background: #64748b; }
 
-        .stats-card { width: 95%; max-width: 430px; background: white; color: #1e293b; border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
+        .stats-card { width: 100%; background: white; color: #1e293b; border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; box-sizing: border-box; }
         .stats-info h2 { margin: 0; font-size: 24px; color: #0f172a; font-weight: 800; }
 
-        .card { background: var(--card); padding: 20px; border-radius: 15px; width: 100%; max-width: 450px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .card { background: var(--card); padding: 20px; border-radius: 15px; width: 100%; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); box-sizing: border-box; }
         label { display: block; margin: 12px 0 6px; font-weight: 600; font-size: 13px; color: #94a3b8; text-transform: uppercase; }
-        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; font-size: 14px; outline: none; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; font-size: 14px; outline: none; box-sizing: border-box; }
         
         .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 24px; margin: 20px 0; border: 2px solid #38bdf8; }
         .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 16px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; }
@@ -46,79 +53,104 @@
 </head>
 <body>
 
-<div class="header-top">
-    <div class="logo-box"><span class="changing-text">MD SUHEL SMM</span></div>
-</div>
-
-<div class="trust-banner">
-    <i class="fas fa-hand-holding-usd" style="color:#fbbf24;"></i> <b>Sabse Sasta Wada:</b> Kahin aur sasta mil raha hai? Hamein WhatsApp karein, hum price match karenge!
-</div>
-
-<div class="share-box">
-    <a href="https://api.whatsapp.com/send?text=SMM Services starting at ₹1. Check out MD SUHEL SMM: " class="share-btn wa-btn" id="waShare" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    <a href="https://t.me/share/url?url=" class="share-btn tg-btn" id="tgShare" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
-    <button class="share-btn cp-btn" onclick="copyURL()"><i class="fas fa-copy"></i> Copy Link</button>
-</div>
-
-<div class="stats-card">
-    <div style="font-size: 30px; color: #3b82f6;"><i class="fas fa-history"></i></div>
-    <div class="stats-info" style="text-align: right;">
-        <p style="margin:0; font-size:12px; color:#64748b; font-weight: bold;">TOTAL ORDERS COMPLETED</p>
-        <h2 id="totalOrdersCount">145</h2>
+<div id="login-overlay">
+    <div class="login-box">
+        <i class="fas fa-user-shield" style="font-size: 40px; color: var(--primary); margin-bottom: 10px;"></i>
+        <h2>Admin Login</h2>
+        <input type="text" id="user" placeholder="Username">
+        <input type="password" id="pass" placeholder="Password">
+        <button class="btn-pay" onclick="checkLogin()">Login to Panel</button>
+        <p style="font-size: 12px; margin-top: 15px; color: #94a3b8;">Restricted Access - MD SUHEL</p>
     </div>
 </div>
 
-<div class="card">
-    <label><i class="fas fa-link"></i> Target Link</label>
-    <input type="text" id="targetLink" placeholder="Paste Link Here...">
+<div id="main-content">
+    <div class="header-top">
+        <div class="logo-box"><span class="changing-text">MD SUHEL SMM</span></div>
+    </div>
 
-    <label><i class="fas fa-layer-group"></i> Category</label>
-    <select id="categorySelect" onchange="loadServices()">
-        <option value="">-- Choose Category --</option>
-        <option value="views">Instagram Views 🎬</option>
-        <option value="likes">Instagram Likes ♥️</option>
-        <option value="likes_in">Instagram Likes India 🇮🇳</option>
-        <option value="shares">Instagram Shares 🚀</option>
-        <option value="f_no">Followers No Refill 🫥</option>
-        <option value="f_10">Followers 0-10% Drop 📉</option>
-        <option value="f_05">Followers 0-05% Drop 📉</option>
-        <option value="pkg_f">Follower Package 📦</option>
-        <option value="pkg_v">Views Package 📦</option>
-        <option value="pkg_l">Likes Package 📦</option>
-        <option value="comm">Comments Random 💬</option>
-    </select>
+    <div class="trust-banner">
+        <i class="fas fa-hand-holding-usd" style="color:#fbbf24;"></i> <b>Sabse Sasta Wada:</b> Kahin aur sasta mil raha hai? Hamein WhatsApp karein!
+    </div>
 
-    <label><i class="fas fa-concierge-bell"></i> Package</label>
-    <select id="serviceSelect" onchange="updatePrice()"><option value="">Choose Category First</option></select>
+    <div class="share-box">
+        <a href="#" class="share-btn wa-btn" id="waShare" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+        <a href="#" class="share-btn tg-btn" id="tgShare" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+        <button class="share-btn cp-btn" onclick="copyURL()"><i class="fas fa-copy"></i> Copy Link</button>
+    </div>
 
-    <div class="price-box" id="priceDisplay">₹0.00</div>
-    
-    <button class="btn-pay" id="payBtn" onclick="showQR()">Place Order Now</button>
+    <div class="stats-card">
+        <div style="font-size: 30px; color: #3b82f6;"><i class="fas fa-history"></i></div>
+        <div class="stats-info" style="text-align: right;">
+            <p style="margin:0; font-size:12px; color:#64748b; font-weight: bold;">TOTAL ORDERS COMPLETED</p>
+            <h2 id="totalOrdersCount">145</h2>
+        </div>
+    </div>
 
-    <div id="qr-section">
-        <p style="color:#fbbf24; font-weight:bold;">Payable: ₹<span id="finalAmt">0.00</span></p>
-        <img src="" id="qrImg" class="qr-img">
-        <p style="font-size:12px; margin-bottom: 10px;">UPI ID: 7388720012@fam</p>
-        <input type="text" id="utr" placeholder="12 Digit Transaction ID (UTR)">
-        <button class="btn-pay" style="background:#2563eb;" id="confirmBtn" onclick="submitOrder()">Confirm Payment</button>
+    <div class="card">
+        <label><i class="fas fa-link"></i> Target Link</label>
+        <input type="text" id="targetLink" placeholder="Paste Link Here...">
+
+        <label><i class="fas fa-layer-group"></i> Category</label>
+        <select id="categorySelect" onchange="loadServices()">
+            <option value="">-- Choose Category --</option>
+            <option value="views">Instagram Views 🎬</option>
+            <option value="likes">Instagram Likes ♥️</option>
+            <option value="likes_in">Instagram Likes India 🇮🇳</option>
+            <option value="shares">Instagram Shares 🚀</option>
+            <option value="f_no">Followers No Refill 🫥</option>
+            <option value="f_10">Followers 0-10% Drop 📉</option>
+            <option value="f_05">Followers 0-05% Drop 📉</option>
+            <option value="pkg_f">Follower Package 📦</option>
+            <option value="pkg_v">Views Package 📦</option>
+            <option value="pkg_l">Likes Package 📦</option>
+            <option value="comm">Comments Random 💬</option>
+        </select>
+
+        <label><i class="fas fa-concierge-bell"></i> Package</label>
+        <select id="serviceSelect" onchange="updatePrice()"><option value="">Choose Category First</option></select>
+
+        <div class="price-box" id="priceDisplay">₹0.00</div>
+        
+        <button class="btn-pay" id="payBtn" onclick="showQR()">Place Order Now</button>
+
+        <div id="qr-section">
+            <p style="color:#fbbf24; font-weight:bold;">Payable: ₹<span id="finalAmt">0.00</span></p>
+            <img src="" id="qrImg" class="qr-img">
+            <p style="font-size:12px; margin-bottom: 10px;">UPI ID: 7388720012@fam</p>
+            <input type="text" id="utr" placeholder="12 Digit Transaction ID (UTR)">
+            <button class="btn-pay" style="background:#2563eb;" id="confirmBtn" onclick="submitOrder()">Confirm Payment</button>
+        </div>
     </div>
 </div>
 
-<a href="https://wa.me/917388720012?text=Hello Suhel Bhai, mujhe price kam karwana hai." class="whatsapp-float" target="_blank">
+<a href="https://wa.me/917388720012" class="whatsapp-float" target="_blank">
     <i class="fab fa-whatsapp"></i>
 </a>
 
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyqdvyG3GVA5PAAFPSVrbi2JOc1vwewJCheoxRvgG7cxaz8A1VEjaTkRKCc4qAh9VnX/exec';
 
+    // Login Logic
+    function checkLogin() {
+        const u = document.getElementById("user").value;
+        const p = document.getElementById("pass").value;
+        if(u === "admin" && p === "suhel786") {
+            document.getElementById("login-overlay").style.display = "none";
+            document.getElementById("main-content").style.display = "flex";
+        } else {
+            alert("Galat Password Hai Bhai! ❌");
+        }
+    }
+
     // Share link setup
     const currentURL = window.location.href;
-    document.getElementById('waShare').href = `https://api.whatsapp.com/send?text=Get Instant Instagram Services starting at ₹1. Check out MD SUHEL SMM: ${currentURL}`;
+    document.getElementById('waShare').href = `https://api.whatsapp.com/send?text=Instagram Services starting at ₹1. Check out: ${currentURL}`;
     document.getElementById('tgShare').href = `https://t.me/share/url?url=${currentURL}&text=MD SUHEL SMM PANEL`;
 
     function copyURL() {
         navigator.clipboard.writeText(currentURL);
-        alert("Link Copy Ho Gya Bhai! ✅");
+        alert("Link Copy Ho Gya! ✅");
     }
 
     const serviceData = {
@@ -215,10 +247,8 @@
     async function submitOrder() {
         let utrVal = document.getElementById("utr").value.trim();
         if(utrVal.length < 12) return alert("❌ Sahi 12-digit UTR daalo!");
-        
-        document.getElementById("confirmBtn").innerText = "Connecting...";
+        document.getElementById("confirmBtn").innerText = "Sending...";
         const s = JSON.parse(document.getElementById("serviceSelect").value);
-
         try {
             await fetch(scriptURL, {
                 method: 'POST', mode: 'no-cors',
@@ -229,10 +259,9 @@
             });
             alert("✅ Order Sent! Suhel Bhai jald hi start kar denge.");
             location.reload();
-        } catch (e) { alert("Error! WhatsApp support par message karein."); }
+        } catch (e) { alert("Error! WhatsApp par message karein."); }
     }
 
-    // Counter logic (Starts from 145)
     fetch(scriptURL + "?action=getCount").then(r => r.text()).then(d => {
         let realCount = parseInt(d) || 0;
         document.getElementById("totalOrdersCount").innerText = 145 + realCount;
