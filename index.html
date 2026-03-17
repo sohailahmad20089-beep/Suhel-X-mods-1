@@ -7,32 +7,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --whatsapp: #25d366; --telegram: #0088cc; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; padding-bottom: 80px; }
         
         @keyframes rainbow {
             0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
-            20% { color: #ff8800; text-shadow: 0 0 10px #ff8800; }
-            40% { color: #ffff00; text-shadow: 0 0 10px #ffff00; }
-            60% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
-            80% { color: #0088ff; text-shadow: 0 0 10px #0088ff; }
-            100% { color: #ff00ff; text-shadow: 0 0 10px #ff00ff; }
+            50% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+            100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
         }
 
         .header-top { width: 100%; max-width: 450px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px 0; }
         .logo-box { background: rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.2); }
         .changing-text { font-weight: 900; letter-spacing: 2px; font-size: 16px; animation: rainbow 3s linear infinite; }
-        .join-btn { background: var(--whatsapp); color: white; padding: 8px 15px; border-radius: 50px; text-decoration: none; font-size: 12px; font-weight: bold; border: 1px solid white; }
+
+        /* Trust & Price Match Banner */
+        .trust-banner { width: 95%; max-width: 430px; background: linear-gradient(90deg, #1e293b, #334155); border-left: 5px solid #fbbf24; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 13px; line-height: 1.4; border: 1px solid rgba(251, 191, 36, 0.3); }
 
         .stats-card { width: 95%; max-width: 430px; background: white; color: #1e293b; border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
-        .stats-info p { margin: 0; font-size: 12px; color: #64748b; font-weight: bold; text-transform: uppercase; }
         .stats-info h2 { margin: 0; font-size: 24px; color: #0f172a; font-weight: 800; }
-        .stats-icon { font-size: 30px; color: #3b82f6; opacity: 0.8; }
-
-        .share-container { width: 100%; max-width: 450px; display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
-        .share-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 18px; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; }
-        .s-wa { background: var(--whatsapp); }
-        .s-tg { background: var(--telegram); }
-        .s-cp { background: #6366f1; }
 
         .card { background: var(--card); padding: 20px; border-radius: 15px; width: 100%; max-width: 450px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
         label { display: block; margin: 12px 0 6px; font-weight: 600; font-size: 13px; color: #94a3b8; text-transform: uppercase; }
@@ -41,153 +32,79 @@
         .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 24px; margin: 20px 0; border: 2px solid #38bdf8; }
         .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 16px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; }
         
+        /* Floating WhatsApp Button */
+        .whatsapp-float { position: fixed; bottom: 20px; right: 20px; background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 30px; box-shadow: 0 4px 15px rgba(0,0,0,0.4); z-index: 100; text-decoration: none; border: 2px solid white; }
+
         #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
         .qr-img { width: 200px; border: 5px solid white; border-radius: 10px; margin: 10px 0; }
-        .pay-notice { background: rgba(251, 191, 36, 0.2); color: #fbbf24; padding: 10px; border-radius: 8px; font-size: 14px; font-weight: bold; margin: 10px 0; border: 1px solid #fbbf24; animation: blink 2s infinite; }
-        @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.6;} 100% {opacity: 1;} }
-
-        .support-box { margin-top: 25px; width: 100%; max-width: 450px; text-align: center; background: rgba(37, 211, 102, 0.1); padding: 15px; border-radius: 12px; border: 1px solid var(--whatsapp); }
-        .support-box a { color: var(--whatsapp); text-decoration: none; font-weight: bold; font-size: 15px; }
     </style>
 </head>
 <body>
 
 <div class="header-top">
     <div class="logo-box"><span class="changing-text">MD SUHEL SMM</span></div>
-    <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank" class="join-btn"><i class="fab fa-whatsapp"></i> JOIN</a>
+</div>
+
+<div class="trust-banner">
+    <i class="fas fa-hand-holding-usd" style="color:#fbbf24;"></i> <b>Sabse Sasta Wada:</b> Kahin aur sasta mil raha hai? Hamein WhatsApp karein, hum price match karenge!
 </div>
 
 <div class="stats-card">
-    <div class="stats-icon"><i class="fas fa-list-ol"></i></div>
+    <div style="font-size: 30px; color: #3b82f6;"><i class="fas fa-history"></i></div>
     <div class="stats-info" style="text-align: right;">
-        <p>Total Panel Orders</p>
-        <h2 id="totalOrdersCount">0</h2>
+        <p style="margin:0; font-size:12px; color:#64748b; font-weight: bold;">TOTAL ORDERS COMPLETED</p>
+        <h2 id="totalOrdersCount">...</h2>
     </div>
-</div>
-
-<div class="share-container">
-    <a href="javascript:void(0)" onclick="shareWA()" class="share-icon s-wa"><i class="fab fa-whatsapp"></i></a>
-    <a href="javascript:void(0)" onclick="shareTG()" class="share-icon s-tg"><i class="fab fa-telegram-plane"></i></a>
-    <a href="javascript:void(0)" onclick="copyLink()" class="share-icon s-cp"><i class="fas fa-link"></i></a>
 </div>
 
 <div class="card">
     <label><i class="fas fa-link"></i> Target Link</label>
     <input type="text" id="targetLink" placeholder="Paste Link Here...">
 
-    <label><i class="fas fa-layer-group"></i> Select Category</label>
+    <label><i class="fas fa-layer-group"></i> Category</label>
     <select id="categorySelect" onchange="loadServices()">
         <option value="">-- Choose Category --</option>
-        <option value="views">Instagram Views (Bulk)</option>
+        <option value="views">Instagram Views (Starting ₹1)</option>
         <option value="likes">Instagram Likes</option>
-        <option value="likes_in">Instagram Likes India 🇮🇳</option>
-        <option value="shares">Instagram Shares</option>
-        <option value="f_no">Followers (No Refill)</option>
-        <option value="f_10">Followers (0-10% Drop)</option>
-        <option value="f_05">Followers (0-05% Drop)</option>
-        <option value="pkg_f">Follower Package 📦</option>
-        <option value="pkg_v">Views Package 📦</option>
-        <option value="pkg_l">Likes Package 📦</option>
-        <option value="comm">Comments Random</option>
+        <option value="f_no">Followers (Real/No Drop)</option>
     </select>
 
-    <label><i class="fas fa-concierge-bell"></i> Select Package</label>
-    <select id="serviceSelect" onchange="updatePrice()">
-        <option value="">Choose Category First</option>
-    </select>
+    <label><i class="fas fa-concierge-bell"></i> Package</label>
+    <select id="serviceSelect" onchange="updatePrice()"><option value="">Choose Category First</option></select>
 
-    <div class="price-box" id="priceDisplay">Amount: ₹0.00</div>
+    <div class="price-box" id="priceDisplay">₹0.00</div>
     
     <button class="btn-pay" id="payBtn" onclick="showQR()">Place Order Now</button>
 
     <div id="qr-section">
         <p style="color:#fbbf24; font-weight:bold;">Payable: ₹<span id="finalAmt">0.00</span></p>
         <img src="" id="qrImg" class="qr-img">
-        <div class="pay-notice"><i class="fas fa-exclamation-triangle"></i> Pay karne ke baad UTR zaroor daalein</div>
-        <p style="font-size:12px; margin-top: 5px;">UPI ID: 7388720012@fam</p>
+        <p style="font-size:12px; margin-bottom: 10px;">UPI ID: 7388720012@fam</p>
         <input type="text" id="utr" placeholder="12 Digit Transaction ID (UTR)">
         <button class="btn-pay" style="background:#2563eb;" id="confirmBtn" onclick="submitOrder()">Confirm Payment</button>
     </div>
 </div>
 
-<div class="support-box">
-    <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank"><i class="fab fa-whatsapp"></i> JOIN UPDATES CHANNEL</a>
-</div>
+<a href="https://wa.me/917388720012?text=Hello Suhel Bhai, mujhe price kam karwana hai." class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
 <script>
-    // UPDATED SCRIPT URL
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyqdvyG3GVA5PAAFPSVrbi2JOc1vwewJCheoxRvgG7cxaz8A1VEjaTkRKCc4qAh9VnX/exec';
-    
-    function shareWA() { window.open(`https://api.whatsapp.com/send?text=Get Instant Instagram Services: ${window.location.href}`, '_blank'); }
-    function shareTG() { window.open(`https://t.me/share/url?url=${window.location.href}&text=MD SUHEL SMM PANEL`, '_blank'); }
-    function copyLink() { navigator.clipboard.writeText(window.location.href); alert("Link Copied! ✅"); }
-
-    async function fetchTotalOrders() {
-        try {
-            const response = await fetch(scriptURL + "?action=getCount");
-            const count = await response.text();
-            document.getElementById("totalOrdersCount").innerText = parseInt(count) || 0;
-        } catch (e) { document.getElementById("totalOrdersCount").innerText = "0"; }
-    }
-    fetchTotalOrders();
 
     const serviceData = {
         "views": [
-            {id: "V1", name: "10k Views", price: 5, qty: 10000},
-            {id: "V2", name: "20k Views", price: 10, qty: 20000},
-            {id: "V3", name: "50k Views", price: 18, qty: 50000},
-            {id: "V4", name: "100k Views", price: 30, qty: 100000},
-            {id: "V5", name: "1M Views", price: 200, qty: 1000000}
+            {id: "V1", name: "1k Views (Instant)", price: 1, qty: 1000},
+            {id: "V2", name: "10k Views (Bulk)", price: 7, qty: 10000},
+            {id: "V3", name: "100k Views (Mega)", price: 30, qty: 100000}
         ],
         "likes": [
-            {id: "L1", name: "1k Likes", price: 10, qty: 1000},
-            {id: "L2", name: "10k Likes", price: 100, qty: 10000},
-            {id: "L3", name: "100k Likes", price: 600, qty: 100000}
-        ],
-        "likes_in": [
-            {id: "LI1", name: "1k Indian Likes 🇮🇳", price: 15, qty: 1000},
-            {id: "LI2", name: "10k Indian Likes 🇮🇳", price: 120, qty: 10000},
-            {id: "LI3", name: "100k Indian Likes 🇮🇳", price: 1100, qty: 100000}
-        ],
-        "shares": [
-            {id: "S1", name: "100 Shares", price: 1, qty: 100},
-            {id: "S2", name: "1000 Shares", price: 1.5, qty: 1000},
-            {id: "S3", name: "10000 Shares", price: 12, qty: 10000},
-            {id: "S4", name: "100000 Shares", price: 8, qty: 100000}
+            {id: "L1", name: "1k Likes (Real)", price: 10, qty: 1000},
+            {id: "L2", name: "10k Likes (Bulk)", price: 90, qty: 10000}
         ],
         "f_no": [
-            {id: "FN1", name: "100 Followers (No Refill)", price: 3, qty: 100},
-            {id: "FN2", name: "1k Followers (No Refill)", price: 20, qty: 1000},
-            {id: "FN3", name: "10k Followers (No Refill)", price: 190, qty: 10000}
-        ],
-        "f_10": [
-            {id: "F101", name: "100 Followers (0-10% Drop)", price: 3, qty: 100},
-            {id: "F102", name: "1k Followers (0-10% Drop)", price: 36, qty: 1000},
-            {id: "F103", name: "10k Followers (0-10% Drop)", price: 350, qty: 10000}
-        ],
-        "f_05": [
-            {id: "F051", name: "100 Followers (0-05% Drop)", price: 5, qty: 100},
-            {id: "F052", name: "1k Followers (0-05% Drop)", price: 50, qty: 1000},
-            {id: "F053", name: "10k Followers (0-05% Drop)", price: 420, qty: 10000}
-        ],
-        "pkg_f": [
-            {id: "PF1", name: "5k Followers Package 📦", price: 380, qty: 5000},
-            {id: "PF2", name: "10k Followers Package 📦", price: 750, qty: 10000}
-        ],
-        "pkg_v": [
-            {id: "PV1", name: "10k Views Package 📦", price: 6, qty: 10000},
-            {id: "PV2", name: "50k Views Package 📦", price: 15, qty: 50000},
-            {id: "PV3", name: "100k Views Package 📦", price: 25, qty: 100000},
-            {id: "PV4", name: "500k Views Package 📦", price: 60, qty: 500000},
-            {id: "PV5", name: "1M Views Package 📦", price: 120, qty: 1000000}
-        ],
-        "pkg_l": [
-            {id: "PL1", name: "10k Likes Package 📦", price: 90, qty: 10000},
-            {id: "PL2", name: "20k Likes Package 📦", price: 160, qty: 20000}
-        ],
-        "comm": [
-            {id: "C1", name: "100 Random Comments", price: 7, qty: 100},
-            {id: "C2", name: "1000 Random Comments", price: 46, qty: 1000}
+            {id: "F1", name: "1k Followers (No Drop)", price: 40, qty: 1000},
+            {id: "F2", name: "5k Followers (Best Deal)", price: 180, qty: 5000}
         ]
     };
 
@@ -210,7 +127,7 @@
         const sVal = document.getElementById("serviceSelect").value;
         if(sVal) {
             const s = JSON.parse(sVal);
-            document.getElementById("priceDisplay").innerText = "Amount: ₹" + s.price;
+            document.getElementById("priceDisplay").innerText = "₹" + s.price;
             document.getElementById("finalAmt").innerText = s.price;
             document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=7388720012@fam%26am=${s.price}%26cu=INR`;
         }
@@ -226,7 +143,7 @@
         let utrVal = document.getElementById("utr").value.trim();
         if(utrVal.length < 12) return alert("❌ Sahi 12-digit UTR daalo!");
         
-        document.getElementById("confirmBtn").innerText = "Sending...";
+        document.getElementById("confirmBtn").innerText = "Connecting...";
         const s = JSON.parse(document.getElementById("serviceSelect").value);
 
         try {
@@ -234,13 +151,19 @@
                 method: 'POST', mode: 'no-cors',
                 body: JSON.stringify({
                     link: document.getElementById("targetLink").value,
-                    serviceName: s.name, serviceID: s.id, qty: s.qty, amount: s.price, utr: utrVal
+                    serviceName: s.name, qty: s.qty, amount: s.price, utr: utrVal
                 })
             });
-            alert("✅ Order Sent! Verification ke baad shuru ho jayega.");
+            alert("✅ Order Sent! Suhel Bhai jald hi start kar denge.");
             location.reload();
-        } catch (e) { alert("Error!"); }
+        } catch (e) { alert("Error! WhatsApp support par message karein."); }
     }
+
+    // Fake Orders Counter logic for Trust
+    fetch(scriptURL + "?action=getCount").then(r => r.text()).then(d => {
+        let realCount = parseInt(d) || 0;
+        document.getElementById("totalOrdersCount").innerText = realCount + 1845; // Adding 1845 fake orders
+    });
 </script>
 </body>
 </html>
