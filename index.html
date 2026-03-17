@@ -3,127 +3,177 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StarSMM - High Speed Panel</title>
+    <title>MD SUHEL SMM PANEL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; flex-direction: column; align-items: center; padding: 10px; margin: 0; }
-        .logo-box { background: linear-gradient(135deg, #38bdf8, #2563eb); padding: 12px 30px; border-radius: 50px; margin: 15px 0; border: 2px solid white; box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
-        .logo-text { font-size: 20px; font-weight: 900; letter-spacing: 1px; }
-        .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 420px; border: 1px solid #334155; box-sizing: border-box; }
-        label { display: block; margin: 10px 0 5px; font-weight: bold; font-size: 13px; color: #94a3b8; }
-        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; margin-bottom: 10px; outline: none; font-size: 14px; }
-        .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 22px; border: 2px solid #38bdf8; margin: 15px 0; }
-        .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; }
+        :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --whatsapp: #25d366; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; }
+        
+        /* Header & Logo */
+        .header-top { width: 100%; max-width: 450px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .logo-box { background: linear-gradient(135deg, var(--primary), #2563eb); padding: 8px 20px; border-radius: 50px; border: 2px solid white; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
+        .join-btn { background: var(--whatsapp); color: white; padding: 8px 15px; border-radius: 50px; text-decoration: none; font-size: 12px; font-weight: bold; border: 1px solid white; }
+
+        /* Main Card */
+        .card { background: var(--card); padding: 20px; border-radius: 15px; width: 100%; max-width: 450px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        label { display: block; margin: 12px 0 6px; font-weight: 600; font-size: 13px; color: #94a3b8; text-transform: uppercase; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; font-size: 14px; outline: none; transition: 0.3s; }
+        
+        .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 24px; margin: 20px 0; border: 2px solid #38bdf8; }
+        .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 16px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; }
+        
         #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
-        .qr-img { width: 220px; border-radius: 10px; margin: 10px 0; border: 4px solid white; background: white; }
+        .qr-img { width: 200px; border: 5px solid white; border-radius: 10px; margin: 10px 0; }
+        
+        /* Support Section */
+        .support-box { margin-top: 25px; width: 100%; max-width: 450px; text-align: center; background: rgba(37, 211, 102, 0.1); padding: 15px; border-radius: 12px; border: 1px solid var(--whatsapp); }
+        .support-box a { color: var(--whatsapp); text-decoration: none; font-weight: bold; font-size: 15px; }
     </style>
 </head>
 <body>
 
-<div class="logo-box"><span class="logo-text">MD SUHEL SMM</span></div>
+<div class="header-top">
+    <div class="logo-box"><span style="font-weight:900; letter-spacing:1px; font-size: 14px;">MD SUHEL</span></div>
+    <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank" class="join-btn"><i class="fab fa-whatsapp"></i> JOIN CHANNEL</a>
+</div>
 
 <div class="card">
-    <label>Target Link:</label>
-    <input type="text" id="targetLink" placeholder="Paste Instagram Link...">
+    <label><i class="fas fa-link"></i> Target Link</label>
+    <input type="text" id="targetLink" placeholder="Paste Link Here...">
 
-    <label>Select Service Category:</label>
-    <select id="category" onchange="updateServices()">
-        <option value="">-- Choose Category --</option>
-        <option value="views">Instagram Views</option>
+    <label><i class="fas fa-layer-group"></i> Select Category</label>
+    <select id="categorySelect" onchange="loadServices()">
+        <option value="">-- Click to Choose --</option>
+        <option value="views">Instagram Views (Bulk)</option>
         <option value="likes">Instagram Likes</option>
         <option value="likes_in">Instagram Likes India 🇮🇳</option>
         <option value="shares">Instagram Shares</option>
         <option value="f_no">Followers (No Refill)</option>
         <option value="f_10">Followers (0-10% Drop)</option>
         <option value="f_05">Followers (0-05% Drop)</option>
-        <option value="pkg_f">Follower Packages 📦</option>
-        <option value="pkg_v">Views Packages 📦</option>
-        <option value="pkg_l">Likes Packages 📦</option>
+        <option value="pkg_f">Follower Package 📦</option>
+        <option value="pkg_v">Views Package 📦</option>
+        <option value="pkg_l">Likes Package 📦</option>
         <option value="comm">Comments Random</option>
     </select>
 
-    <label>Select Package:</label>
-    <select id="serviceType" onchange="calculate()">
-        <option value="0|Select Category First|0|0">-- Select Package --</option>
+    <label><i class="fas fa-concierge-bell"></i> Select Package</label>
+    <select id="serviceSelect" onchange="updatePrice()">
+        <option value="">Choose Category First</option>
     </select>
 
-    <div class="price-box" id="priceDisp">Amount: ₹0.00</div>
+    <div class="price-box" id="priceDisplay">Amount: ₹0.00</div>
     
-    <button class="btn-pay" id="payBtn" onclick="showQR()">Proceed to Pay</button>
+    <button class="btn-pay" id="payBtn" onclick="showQR()">Place Order Now</button>
 
     <div id="qr-section">
-        <p style="color:#fbbf24; font-weight:bold;">Scan & Pay: ₹<span id="amtText">0.00</span></p>
+        <p style="color:#fbbf24; font-weight:bold;">Payable: ₹<span id="finalAmt">0.00</span></p>
         <img src="" id="qrImg" class="qr-img">
         <p style="font-size:12px;">UPI: 7388720012@fam</p>
         <input type="text" id="utr" placeholder="Enter 12 Digit UTR Number">
-        <button class="btn-pay" style="background:#2563eb;" id="finalBtn" onclick="sendOrder()">Confirm Order</button>
+        <button class="btn-pay" style="background:#2563eb;" id="confirmBtn" onclick="submitOrder()">Confirm Payment</button>
     </div>
 </div>
 
-<script>
-    const scriptURL = 'https://script.google.com/macros/s/AKfycbwvj3VdKn7SBlfjOpJm9kssYuQbPK4X_gQwENxACJilvUnGXHwWZGIxJfo6Bq_O_zhM/exec';
+<div class="support-box">
+    <p style="margin:0 0 10px 0; font-size: 13px;">Any Issue? Join our Official Channel</p>
+    <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank">
+        <i class="fab fa-whatsapp"></i> CLICK TO JOIN UPDATES
+    </a>
+</div>
 
-    const services = {
-        views: [["5|10k Views|9259|10000"], ["10|20k Views|9259|20000"], ["18|50k Views|9259|50000"], ["30|100k Views|9259|100000"], ["200|1M Views|9259|1000000"]],
-        likes: [["10|1k Likes|205|1000"], ["100|10k Likes|205|10000"], ["600|100k Likes|205|100000"]],
-        likes_in: [["15|1k Likes India|205|1000"], ["120|10k Likes India|205|10000"], ["1100|100k Likes India|205|100000"]],
-        shares: [["1|100 Shares|30067|100"], ["1.5|1k Shares|30067|1000"], ["12|10k Shares|30067|10000"], ["8|100k Shares|30067|100000"]],
-        f_no: [["3|100 Followers|101|100"], ["20|1k Followers|101|1000"], ["190|10k Followers|101|10000"]],
-        f_10: [["3|100 Followers|101|100"], ["36|1k Followers|101|1000"], ["350|10k Followers|101|10000"]],
-        f_05: [["5|100 Followers|101|100"], ["50|1k Followers|101|1000"], ["420|10k Followers|101|10000"]],
-        pkg_f: [["380|5k Followers Pkg|101|5000"], ["750|10k Followers Pkg|101|10000"]],
-        pkg_v: [["6|10k Views Pkg|9259|10000"], ["15|50k Views Pkg|9259|50000"], ["25|100k Views Pkg|9259|100000"], ["60|500k Views Pkg|9259|500000"], ["120|1M Views Pkg|9259|1000000"]],
-        pkg_l: [["90|10k Likes Pkg|205|10000"], ["160|20k Likes Pkg|205|20000"]],
-        comm: [["7|100 Comments|30069|100"], ["46|1000 Comments|30069|1000"]]
+<script>
+    const serviceData = {
+        "views": [
+            {id: "9259", name: "10k Views", price: 5, qty: 10000},
+            {id: "9259", name: "20k Views", price: 10, qty: 20000},
+            {id: "9259", name: "50k Views", price: 18, qty: 50000},
+            {id: "9259", name: "100k Views", price: 30, qty: 100000},
+            {id: "9259", name: "1M Views", price: 200, qty: 1000000}
+        ],
+        "likes": [
+            {id: "205", name: "1k Likes", price: 10, qty: 1000},
+            {id: "205", name: "10k Likes", price: 100, qty: 10000},
+            {id: "205", name: "100k Likes", price: 600, qty: 100000}
+        ],
+        "likes_in": [
+            {id: "205", name: "1k Indian Likes", price: 15, qty: 1000},
+            {id: "205", name: "10k Indian Likes", price: 120, qty: 10000}
+        ],
+        "shares": [
+            {id: "30067", name: "100 Shares", price: 1, qty: 100},
+            {id: "30067", name: "1k Shares", price: 1.5, qty: 1000},
+            {id: "30067", name: "10k Shares", price: 12, qty: 10000}
+        ],
+        "f_no": [
+            {id: "101", name: "100 Followers (No Refill)", price: 3, qty: 100},
+            {id: "101", name: "1k Followers (No Refill)", price: 20, qty: 1000},
+            {id: "101", name: "10k Followers (No Refill)", price: 190, qty: 10000}
+        ],
+        "f_10": [
+            {id: "101", name: "1k Followers (0-10% Drop)", price: 36, qty: 1000},
+            {id: "101", name: "10k Followers (0-10% Drop)", price: 350, qty: 10000}
+        ],
+        "pkg_f": [
+            {id: "101", name: "5k Followers Package", price: 380, qty: 5000},
+            {id: "101", name: "10k Followers Package", price: 750, qty: 10000}
+        ],
+        "pkg_v": [
+            {id: "9259", name: "100k Views Package", price: 25, qty: 100000},
+            {id: "9259", name: "1M Views Package", price: 120, qty: 1000000}
+        ],
+        "comm": [
+            {id: "30069", name: "100 Random Comments", price: 7, qty: 100},
+            {id: "30069", name: "1000 Random Comments", price: 46, qty: 1000}
+        ]
     };
 
-    function updateServices() {
-        const cat = document.getElementById("category").value;
-        const serviceSelect = document.getElementById("serviceType");
-        serviceSelect.innerHTML = "";
-        if (services[cat]) {
-            services[cat].forEach(s => {
-                let d = s[0].split('|');
+    function loadServices() {
+        const cat = document.getElementById("categorySelect").value;
+        const sSelect = document.getElementById("serviceSelect");
+        sSelect.innerHTML = "";
+        if(cat && serviceData[cat]) {
+            serviceData[cat].forEach(s => {
                 let opt = document.createElement("option");
-                opt.value = s[0];
-                opt.text = d[1] + " - ₹" + d[0];
-                serviceSelect.add(opt);
+                opt.value = JSON.stringify(s);
+                opt.text = `${s.name} - ₹${s.price}`;
+                sSelect.add(opt);
             });
-        }
-        calculate();
+        } else { sSelect.add(new Option("Select Category First", "")); }
+        updatePrice();
     }
 
-    function calculate() {
-        let data = document.getElementById("serviceType").value.split('|');
-        let amt = data[0] || 0;
-        document.getElementById("priceDisp").innerText = "Amount: ₹" + amt;
-        document.getElementById("amtText").innerText = amt;
-        document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=7388720012@fam%26am=${amt}%26cu=INR`;
+    function updatePrice() {
+        const sVal = document.getElementById("serviceSelect").value;
+        if(sVal) {
+            const s = JSON.parse(sVal);
+            document.getElementById("priceDisplay").innerText = "Amount: ₹" + s.price;
+            document.getElementById("finalAmt").innerText = s.price;
+            document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=7388720012@fam%26am=${s.price}%26cu=INR`;
+        }
     }
 
     function showQR() {
-        if(!document.getElementById("targetLink").value) return alert("Link daalo!");
+        if(!document.getElementById("targetLink").value) return alert("Pehle link daalo!");
         document.getElementById("qr-section").style.display = "block";
         document.getElementById("payBtn").style.display = "none";
     }
 
-    async function sendOrder() {
-        if(document.getElementById("utr").value.length < 10) return alert("Sahi UTR!");
-        document.getElementById("finalBtn").innerText = "Processing...";
-        let data = document.getElementById("serviceType").value.split('|');
+    async function submitOrder() {
+        if(document.getElementById("utr").value.length < 10) return alert("Sahi UTR Number daalo!");
+        document.getElementById("confirmBtn").innerText = "Ordering...";
+        const s = JSON.parse(document.getElementById("serviceSelect").value);
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwvj3VdKn7SBlfjOpJm9kssYuQbPK4X_gQwENxACJilvUnGXHwWZGIxJfo6Bq_O_zhM/exec';
+
         try {
             await fetch(scriptURL, {
                 method: 'POST', mode: 'no-cors',
                 body: JSON.stringify({
                     link: document.getElementById("targetLink").value,
-                    serviceName: data[1],
-                    serviceID: data[2],
-                    qty: data[3],
-                    amount: data[0],
-                    utr: document.getElementById("utr").value
+                    serviceName: s.name, serviceID: s.id, qty: s.qty, amount: s.price, utr: document.getElementById("utr").value
                 })
             });
-            alert("✅ Order Placed!");
+            alert("✅ Order Sent Successfully!");
             location.reload();
         } catch (e) { alert("Error!"); }
     }
