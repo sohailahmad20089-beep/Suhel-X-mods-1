@@ -3,21 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>StarSMM - Automatic Panel</title>
+    <title>StarSMM - Professional Panel</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #0f172a; color: white; display: flex; flex-direction: column; align-items: center; padding: 10px; margin: 0; }
         .logo-box { background: linear-gradient(135deg, #38bdf8, #2563eb); padding: 12px 30px; border-radius: 50px; margin: 20px 0; border: 2px solid white; box-shadow: 0 0 15px rgba(56, 189, 248, 0.4); }
         .logo-text { font-size: 22px; font-weight: 900; letter-spacing: 1px; }
         .card { background: #1e293b; padding: 20px; border-radius: 15px; width: 100%; max-width: 400px; border: 1px solid #334155; box-sizing: border-box; }
-        h2 { text-align: center; color: #38bdf8; margin: 0 0 15px 0; font-size: 20px; }
         label { display: block; margin: 12px 0 5px; font-weight: bold; font-size: 14px; color: #94a3b8; }
-        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; margin-bottom: 10px; outline: none; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; box-sizing: border-box; margin-bottom: 15px; outline: none; font-size: 14px; }
+        optgroup { background: #1e293b; color: #38bdf8; font-weight: bold; }
+        option { color: white; background: #0f172a; }
         .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 8px; text-align: center; font-weight: bold; font-size: 22px; border: 2px solid #38bdf8; margin: 15px 0; }
         .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 15px; border-radius: 8px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; }
         #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
         .qr-img { width: 220px; border-radius: 10px; margin: 10px 0; border: 4px solid white; background: white; }
-        .notice-card { background: rgba(251, 191, 36, 0.1); padding: 15px; border-radius: 12px; width: 100%; max-width: 400px; border: 1px solid #fbbf24; box-sizing: border-box; margin-top: 15px; font-size: 13px; line-height: 1.5; color: #cbd5e1; }
     </style>
 </head>
 <body>
@@ -27,54 +27,56 @@
 </div>
 
 <div class="card">
-    <h2>🚀 StarSMM Auto-Panel</h2>
+    <h2>🚀 SMM Service Panel</h2>
     
-    <label>Link Paste Karein:</label>
-    <input type="text" id="targetLink" placeholder="Instagram Link...">
+    <label><i class="fas fa-link"></i> Target Link:</label>
+    <input type="text" id="targetLink" placeholder="Paste Instagram Link here...">
 
-    <label>Service Chunein:</label>
+    <label><i class="fas fa-list"></i> Select Service:</label>
     <select id="serviceType" onchange="calculate()">
-        <optgroup label="Followers">
-            <option value="100|Followers (Refill)|101">Insta Followers (Refill) - ₹100/1k</option>
-            <option value="50|Followers (Normal)|30067">Insta Followers (Global) - ₹50/1k</option>
+        <optgroup label="📸 Instagram Followers">
+            <option value="120|Followers (Lifetime Refill)|101">Followers (Lifetime Refill) - ₹120</option>
+            <option value="80|Followers (Indian 🇮🇳)|30067">Followers (Indian Mix) - ₹80</option>
+            <option value="50|Followers (No Refill)|30068">Followers (No Refill/Drop) - ₹50</option>
         </optgroup>
-        <optgroup label="Likes & Views">
-            <option value="20|Instagram Likes|205">Instagram Likes - ₹20/1k</option>
-            <option value="5|Instagram Views|9259">Instagram Views - ₹5/1k</option>
+        <optgroup label="❤️ Instagram Likes">
+            <option value="25|Instagram Likes (Real)|205">Instagram Likes (Real) - ₹25</option>
+            <option value="15|Instagram Likes (Cheap)|9260">Instagram Likes (Cheap) - ₹15</option>
+        </optgroup>
+        <optgroup label="🎬 Instagram Views">
+            <option value="10|Instagram Views (Fast)|9259">Instagram Views (Super Fast) - ₹10</option>
+            <option value="20|Instagram Reels Views|110">Instagram Reels Views - ₹20</option>
+        </optgroup>
+        <optgroup label="💬 Others">
+            <option value="40|Instagram Comments|30069">Instagram Comments (Emoji) - ₹40</option>
         </optgroup>
     </select>
 
-    <label>Quantity:</label>
-    <input type="number" id="qty" value="1000" min="100" oninput="calculate()">
+    <label><i class="fas fa-sort-numeric-up"></i> Quantity:</label>
+    <input type="number" id="qty" value="1000" min="100" step="100" oninput="calculate()">
     
-    <div class="price-box" id="priceDisp">Total: ₹100.00</div>
+    <div class="price-box" id="priceDisp">Total: ₹120.00</div>
     
     <button class="btn-pay" id="payBtn" onclick="showQR()">Proceed to Pay</button>
 
     <div id="qr-section">
-        <p style="color:#fbbf24; font-weight:bold;">Pay: ₹<span id="amtText">100.00</span></p>
+        <p style="color:#fbbf24; font-weight:bold;">Pay: ₹<span id="amtText">120.00</span></p>
         <img src="" id="qrImg" class="qr-img">
-        <p style="font-size:12px;">UPI: 7388720012@fam</p>
-        <input type="text" id="utr" placeholder="Enter 12 Digit UTR">
+        <p style="font-size:12px; margin-bottom: 10px;">UPI: 7388720012@fam</p>
+        
+        <input type="text" id="utr" placeholder="Enter 12 Digit UTR Number">
         <button class="btn-pay" style="background:#2563eb;" id="finalBtn" onclick="sendOrder()">Confirm Order</button>
     </div>
 </div>
 
-<div class="notice-card">
-    <b style="color:#fbbf24;">⚠️ Important:</b><br>
-    * Sahi UTR daalein varna order nahi lagega.<br>
-    * Balance add hone ke baad hi order automatic start hoga.<br>
-    * Support ke liye Telegram/WhatsApp par contact karein.
-</div>
-
 <script>
-    const scriptURL = 'Https://script.google.com/macros/s/AKfycbwvj3VdKn7SBlfjOpJm9kssYuQbPK4X_gQwENxACJilvUnGXHwWZGIxJfo6Bq_O_zhM/exec';
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbwvj3VdKn7SBlfjOpJm9kssYuQbPK4X_gQwENxACJilvUnGXHwWZGIxJfo6Bq_O_zhM/exec';
 
     function calculate() {
         let valData = document.getElementById("serviceType").value.split('|');
-        let rate = parseFloat(valData[0]);
+        let ratePer1k = parseFloat(valData[0]);
         let q = parseInt(document.getElementById("qty").value) || 0;
-        let total = ((q / 1000) * rate).toFixed(2);
+        let total = ((q / 1000) * ratePer1k).toFixed(2);
         
         document.getElementById("priceDisp").innerText = "Total: ₹" + total;
         document.getElementById("amtText").innerText = total;
@@ -83,19 +85,21 @@
     calculate();
 
     function showQR() {
-        if(!document.getElementById("targetLink").value) return alert("Pehle link daalo!");
+        if(!document.getElementById("targetLink").value) { alert("Pehle link daalo bhai!"); return; }
         document.getElementById("qr-section").style.display = "block";
         document.getElementById("payBtn").style.display = "none";
     }
 
     async function sendOrder() {
-        if(document.getElementById("utr").value.length < 10) return alert("Sahi UTR daalo!");
+        let utr = document.getElementById("utr").value;
+        if(utr.length < 10) { alert("Sahi 12-digit UTR daalo!"); return; }
         
         document.getElementById("finalBtn").innerText = "Processing...";
         document.getElementById("finalBtn").disabled = true;
 
         let valData = document.getElementById("serviceType").value.split('|');
         let q = document.getElementById("qty").value;
+        let total = ((q / 1000) * parseFloat(valData[0])).toFixed(2);
 
         try {
             await fetch(scriptURL, {
@@ -106,14 +110,14 @@
                     serviceName: valData[1],
                     serviceID: valData[2],
                     qty: q,
-                    amount: ((q / 1000) * valData[0]).toFixed(2),
-                    utr: document.getElementById("utr").value
+                    amount: total,
+                    utr: utr
                 })
             });
-            alert("✅ Order Recieved! StarOfSMM system ko bhej diya gaya hai.");
+            alert("✅ Order Placed! Balance check karke start ho jayega.");
             location.reload();
         } catch (e) {
-            alert("Error!");
+            alert("Error! Please try again.");
             document.getElementById("finalBtn").disabled = false;
         }
     }
