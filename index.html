@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --whatsapp: #25d366; --telegram: #0088cc; --youtube: #ff0000; --gold: #fbbf24; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; padding-bottom: 120px; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; padding-bottom: 150px; overflow-x: hidden; }
         
         @keyframes rainbow {
             0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
@@ -18,6 +18,10 @@
         .header-top { width: 100%; max-width: 450px; display: flex; justify-content: center; margin-bottom: 10px; padding: 10px 0; }
         .logo-box { background: rgba(255, 255, 255, 0.1); padding: 8px 25px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.2); }
         .changing-text { font-weight: 900; letter-spacing: 2px; font-size: 18px; animation: rainbow 3s linear infinite; }
+
+        .offer-wrapper { width: 100%; max-width: 450px; background: #ef4444; color: white; overflow: hidden; white-space: nowrap; border-radius: 8px; margin-bottom: 15px; padding: 8px 0; border: 1px solid #fee2e2; }
+        .offer-text { display: inline-block; padding-left: 100%; animation: marquee 15s linear infinite; font-weight: bold; font-size: 14px; }
+        @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
         .share-box { width: 95%; max-width: 430px; display: flex; gap: 8px; margin-bottom: 15px; }
         .share-btn { flex: 1; padding: 10px; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; text-decoration: none; font-size: 11px; border: none; }
@@ -30,12 +34,17 @@
         .stats-card { width: 95%; max-width: 430px; background: white; color: #1e293b; border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .stats-info h2 { margin: 0; font-size: 24px; color: #0f172a; font-weight: 800; }
 
-        .card { background: var(--card); padding: 20px; border-radius: 15px; width: 100%; max-width: 450px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); box-sizing: border-box; }
+        .card { background: var(--card); padding: 20px; border-radius: 15px; width: 100%; max-width: 450px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); box-sizing: border-box; margin-bottom: 20px; }
         label { display: block; margin: 12px 0 6px; font-weight: 600; font-size: 13px; color: #94a3b8; text-transform: uppercase; }
         input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; font-size: 14px; outline: none; box-sizing: border-box; }
         
         .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 26px; margin: 20px 0; border: 2px solid #38bdf8; }
         .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 16px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; }
+
+        /* Terms Section */
+        .terms-box { width: 100%; max-width: 450px; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px dashed #475569; box-sizing: border-box; margin-top: 10px; }
+        .terms-box h4 { margin: 0 0 10px 0; color: var(--gold); font-size: 14px; display: flex; align-items: center; gap: 5px; }
+        .terms-box p { margin: 5px 0; font-size: 11px; color: #cbd5e1; line-height: 1.5; }
 
         .float-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
         .circle-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; text-decoration: none; border: 2px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.4); cursor: pointer; }
@@ -55,13 +64,17 @@
     <div class="logo-box"><span class="changing-text">MD SUHEL SMM</span></div>
 </div>
 
+<div class="offer-wrapper">
+    <div class="offer-text">🔥 SPECIAL OFFER: Instagram Views starting at ₹4 only! | YouTube Subscribers 1k at ₹10 [NG] | ⚡ FAST DELIVERY | 24/7 SUPPORT 🔥</div>
+</div>
+
 <div class="share-box">
-    <a href="#" class="share-btn wa-btn" id="waShare" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-    <a href="#" class="share-btn tg-btn" id="tgShare" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+    <a href="#" class="share-btn wa-btn" id="waShare" target="_blank"><i class="fab fa-whatsapp"></i> Share</a>
+    <a href="#" class="share-btn tg-btn" id="tgShare" target="_blank"><i class="fab fa-telegram-plane"></i> Share</a>
     <button class="share-btn cp-btn" onclick="copyURL()"><i class="fas fa-copy"></i> Copy Link</button>
 </div>
 
-<div id="reseller-badge"><i class="fas fa-crown"></i> RESELLER MODE: ₹2 DISCOUNT APPLIED!</div>
+<div id="reseller-badge"><i class="fas fa-crown"></i> RESELLER MODE: ₹2 DISCOUNT ACTIVE</div>
 
 <div class="stats-card">
     <div style="font-size: 30px; color: #3b82f6;"><i class="fas fa-check-circle"></i></div>
@@ -117,6 +130,14 @@
     </div>
 </div>
 
+<div class="terms-box">
+    <h4><i class="fas fa-info-circle"></i> Terms & Conditions</h4>
+    <p>1. <b>Galat Link:</b> Galat link daalne par refund nahi milega. Dubara check karke link dalein.</p>
+    <p>2. <b>Order Time:</b> Order start hone mein 0-24 ghante tak lag sakte hain.</p>
+    <p>3. <b>Drop Policy:</b> No-refill services mein drop hone par refill nahi kiya jayega.</p>
+    <p>4. <b>Support:</b> Kisi bhi dikat ke liye niche diye gaye WhatsApp button par message karein.</p>
+</div>
+
 <div class="float-btns">
     <div class="circle-btn reseller-btn" onclick="openResellerModal()"><i class="fas fa-crown"></i></div>
     <a href="https://wa.me/917388720012" class="circle-btn whatsapp-btn" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -145,101 +166,47 @@
     function closeModal() { document.getElementById('reseller-modal').style.display = 'none'; }
 
     const serviceData = {
-        // Instagram Views
         "ig_views": [
-            {name: "10k Views", price: 4, qty: 10000},
-            {name: "20k Views", price: 8, qty: 20000},
-            {name: "50k Views", price: 16, qty: 50000},
-            {name: "100k Views", price: 30, qty: 100000},
-            {name: "1M Views", price: 200, qty: 1000000}
+            {name: "10k Views", price: 4, qty: 10000}, {name: "20k Views", price: 8, qty: 20000},
+            {name: "50k Views", price: 16, qty: 50000}, {name: "100k Views", price: 30, qty: 100000}, {name: "1M Views", price: 200, qty: 1000000}
         ],
         "ig_likes": [
-            {name: "1k Likes", price: 10, qty: 1000},
-            {name: "10k Likes", price: 100, qty: 10000},
-            {name: "100k Likes", price: 600, qty: 100000}
+            {name: "1k Likes", price: 10, qty: 1000}, {name: "10k Likes", price: 100, qty: 10000}, {name: "100k Likes", price: 600, qty: 100000}
         ],
         "ig_likes_in": [
-            {name: "1k Indian Likes 🇮🇳", price: 15, qty: 1000},
-            {name: "10k Indian Likes 🇮🇳", price: 120, qty: 10000},
-            {name: "100k Indian Likes 🇮🇳", price: 1100, qty: 100000}
+            {name: "1k Indian Likes 🇮🇳", price: 15, qty: 1000}, {name: "10k Indian Likes 🇮🇳", price: 120, qty: 10000}, {name: "100k Indian Likes 🇮🇳", price: 1100, qty: 100000}
         ],
         "ig_shares": [
-            {name: "100 Shares", price: 1, qty: 100},
-            {name: "1k Shares", price: 1.5, qty: 1000},
-            {name: "10k Shares", price: 12, qty: 10000},
-            {name: "100k Shares", price: 8, qty: 100000}
+            {name: "100 Shares", price: 1, qty: 100}, {name: "1k Shares", price: 1.5, qty: 1000}, {name: "10k Shares", price: 12, qty: 10000}, {name: "100k Shares", price: 8, qty: 100000}
         ],
         "ig_f_no": [
-            {name: "100 Followers (No Refill)", price: 3, qty: 100},
-            {name: "1k Followers (No Refill)", price: 20, qty: 1000},
-            {name: "10k Followers (No Refill)", price: 190, qty: 10000}
+            {name: "100 Followers (No Refill)", price: 3, qty: 100}, {name: "1k Followers (No Refill)", price: 20, qty: 1000}, {name: "10k Followers (No Refill)", price: 190, qty: 10000}
         ],
         "ig_f_10": [
-            {name: "100 Followers (0-10% Drop)", price: 3, qty: 100},
-            {name: "1k Followers (0-10% Drop)", price: 36, qty: 1000},
-            {name: "10k Followers (0-10% Drop)", price: 350, qty: 10000}
+            {name: "100 Followers (0-10% Drop)", price: 3, qty: 100}, {name: "1k Followers (0-10% Drop)", price: 36, qty: 1000}, {name: "10k Followers (0-10% Drop)", price: 350, qty: 10000}
         ],
         "ig_f_05": [
-            {name: "100 Followers (0-05% Drop)", price: 5, qty: 100},
-            {name: "1k Followers (0-05% Drop)", price: 50, qty: 1000},
-            {name: "10k Followers (0-05% Drop)", price: 420, qty: 10000}
+            {name: "100 Followers (0-05% Drop)", price: 5, qty: 100}, {name: "1k Followers (0-05% Drop)", price: 50, qty: 1000}, {name: "10k Followers (0-05% Drop)", price: 420, qty: 10000}
         ],
-        "ig_pkg_f": [
-            {name: "5k Follower Package 📦", price: 380, qty: 5000},
-            {name: "10k Follower Package 📦", price: 750, qty: 10000}
-        ],
+        "ig_pkg_f": [{name: "5k Follower Package 📦", price: 380, qty: 5000}, {name: "10k Follower Package 📦", price: 750, qty: 10000}],
         "ig_pkg_v": [
-            {name: "10k Views Package 📦", price: 5, qty: 10000},
-            {name: "50k Views Package 📦", price: 17, qty: 50000},
-            {name: "100k Views Package 📦", price: 25, qty: 100000},
-            {name: "500k Views Package 📦", price: 60, qty: 500000},
-            {name: "1M Views Package 📦", price: 120, qty: 1000000}
+            {name: "10k Views Package 📦", price: 5, qty: 10000}, {name: "50k Views Package 📦", price: 17, qty: 50000},
+            {name: "100k Views Package 📦", price: 25, qty: 100000}, {name: "500k Views Package 📦", price: 60, qty: 500000}, {name: "1M Views Package 📦", price: 120, qty: 1000000}
         ],
-        "ig_pkg_l": [
-            {name: "10k Likes Package 📦", price: 90, qty: 10000},
-            {name: "20k Likes Package 📦", price: 160, qty: 20000}
-        ],
-        "ig_comm": [
-            {name: "100 Comments", price: 7, qty: 100},
-            {name: "1k Comments", price: 46, qty: 1000}
-        ],
-        // YouTube
-        "yt_sub_ng": [
-            {name: "100 Subs [NG]", price: 2, qty: 100},
-            {name: "1k Subs [NG]", price: 10, qty: 1000},
-            {name: "10k Subs [NG]", price: 100, qty: 10000}
-        ],
-        "yt_sub_lr": [
-            {name: "10 Subs [Lifetime]", price: 20, qty: 10},
-            {name: "100 Subs [Lifetime]", price: 180, qty: 100},
-            {name: "1k Subs [Lifetime]", price: 1800, qty: 1000}
-        ],
-        "yt_likes": [
-            {name: "100 Likes", price: 3, qty: 100},
-            {name: "1k Likes", price: 8, qty: 1000},
-            {name: "10k Likes", price: 70, qty: 10000}
-        ],
-        "yt_views_nr": [
-            {name: "100 Views [No Refill]", price: 5, qty: 100},
-            {name: "1k Views [No Refill]", price: 60, qty: 1000},
-            {name: "10k Views [No Refill]", price: 650, qty: 10000}
-        ],
-        "yt_views_r": [
-            {name: "100 Views [Refill]", price: 8, qty: 100},
-            {name: "1k Views [Refill]", price: 80, qty: 1000},
-            {name: "10k Views [Refill]", price: 700, qty: 10000}
-        ],
-        "yt_comm": [
-            {name: "1k Comments", price: 10, qty: 1000}
-        ]
+        "ig_pkg_l": [{name: "10k Likes Package 📦", price: 90, qty: 10000}, {name: "20k Likes Package 📦", price: 160, qty: 20000}],
+        "ig_comm": [{name: "100 Comments", price: 7, qty: 100}, {name: "1k Comments", price: 46, qty: 1000}],
+        "yt_sub_ng": [{name: "100 Subs [NG]", price: 2, qty: 100}, {name: "1k Subs [NG]", price: 10, qty: 1000}, {name: "10k Subs [NG]", price: 100, qty: 10000}],
+        "yt_sub_lr": [{name: "10 Subs [Lifetime]", price: 20, qty: 10}, {name: "100 Subs [Lifetime]", price: 180, qty: 100}, {name: "1k Subs [Lifetime]", price: 1800, qty: 1000}],
+        "yt_likes": [{name: "100 Likes", price: 3, qty: 100}, {name: "1k Likes", price: 8, qty: 1000}, {name: "10k Likes", price: 70, qty: 10000}],
+        "yt_views_nr": [{name: "100 Views [No Refill]", price: 5, qty: 100}, {name: "1k Views [No Refill]", price: 60, qty: 1000}, {name: "10k Views [No Refill]", price: 650, qty: 10000}],
+        "yt_views_r": [{name: "100 Views [Refill]", price: 8, qty: 100}, {name: "1k Views [Refill]", price: 80, qty: 1000}, {name: "10k Views [Refill]", price: 700, qty: 10000}],
+        "yt_comm": [{name: "1k Comments", price: 10, qty: 1000}]
     };
 
     function loginReseller() {
         if(document.getElementById("rUser").value === "reseller" && document.getElementById("rPass").value === "suhel123") {
-            isReseller = true;
-            document.getElementById("reseller-badge").style.display = "block";
-            closeModal(); loadServices();
-            alert("Reseller Mode Active! ✅");
+            isReseller = true; document.getElementById("reseller-badge").style.display = "block";
+            closeModal(); loadServices(); alert("Reseller Mode Active! ✅");
         } else { alert("Wrong Login! ❌"); }
     }
 
@@ -278,7 +245,7 @@
 
     async function submitOrder() {
         let utr = document.getElementById("utr").value.trim();
-        if(utr.length < 12) return alert("Sahi UTR daalo!");
+        if(utr.length < 12) return alert("Sahi 12-digit UTR daalo!");
         document.getElementById("confirmBtn").innerText = "Processing...";
         const s = JSON.parse(document.getElementById("serviceSelect").value);
         try {
@@ -290,7 +257,7 @@
                     role: isReseller ? "Reseller" : "User"
                 })
             });
-            alert("✅ Order Placed!");
+            alert("✅ Order Placed! Suhel Bhai check karke start kar denge.");
             location.reload();
         } catch (e) { alert("Error!"); }
     }
