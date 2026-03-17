@@ -15,31 +15,34 @@
             100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
         }
 
-        .header-top { width: 100%; max-width: 450px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; padding: 10px 0; }
-        .logo-box { background: rgba(255, 255, 255, 0.1); padding: 8px 20px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.2); margin: 0 auto;}
-        .changing-text { font-weight: 900; letter-spacing: 2px; font-size: 16px; animation: rainbow 3s linear infinite; }
+        .header-top { width: 100%; max-width: 450px; display: flex; justify-content: center; margin-bottom: 10px; padding: 10px 0; }
+        .logo-box { background: rgba(255, 255, 255, 0.1); padding: 8px 25px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.2); }
+        .changing-text { font-weight: 900; letter-spacing: 2px; font-size: 18px; animation: rainbow 3s linear infinite; }
 
-        #reseller-badge { display: none; background: var(--gold); color: #000; padding: 8px 15px; border-radius: 8px; font-weight: bold; font-size: 13px; margin-bottom: 15px; text-align: center; width: 90%; max-width: 400px; box-shadow: 0 0 15px var(--gold); }
+        /* Share Section */
+        .share-box { width: 95%; max-width: 430px; display: flex; gap: 8px; margin-bottom: 15px; }
+        .share-btn { flex: 1; padding: 10px; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; text-decoration: none; font-size: 11px; border: none; }
+        .wa-btn { background: var(--whatsapp); }
+        .tg-btn { background: var(--telegram); }
+        .cp-btn { background: #64748b; }
 
-        .trust-banner { width: 95%; max-width: 430px; background: linear-gradient(90deg, #1e293b, #334155); border-left: 5px solid #fbbf24; padding: 12px; border-radius: 8px; margin-bottom: 15px; font-size: 13px; line-height: 1.4; border: 1px solid rgba(251, 191, 36, 0.3); }
+        #reseller-badge { display: none; background: var(--gold); color: #000; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 13px; margin-bottom: 15px; text-align: center; width: 95%; max-width: 430px; border: 2px solid white; box-shadow: 0 0 10px var(--gold); }
 
         .stats-card { width: 95%; max-width: 430px; background: white; color: #1e293b; border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; }
         .stats-info h2 { margin: 0; font-size: 24px; color: #0f172a; font-weight: 800; }
 
-        .card { background: var(--card); padding: 20px; border-radius: 15px; width: 100%; max-width: 450px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
+        .card { background: var(--card); padding: 20px; border-radius: 15px; width: 100%; max-width: 450px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); box-sizing: border-box; }
         label { display: block; margin: 12px 0 6px; font-weight: 600; font-size: 13px; color: #94a3b8; text-transform: uppercase; }
         input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; font-size: 14px; outline: none; box-sizing: border-box; }
         
-        .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 24px; margin: 20px 0; border: 2px solid #38bdf8; }
+        .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 26px; margin: 20px 0; border: 2px solid #38bdf8; }
         .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 16px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; }
         
-        /* Floating Action Buttons */
         .float-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
-        .circle-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; text-decoration: none; border: 2px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.4); cursor: pointer; transition: 0.3s; }
+        .circle-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 28px; color: white; text-decoration: none; border: 2px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.4); cursor: pointer; }
         .reseller-btn { background: var(--gold); color: #000; border-color: #000; }
         .whatsapp-btn { background: var(--whatsapp); }
 
-        /* Reseller Modal */
         #reseller-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; }
         .modal-box { background: var(--card); padding: 25px; border-radius: 15px; width: 85%; max-width: 320px; text-align: center; border: 2px solid var(--gold); }
 
@@ -53,54 +56,65 @@
     <div class="logo-box"><span class="changing-text">MD SUHEL SMM</span></div>
 </div>
 
-<div id="reseller-badge"><i class="fas fa-crown"></i> RESELLER MODE ACTIVE (₹2 OFF APPLIED)</div>
-
-<div class="trust-banner">
-    <i class="fas fa-hand-holding-usd" style="color:#fbbf24;"></i> <b>Sabse Sasta Wada:</b> Kahin aur sasta mil raha hai? Hamein WhatsApp karein!
+<div class="share-box">
+    <a href="#" class="share-btn wa-btn" id="waShare" target="_blank"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+    <a href="#" class="share-btn tg-btn" id="tgShare" target="_blank"><i class="fab fa-telegram-plane"></i> Telegram</a>
+    <button class="share-btn cp-btn" onclick="copyURL()"><i class="fas fa-copy"></i> Copy</button>
 </div>
+
+<div id="reseller-badge"><i class="fas fa-crown"></i> RESELLER MODE: ₹2 DISCOUNT APPLIED!</div>
 
 <div class="stats-card">
     <div style="font-size: 30px; color: #3b82f6;"><i class="fas fa-history"></i></div>
     <div class="stats-info" style="text-align: right;">
-        <p style="margin:0; font-size:12px; color:#64748b; font-weight: bold;">TOTAL ORDERS COMPLETED</p>
+        <p style="margin:0; font-size:11px; color:#64748b; font-weight: bold;">TOTAL ORDERS COMPLETED</p>
         <h2 id="totalOrdersCount">145</h2>
     </div>
 </div>
 
 <div class="card">
     <label><i class="fas fa-link"></i> Target Link</label>
-    <input type="text" id="targetLink" placeholder="Paste Link Here...">
+    <input type="text" id="targetLink" placeholder="Paste link here...">
 
-    <label><i class="fas fa-layer-group"></i> Category</label>
+    <label><i class="fas fa-list"></i> Category</label>
     <select id="categorySelect" onchange="loadServices()">
-        <option value="">-- Choose Category --</option>
-        <option value="views">Instagram Views 🎬</option>
-        <option value="likes">Instagram Likes ♥️</option>
-        <option value="f_no">Followers No Refill 🫥</option>
-        <option value="f_10">Followers 0-10% Drop 📉</option>
+        <option value="">-- Select Category --</option>
+        <option value="ig_views">Instagram Views 🎬</option>
+        <option value="ig_likes">Instagram Likes ❤️</option>
+        <option value="ig_likes_in">Instagram Likes India 🇮🇳</option>
+        <option value="ig_shares">Instagram Shares 🚀</option>
+        <option value="ig_followers_no">Followers No Refill 👥</option>
+        <option value="ig_followers_10">Followers 0-10% Drop 📉</option>
+        <option value="ig_followers_05">Followers 0-05% Drop 📈</option>
+        <option value="ig_pkg_f">Follower Package 📦</option>
+        <option value="ig_pkg_v">Views Package 📦</option>
+        <option value="ig_pkg_l">Likes Package 📦</option>
+        <option value="ig_comm">Comments Random 💬</option>
+        <option value="yt_services">YouTube Services 🔴 (Coming Soon)</option>
+        <option value="tg_services">Telegram Services 💎 (Coming Soon)</option>
     </select>
 
-    <label><i class="fas fa-concierge-bell"></i> Package</label>
+    <label><i class="fas fa-box-open"></i> Package</label>
     <select id="serviceSelect" onchange="updatePrice()"><option value="">Choose Category First</option></select>
 
     <div class="price-box" id="priceDisplay">₹0.00</div>
     
-    <button class="btn-pay" id="payBtn" onclick="showQR()">Place Order Now</button>
+    <button class="btn-pay" id="payBtn" onclick="showQR()">Place Order</button>
 
     <div id="qr-section">
-        <p style="color:#fbbf24; font-weight:bold;">Payable: ₹<span id="finalAmt">0.00</span></p>
+        <p style="color:var(--gold); font-weight:bold;">Payable: ₹<span id="finalAmt">0.00</span></p>
         <img src="" id="qrImg" class="qr-img">
-        <p style="font-size:12px; margin-bottom: 10px;">UPI ID: 7388720012@fam</p>
-        <input type="text" id="utr" placeholder="12 Digit Transaction ID (UTR)">
+        <p style="font-size:12px;">UPI: 7388720012@fam</p>
+        <input type="text" id="utr" placeholder="12 Digit UTR Number">
         <button class="btn-pay" style="background:#2563eb;" id="confirmBtn" onclick="submitOrder()">Confirm Payment</button>
     </div>
 </div>
 
 <div class="float-btns">
-    <div class="circle-btn reseller-btn" onclick="openResellerModal()">
+    <div class="circle-btn reseller-btn" onclick="openResellerModal()" title="Reseller Login">
         <i class="fas fa-crown"></i>
     </div>
-    <a href="https://wa.me/917388720012?text=Hello Suhel Bhai" class="circle-btn whatsapp-btn" target="_blank">
+    <a href="https://wa.me/917388720012" class="circle-btn whatsapp-btn" target="_blank">
         <i class="fab fa-whatsapp"></i>
     </a>
 </div>
@@ -108,11 +122,10 @@
 <div id="reseller-modal">
     <div class="modal-box">
         <h3 style="color:var(--gold)"><i class="fas fa-crown"></i> Reseller Login</h3>
-        <p style="font-size: 12px; color: #94a3b8; margin-bottom: 15px;">Login karein saste rates ke liye!</p>
         <input type="text" id="rUser" placeholder="Username">
         <input type="password" id="rPass" placeholder="Password">
-        <button class="btn-pay" style="background:var(--gold); color:#000;" onclick="loginReseller()">Login Now</button>
-        <button style="background:none; border:none; color:white; margin-top:15px; cursor:pointer;" onclick="closeModal()">Cancel</button>
+        <button class="btn-pay" style="background:var(--gold); color:#000;" onclick="loginReseller()">Login</button>
+        <button style="background:none; border:none; color:white; margin-top:15px; cursor:pointer;" onclick="closeModal()">Close</button>
     </div>
 </div>
 
@@ -120,42 +133,89 @@
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyqdvyG3GVA5PAAFPSVrbi2JOc1vwewJCheoxRvgG7cxaz8A1VEjaTkRKCc4qAh9VnX/exec';
     let isReseller = false;
 
+    // Share link setup
+    const currentURL = window.location.href;
+    document.getElementById('waShare').href = `https://api.whatsapp.com/send?text=Instagram Services starting at ₹1. Check out: ${currentURL}`;
+    document.getElementById('tgShare').href = `https://t.me/share/url?url=${currentURL}&text=MD SUHEL SMM PANEL`;
+
+    function copyURL() {
+        navigator.clipboard.writeText(currentURL);
+        alert("Link Copy Ho Gya! ✅");
+    }
+
+    const serviceData = {
+        "ig_views": [
+            {name: "10k Views", price: 4, qty: 10000},
+            {name: "20k Views", price: 8, qty: 20000},
+            {name: "50k Views", price: 16, qty: 50000},
+            {name: "100k Views", price: 30, qty: 100000},
+            {name: "1M Views", price: 200, qty: 1000000}
+        ],
+        "ig_likes": [
+            {name: "1k Likes", price: 10, qty: 1000},
+            {name: "10k Likes", price: 100, qty: 10000},
+            {name: "100k Likes", price: 600, qty: 100000}
+        ],
+        "ig_likes_in": [
+            {name: "1k Indian Likes 🇮🇳", price: 15, qty: 1000},
+            {name: "10k Indian Likes 🇮🇳", price: 120, qty: 10000},
+            {name: "100k Indian Likes 🇮🇳", price: 1100, qty: 100000}
+        ],
+        "ig_shares": [
+            {name: "100 Shares", price: 1, qty: 100},
+            {name: "1000 Shares", price: 1.5, qty: 1000},
+            {name: "10000 Shares", price: 12, qty: 10000},
+            {name: "100000 Shares", price: 8, qty: 100000}
+        ],
+        "ig_followers_no": [
+            {name: "100 Followers (No Refill)", price: 3, qty: 100},
+            {name: "1k Followers (No Refill)", price: 20, qty: 1000},
+            {name: "10k Followers (No Refill)", price: 190, qty: 10000}
+        ],
+        "ig_followers_10": [
+            {name: "100 Followers (0-10% Drop)", price: 3, qty: 100},
+            {name: "1k Followers (0-10% Drop)", price: 36, qty: 1000},
+            {name: "10k Followers (0-10% Drop)", price: 350, qty: 10000}
+        ],
+        "ig_followers_05": [
+            {name: "100 Followers (0-05% Drop)", price: 5, qty: 100},
+            {name: "1k Followers (0-05% Drop)", price: 50, qty: 1000},
+            {name: "10k Followers (0-05% Drop)", price: 420, qty: 10000}
+        ],
+        "ig_pkg_f": [
+            {name: "5k Followers Package 📦", price: 380, qty: 5000},
+            {name: "10k Followers Package 📦", price: 750, qty: 10000}
+        ],
+        "ig_pkg_v": [
+            {name: "10k Views Package 📦", price: 5, qty: 10000},
+            {name: "50k Views Package 📦", price: 17, qty: 50000},
+            {name: "100k Views Package 📦", price: 25, qty: 100000},
+            {name: "500k Views Package 📦", price: 60, qty: 500000},
+            {name: "1M Views Package 📦", price: 120, qty: 1000000}
+        ],
+        "ig_pkg_l": [
+            {name: "10k Likes Package 📦", price: 90, qty: 10000},
+            {name: "20k Likes Package 📦", price: 160, qty: 20000}
+        ],
+        "ig_comm": [
+            {name: "100 Comments Random 💬", price: 7, qty: 100},
+            {name: "1000 Comments Random 💬", price: 46, qty: 1000}
+        ],
+        "yt_services": [{name: "YouTube Services Coming Soon...", price: 0, qty: 0}],
+        "tg_services": [{name: "Telegram Services Coming Soon...", price: 0, qty: 0}]
+    };
+
     function openResellerModal() { document.getElementById('reseller-modal').style.display = 'flex'; }
     function closeModal() { document.getElementById('reseller-modal').style.display = 'none'; }
 
     function loginReseller() {
-        const u = document.getElementById("rUser").value;
-        const p = document.getElementById("rPass").value;
-        if(u === "reseller" && p === "suhel123") {
+        if(document.getElementById("rUser").value === "reseller" && document.getElementById("rPass").value === "suhel123") {
             isReseller = true;
             document.getElementById("reseller-badge").style.display = "block";
-            closeModal();
-            loadServices(); // Rates update karne ke liye
-            alert("Reseller Login Successful! Prices kam ho gaye hain. ✅");
-        } else {
-            alert("Galat Username ya Password! ❌");
-        }
+            closeModal(); loadServices();
+            alert("Reseller Mode Active! ₹2 Discount On. ✅");
+        } else { alert("Wrong Password! ❌"); }
     }
-
-    const serviceData = {
-        "views": [
-            {name: "10k Views", price: 5, qty: 10000},
-            {name: "50k Views", price: 18, qty: 50000},
-            {name: "100k Views", price: 30, qty: 100000}
-        ],
-        "likes": [
-            {name: "1k Likes", price: 10, qty: 1000},
-            {name: "10k Likes", price: 90, qty: 10000}
-        ],
-        "f_no": [
-            {name: "1k Followers (No Refill)", price: 20, qty: 1000},
-            {name: "10k Followers (No Refill)", price: 180, qty: 10000}
-        ],
-        "f_10": [
-            {name: "1k Followers (0-10% Drop)", price: 36, qty: 1000},
-            {name: "10k Followers (0-10% Drop)", price: 340, qty: 10000}
-        ]
-    };
 
     function loadServices() {
         const cat = document.getElementById("categorySelect").value;
@@ -163,11 +223,11 @@
         sSelect.innerHTML = "";
         if(cat && serviceData[cat]) {
             serviceData[cat].forEach(s => {
-                let finalPrice = isReseller ? (s.price - 2) : s.price;
-                if(finalPrice < 1) finalPrice = 1;
+                let p = (isReseller && s.price > 2) ? (s.price - 2) : s.price;
+                if(p < 1 && s.price != 0) p = 1;
                 let opt = document.createElement("option");
-                opt.value = JSON.stringify({...s, price: finalPrice});
-                opt.text = `${s.name} - ₹${finalPrice}`;
+                opt.value = JSON.stringify({...s, price: p});
+                opt.text = `${s.name} - ₹${p}`;
                 sSelect.add(opt);
             });
         } else { sSelect.add(new Option("Choose Category First", "")); }
@@ -175,9 +235,9 @@
     }
 
     function updatePrice() {
-        const sVal = document.getElementById("serviceSelect").value;
-        if(sVal) {
-            const s = JSON.parse(sVal);
+        const val = document.getElementById("serviceSelect").value;
+        if(val) {
+            const s = JSON.parse(val);
             document.getElementById("priceDisplay").innerText = "₹" + s.price;
             document.getElementById("finalAmt").innerText = s.price;
             document.getElementById("qrImg").src = `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=upi://pay?pa=7388720012@fam%26am=${s.price}%26cu=INR`;
@@ -191,8 +251,8 @@
     }
 
     async function submitOrder() {
-        let utrVal = document.getElementById("utr").value.trim();
-        if(utrVal.length < 12) return alert("❌ Sahi 12-digit UTR daalo!");
+        let utr = document.getElementById("utr").value.trim();
+        if(utr.length < 12) return alert("Sahi 12-digit UTR daalo!");
         document.getElementById("confirmBtn").innerText = "Sending...";
         const s = JSON.parse(document.getElementById("serviceSelect").value);
         try {
@@ -200,18 +260,17 @@
                 method: 'POST', mode: 'no-cors',
                 body: JSON.stringify({
                     link: document.getElementById("targetLink").value,
-                    serviceName: s.name, qty: s.qty, amount: s.price, utr: utrVal,
+                    serviceName: s.name, qty: s.qty, amount: s.price, utr: utr,
                     role: isReseller ? "Reseller" : "User"
                 })
             });
-            alert("✅ Order Sent! Suhel Bhai jald hi start kar denge.");
+            alert("✅ Order Sent Successfully!");
             location.reload();
-        } catch (e) { alert("Error! Support se sampark karein."); }
+        } catch (e) { alert("Error!"); }
     }
 
     fetch(scriptURL + "?action=getCount").then(r => r.text()).then(d => {
-        let realCount = parseInt(d) || 0;
-        document.getElementById("totalOrdersCount").innerText = 145 + realCount;
+        document.getElementById("totalOrdersCount").innerText = 145 + (parseInt(d) || 0);
     });
 </script>
 </body>
