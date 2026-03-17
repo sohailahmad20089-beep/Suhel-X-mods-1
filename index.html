@@ -6,13 +6,21 @@
     <title>MD SUHEL SMM PANEL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --whatsapp: #25d366; }
+        :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --whatsapp: #25d366; --telegram: #0088cc; }
         body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; }
         
         /* Header & Logo */
-        .header-top { width: 100%; max-width: 450px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+        .header-top { width: 100%; max-width: 450px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
         .logo-box { background: linear-gradient(135deg, var(--primary), #2563eb); padding: 8px 20px; border-radius: 50px; border: 2px solid white; box-shadow: 0 0 15px rgba(56, 189, 248, 0.3); }
         .join-btn { background: var(--whatsapp); color: white; padding: 8px 15px; border-radius: 50px; text-decoration: none; font-size: 12px; font-weight: bold; border: 1px solid white; }
+
+        /* Share Icons Styling */
+        .share-container { width: 100%; max-width: 450px; display: flex; justify-content: center; gap: 15px; margin-bottom: 20px; }
+        .share-icon { width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; text-decoration: none; font-size: 18px; border: 1px solid rgba(255,255,255,0.2); transition: 0.3s; cursor: pointer; }
+        .s-wa { background: var(--whatsapp); }
+        .s-tg { background: var(--telegram); }
+        .s-cp { background: #6366f1; }
+        .share-icon:hover { transform: translateY(-3px); box-shadow: 0 5px 10px rgba(0,0,0,0.3); }
 
         /* Main Card */
         .card { background: var(--card); padding: 20px; border-radius: 15px; width: 100%; max-width: 450px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); }
@@ -24,7 +32,9 @@
         
         #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
         .qr-img { width: 200px; border: 5px solid white; border-radius: 10px; margin: 10px 0; }
-        
+        .pay-notice { background: rgba(251, 191, 36, 0.2); color: #fbbf24; padding: 10px; border-radius: 8px; font-size: 14px; font-weight: bold; margin: 10px 0; border: 1px solid #fbbf24; animation: blink 2s infinite; }
+        @keyframes blink { 0% {opacity: 1;} 50% {opacity: 0.6;} 100% {opacity: 1;} }
+
         /* Support Section */
         .support-box { margin-top: 25px; width: 100%; max-width: 450px; text-align: center; background: rgba(37, 211, 102, 0.1); padding: 15px; border-radius: 12px; border: 1px solid var(--whatsapp); }
         .support-box a { color: var(--whatsapp); text-decoration: none; font-weight: bold; font-size: 15px; }
@@ -35,6 +45,12 @@
 <div class="header-top">
     <div class="logo-box"><span style="font-weight:900; letter-spacing:1px; font-size: 14px;">MD SUHEL</span></div>
     <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank" class="join-btn"><i class="fab fa-whatsapp"></i> JOIN CHANNEL</a>
+</div>
+
+<div class="share-container">
+    <a href="javascript:void(0)" onclick="shareWA()" class="share-icon s-wa" title="Share on WhatsApp"><i class="fab fa-whatsapp"></i></a>
+    <a href="javascript:void(0)" onclick="shareTG()" class="share-icon s-tg" title="Share on Telegram"><i class="fab fa-telegram-plane"></i></a>
+    <a href="javascript:void(0)" onclick="copyLink()" class="share-icon s-cp" title="Copy Link"><i class="fas fa-link"></i></a>
 </div>
 
 <div class="card">
@@ -69,20 +85,32 @@
     <div id="qr-section">
         <p style="color:#fbbf24; font-weight:bold;">Payable: ₹<span id="finalAmt">0.00</span></p>
         <img src="" id="qrImg" class="qr-img">
-        <p style="font-size:12px;">UPI: 7388720012@fam</p>
-        <input type="text" id="utr" placeholder="Enter 12 Digit UTR Number">
+        <div class="pay-notice"><i class="fas fa-exclamation-triangle"></i> Kripya apna payment karke UTR send karein</div>
+        <p style="font-size:12px; margin-top: 5px;">UPI ID: 7388720012@fam</p>
+        <input type="text" id="utr" placeholder="Enter 12 Digit UTR / Transaction ID">
         <button class="btn-pay" style="background:#2563eb;" id="confirmBtn" onclick="submitOrder()">Confirm Payment</button>
     </div>
 </div>
 
 <div class="support-box">
     <p style="margin:0 0 10px 0; font-size: 13px;">Any Issue? Join our Official Channel</p>
-    <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank">
-        <i class="fab fa-whatsapp"></i> CLICK TO JOIN UPDATES
-    </a>
+    <a href="https://whatsapp.com/channel/0029VbCK60589inqiMazyP3h" target="_blank"><i class="fab fa-whatsapp"></i> CLICK TO JOIN UPDATES</a>
 </div>
 
 <script>
+    const myWebLink = "https://sohailahmad20089-beep.github.io/Suhel-X-mods-1/";
+
+    function shareWA() {
+        window.open(`https://api.whatsapp.com/send?text=Hey! Check out this amazing SMM Panel for Instagram services: ${myWebLink}`, '_blank');
+    }
+    function shareTG() {
+        window.open(`https://t.me/share/url?url=${myWebLink}&text=Best SMM Panel for Instagram Followers, Likes and Views!`, '_blank');
+    }
+    function copyLink() {
+        navigator.clipboard.writeText(myWebLink);
+        alert("Website link copy ho gaya hai! Ab dosto ko bhejo. ✅");
+    }
+
     const serviceData = {
         "views": [
             {id: "9259", name: "10k Views", price: 5, qty: 10000},
