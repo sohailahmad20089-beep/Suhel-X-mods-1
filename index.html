@@ -41,11 +41,6 @@
         .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 26px; margin: 20px 0; border: 2px solid #38bdf8; }
         .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 16px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; }
 
-        /* Status Check Section */
-        .status-card { background: #0f172a; border: 1px solid var(--primary); padding: 15px; border-radius: 12px; width: 100%; max-width: 450px; box-sizing: border-box; margin-bottom: 20px; }
-        .status-btn { background: var(--primary); color: #0f172a; border: none; padding: 10px; border-radius: 8px; width: 100%; font-weight: bold; cursor: pointer; }
-        #statusResult { margin-top: 10px; font-size: 13px; text-align: center; font-weight: bold; padding: 10px; border-radius: 8px; display: none; }
-
         .info-box { width: 100%; max-width: 450px; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid #334155; box-sizing: border-box; margin-bottom: 15px; }
         .notice-box { border-left: 4px solid #facc15; background: rgba(250, 204, 21, 0.1); }
         .info-box h4 { margin: 0 0 10px 0; font-size: 14px; display: flex; align-items: center; gap: 8px; }
@@ -80,13 +75,6 @@
 </div>
 
 <div id="reseller-badge"><i class="fas fa-crown"></i> RESELLER MODE: ₹2 DISCOUNT ACTIVE</div>
-
-<div class="status-card">
-    <h4 style="margin:0 0 10px 0; font-size: 14px; color: var(--primary);"><i class="fas fa-search"></i> Check Order Status</h4>
-    <input type="text" id="checkUtr" placeholder="Enter 12 Digit UTR" style="margin-bottom: 8px;">
-    <button class="status-btn" onclick="checkStatus()">Check Status</button>
-    <div id="statusResult"></div>
-</div>
 
 <div class="stats-card">
     <div style="font-size: 30px; color: #3b82f6;"><i class="fas fa-check-circle"></i></div>
@@ -257,22 +245,6 @@
         if(!document.getElementById("targetLink").value) return alert("Link daalo!");
         document.getElementById("qr-section").style.display = "block";
         document.getElementById("payBtn").style.display = "none";
-    }
-
-    async function checkStatus() {
-        const utr = document.getElementById("checkUtr").value.trim();
-        if(utr.length < 12) return alert("Enter valid 12-digit UTR!");
-        const resBox = document.getElementById("statusResult");
-        resBox.style.display = "block";
-        resBox.style.background = "#334155";
-        resBox.innerText = "Searching...";
-        
-        try {
-            const r = await fetch(scriptURL + "?action=getStatus&utr=" + utr);
-            const data = await r.text();
-            resBox.innerText = "Status: " + data;
-            resBox.style.background = data.includes("Completed") ? "#15803d" : "#b91c1c";
-        } catch (e) { resBox.innerText = "UTR Not Found / Error!"; }
     }
 
     async function submitOrder() {
