@@ -3,46 +3,65 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SMMbyAS - MD SUHEL</title>
+    <title>MD SUHEL SMM PANEL</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --whatsapp: #25d366; --gold: #facc15; }
-        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; padding-bottom: 120px; overflow-x: hidden; }
+        :root { --primary: #38bdf8; --bg: #0f172a; --card: #1e293b; --whatsapp: #25d366; --telegram: #0088cc; --youtube: #ff0000; --gold: #facc15; }
+        body { font-family: 'Segoe UI', sans-serif; background: var(--bg); color: white; display: flex; flex-direction: column; align-items: center; padding: 15px; margin: 0; padding-bottom: 150px; overflow-x: hidden; }
         
-        /* Logo & Animation */
+        @keyframes rainbow {
+            0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+            50% { color: #00ff00; text-shadow: 0 0 10px #00ff00; }
+            100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; }
+        }
+
         .header-top { width: 100%; max-width: 450px; display: flex; justify-content: center; margin-bottom: 10px; padding: 10px 0; }
         .logo-box { background: rgba(255, 255, 255, 0.1); padding: 8px 25px; border-radius: 50px; border: 2px solid rgba(255,255,255,0.2); }
-        .changing-text { font-weight: 900; letter-spacing: 2px; font-size: 18px; animation: rainbow 3s linear infinite; text-transform: uppercase; }
-        @keyframes rainbow { 0% { color: #ff0000; text-shadow: 0 0 10px #ff0000; } 50% { color: #00ff00; text-shadow: 0 0 10px #00ff00; } 100% { color: #ff0000; text-shadow: 0 0 10px #ff0000; } }
+        .changing-text { font-weight: 900; letter-spacing: 2px; font-size: 18px; animation: rainbow 3s linear infinite; }
 
-        /* Order Stats Design (New) */
-        .order-stats-container { width: 100%; max-width: 450px; margin-bottom: 20px; }
-        .stats-glass-card { background: linear-gradient(135deg, rgba(56, 189, 248, 0.2), rgba(15, 23, 42, 0.8)); border: 1px solid rgba(255,255,255,0.1); border-radius: 20px; padding: 20px; text-align: center; backdrop-filter: blur(10px); box-shadow: 0 8px 32px rgba(0,0,0,0.5); position: relative; overflow: hidden; }
-        .stats-glass-card::before { content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%); animation: rotate 10s linear infinite; }
-        @keyframes rotate { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
-        .stats-label { color: var(--primary); font-size: 12px; font-weight: bold; letter-spacing: 2px; margin-bottom: 5px; position: relative; }
-        .stats-number { font-size: 45px; font-weight: 900; color: white; margin: 0; position: relative; text-shadow: 0 0 20px var(--primary); }
-        .live-dot { height: 10px; width: 10px; background-color: #22c55e; border-radius: 50%; display: inline-block; margin-right: 5px; animation: blink 1s infinite; }
-        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0.3; } 100% { opacity: 1; } }
+        .offer-wrapper { width: 100%; max-width: 450px; background: #ef4444; color: white; overflow: hidden; white-space: nowrap; border-radius: 8px; margin-bottom: 15px; padding: 8px 0; border: 1px solid #fee2e2; }
+        .offer-text { display: inline-block; padding-left: 100%; animation: marquee 15s linear infinite; font-weight: bold; font-size: 14px; }
+        @keyframes marquee { 0% { transform: translate(0, 0); } 100% { transform: translate(-100%, 0); } }
 
-        /* Price List Section (New) */
-        .price-list-box { width: 100%; max-width: 450px; background: #1e293b; border-radius: 15px; border: 1px solid #334155; padding: 15px; margin-bottom: 20px; box-sizing: border-box; }
-        .price-title { font-size: 14px; font-weight: bold; color: var(--gold); border-bottom: 1px solid #334155; padding-bottom: 8px; margin-bottom: 10px; display: flex; justify-content: space-between; }
-        .price-item { display: flex; justify-content: space-between; font-size: 13px; margin-bottom: 5px; color: #cbd5e1; }
-        .price-tag { color: #22c55e; font-weight: bold; }
+        .share-box { width: 95%; max-width: 430px; display: flex; gap: 8px; margin-bottom: 15px; }
+        .share-btn { flex: 1; padding: 10px; border-radius: 8px; color: white; font-weight: bold; cursor: pointer; display: flex; align-items: center; justify-content: center; gap: 5px; text-decoration: none; font-size: 11px; border: none; }
+        .wa-btn { background: var(--whatsapp); }
+        .tg-btn { background: var(--telegram); }
+        .cp-btn { background: #64748b; }
 
-        /* Form Card */
+        #reseller-badge { display: none; background: var(--gold); color: #000; padding: 10px; border-radius: 8px; font-weight: bold; font-size: 13px; margin-bottom: 15px; text-align: center; width: 95%; max-width: 430px; border: 2px solid white; box-shadow: 0 0 15px rgba(250, 204, 21, 0.5); }
+
+        /* LIVE LOOK FOR STATS */
+        .stats-card { width: 95%; max-width: 430px; background: white; color: #1e293b; border-radius: 12px; padding: 15px; display: flex; justify-content: space-between; align-items: center; margin-bottom: 15px; border-left: 5px solid #22c55e; }
+        .stats-info h2 { margin: 0; font-size: 28px; color: #0f172a; font-weight: 900; text-shadow: 1px 1px 2px rgba(0,0,0,0.1); }
+        .live-dot { height: 8px; width: 8px; background-color: #ef4444; border-radius: 50%; display: inline-block; animation: blink 1s infinite; margin-right: 5px; }
+        @keyframes blink { 0% { opacity: 1; } 50% { opacity: 0; } 100% { opacity: 1; } }
+
         .card { background: var(--card); padding: 20px; border-radius: 15px; width: 100%; max-width: 450px; border: 1px solid #334155; box-shadow: 0 10px 25px rgba(0,0,0,0.3); box-sizing: border-box; margin-bottom: 20px; }
         label { display: block; margin: 12px 0 6px; font-weight: 600; font-size: 13px; color: #94a3b8; text-transform: uppercase; }
-        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; outline: none; box-sizing: border-box; }
-        .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 26px; margin: 20px 0; }
-        .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 16px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; }
+        input, select { width: 100%; padding: 12px; border-radius: 8px; border: 1px solid #334155; background: #0f172a; color: white; margin-bottom: 10px; font-size: 14px; outline: none; box-sizing: border-box; }
+        
+        .price-box { background: #0ea5e9; color: white; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; font-size: 26px; margin: 20px 0; border: 2px solid #38bdf8; }
+        .btn-pay { width: 100%; background: #22c55e; color: white; border: none; padding: 16px; border-radius: 10px; cursor: pointer; font-size: 18px; font-weight: bold; transition: 0.3s; }
 
-        /* Customer Care Float (New) */
-        .care-float { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); width: 90%; max-width: 400px; background: var(--whatsapp); color: white; padding: 15px; border-radius: 50px; display: flex; align-items: center; justify-content: center; gap: 10px; text-decoration: none; font-weight: bold; box-shadow: 0 10px 20px rgba(0,0,0,0.4); z-index: 2000; border: 2px solid white; transition: 0.3s; }
-        .care-float:active { transform: translateX(-50%) scale(0.95); }
+        .info-box { width: 100%; max-width: 450px; background: rgba(255,255,255,0.05); padding: 15px; border-radius: 10px; border: 1px solid #334155; box-sizing: border-box; margin-bottom: 15px; }
+        .notice-box { border-left: 4px solid #facc15; background: rgba(250, 204, 21, 0.1); }
+        .info-box h4 { margin: 0 0 10px 0; font-size: 14px; display: flex; align-items: center; gap: 8px; }
+        .info-box p { margin: 5px 0; font-size: 11px; color: #cbd5e1; line-height: 1.5; }
 
-        #qr-section { display: none; text-align: center; border-top: 1px dashed #334155; padding-top: 15px; }
+        .float-btns { position: fixed; bottom: 20px; right: 20px; display: flex; flex-direction: column; gap: 15px; z-index: 1000; }
+        .circle-btn { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 24px; color: white; text-decoration: none; border: 2px solid white; box-shadow: 0 4px 15px rgba(0,0,0,0.4); cursor: pointer; text-align: center; }
+        .reseller-btn { background: var(--gold); color: #000; border-color: #000; }
+        .whatsapp-btn { background: var(--whatsapp); font-size: 10px; font-weight: bold; flex-direction: column; line-height: 1; }
+        .history-btn { background: var(--primary); }
+
+        #reseller-modal, #history-modal { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 2000; align-items: center; justify-content: center; }
+        .modal-box { background: var(--card); padding: 25px; border-radius: 15px; width: 85%; max-width: 320px; text-align: center; border: 2px solid var(--gold); }
+        .history-box { border-color: var(--primary); max-height: 70vh; overflow-y: auto; }
+        .history-item { background: #0f172a; padding: 10px; border-radius: 8px; margin-bottom: 10px; text-align: left; border-left: 3px solid var(--primary); font-size: 12px; }
+
+        #qr-section { display: none; text-align: center; margin-top: 20px; padding-top: 20px; border-top: 1px dashed #334155; }
+        .qr-img { width: 200px; border: 5px solid white; border-radius: 10px; margin: 10px 0; }
     </style>
 </head>
 <body>
@@ -51,20 +70,24 @@
     <div class="logo-box"><span class="changing-text">SMMbyAS</span></div>
 </div>
 
-<div class="order-stats-container">
-    <div class="stats-glass-card">
-        <div class="stats-label"><span class="live-dot"></span> LIVE ORDER STATUS</div>
-        <h2 class="stats-number" id="totalOrdersCount">315</h2>
-        <p style="font-size: 10px; color: #94a3b8; margin: 5px 0 0 0; font-weight: bold; text-transform: uppercase;">Total Success Deliveries</p>
-    </div>
+<div class="offer-wrapper">
+    <div class="offer-text">🔥 SPECIAL OFFER: Instagram Views starting at ₹4 only! | YouTube Subscribers 1k at ₹10 [NG] | ⚡ FAST DELIVERY | 24/7 SUPPORT 🔥</div>
 </div>
 
-<div class="price-list-box">
-    <div class="price-title"><span>🚀 TOP SERVICES</span> <span>PRICE</span></div>
-    <div class="price-item"><span>Instagram Views [1k]</span> <span class="price-tag">₹1</span></div>
-    <div class="price-item"><span>Instagram Likes [1k]</span> <span class="price-tag">₹10</span></div>
-    <div class="price-item"><span>YT Subs [Non-G] [1k]</span> <span class="price-tag">₹10</span></div>
-    <div class="price-item"><span>YT Likes [1k]</span> <span class="price-tag">₹8</span></div>
+<div class="share-box">
+    <a href="#" class="share-btn wa-btn" id="waShare" target="_blank"><i class="fab fa-whatsapp"></i> Share</a>
+    <a href="#" class="share-btn tg-btn" id="tgShare" target="_blank"><i class="fab fa-telegram-plane"></i> Share</a>
+    <button class="share-btn cp-btn" onclick="copyURL()"><i class="fas fa-copy"></i> Copy Link</button>
+</div>
+
+<div id="reseller-badge"><i class="fas fa-crown"></i> RESELLER MODE: ₹1 DISCOUNT ACTIVE</div>
+
+<div class="stats-card">
+    <div style="font-size: 30px; color: #22c55e;"><i class="fas fa-signal"></i></div>
+    <div class="stats-info" style="text-align: right;">
+        <p style="margin:0; font-size:10px; color:#64748b; font-weight: bold;"><span class="live-dot"></span>LIVE ORDERS DELIVERED</p>
+        <h2 id="totalOrdersCount">315</h2>
+    </div>
 </div>
 
 <div class="card">
@@ -77,7 +100,23 @@
         <optgroup label="Instagram Services">
             <option value="ig_views">Instagram Views 🎬</option>
             <option value="ig_likes">Instagram Likes ❤️</option>
-            <option value="yt_sub_ng">YT Subs [Not Guaranteed] 🔴</option>
+            <option value="ig_likes_in">Instagram Likes India 🇮🇳</option>
+            <option value="ig_shares">Instagram Shares 🚀</option>
+            <option value="ig_f_no">Followers No Refill 🫥</option>
+            <option value="ig_f_10">Followers 0-10% Drop 📉</option>
+            <option value="ig_f_05">Followers 0-05% Drop 📈</option>
+            <option value="ig_pkg_f">Follower Package 📦</option>
+            <option value="ig_pkg_v">Views Package 📦</option>
+            <option value="ig_pkg_l">Likes Package 📦</option>
+            <option value="ig_comm">Comments Random 💬</option>
+        </optgroup>
+        <optgroup label="YouTube Services">
+            <option value="yt_sub_ng">YT Subscribers [Not Guaranteed] 🔴</option>
+            <option value="yt_sub_lr">YT Subscribers | Lifetime Refill 💎</option>
+            <option value="yt_likes">YouTube Likes 👍</option>
+            <option value="yt_views_nr">YouTube Views | No Refill 📉</option>
+            <option value="yt_views_r">YouTube Views | Refill 📈</option>
+            <option value="yt_comm">YouTube Comments 💬</option>
         </optgroup>
     </select>
 
@@ -90,27 +129,119 @@
 
     <div id="qr-section">
         <p style="color:var(--gold); font-weight:bold;">Payable: ₹<span id="finalAmt">0.00</span></p>
-        <img src="" id="qrImg" style="width:200px; border:5px solid white; border-radius:10px;">
+        <img src="" id="qrImg" class="qr-img">
         <p style="font-size:12px;">UPI: 7388720012@fam</p>
         <input type="text" id="utr" placeholder="Enter 12 Digit UTR Number">
         <button class="btn-pay" style="background:#2563eb;" id="confirmBtn" onclick="submitOrder()">Confirm Payment</button>
     </div>
 </div>
 
-<a href="https://wa.me/917388720012?text=Hello%20SSMBYAS,%20I%20need%20help!" class="care-float">
-    <i class="fab fa-whatsapp" style="font-size: 24px;"></i>
-    <span>CUSTOMER CARE 24x7</span>
-</a>
+<div class="info-box notice-box">
+    <h4 style="color:#facc15;"><i class="fas fa-exclamation-triangle"></i> Notice ⚠️</h4>
+    <p>Agar aapke order mein koi bhi problem aati hai, toh aapki payment <b>1/2 Ghante</b> mein return ho jayegi. Aap bina tension ke hamari service use karein. <br><br> <b>Thanks 💝 for visiting!</b></p>
+</div>
+
+<div class="float-btns">
+    <div class="circle-btn history-btn" onclick="openHistory()"><i class="fas fa-history"></i></div>
+    <div class="circle-btn reseller-btn" onclick="openResellerModal()"><i class="fas fa-crown"></i></div>
+    <a href="https://wa.me/917388720012" class="circle-btn whatsapp-btn" target="_blank">
+        <i class="fab fa-whatsapp" style="font-size:20px;"></i>
+        <span style="font-size:7px; margin-top:2px;">CARE 24x7</span>
+    </a>
+</div>
+
+<div id="history-modal">
+    <div class="modal-box history-box">
+        <h3 style="color:var(--primary)">My Orders</h3>
+        <div id="orderList"></div>
+        <button class="btn-pay" style="background:#64748b; margin-top:10px;" onclick="closeHistory()">Close</button>
+    </div>
+</div>
+
+<div id="reseller-modal">
+    <div class="modal-box">
+        <h3 style="color:var(--gold)">Reseller Login</h3>
+        <input type="text" id="rUser" placeholder="Username">
+        <input type="password" id="rPass" placeholder="Password">
+        <button class="btn-pay" style="background:var(--gold); color:#000;" onclick="loginReseller()">Login</button>
+        <button style="background:none; border:none; color:white; margin-top:10px; cursor:pointer;" onclick="closeModal()">Close</button>
+    </div>
+</div>
 
 <script>
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyqdvyG3GVA5PAAFPSVrbi2JOc1vwewJCheoxRvgG7cxaz8A1VEjaTkRKCc4qAh9VnX/exec';
+    let isReseller = false;
+
+    // LIVE ORDER COUNTER LOGIC
+    function updateLiveOrders() {
+        const startValue = 315;
+        const startTime = new Date("2026-03-18T12:00:00").getTime(); // Reference Start Time
+        const now = new Date().getTime();
+        const diffInMs = now - startTime;
+        const thirtyMinutesInMs = 30 * 60 * 1000;
+        
+        const additionalOrders = Math.floor(diffInMs / thirtyMinutesInMs);
+        const finalCount = startValue + (additionalOrders > 0 ? additionalOrders : 0);
+        
+        document.getElementById("totalOrdersCount").innerText = finalCount;
+    }
     
-    // Services Data
+    // Check every minute if an order needs to be added
+    setInterval(updateLiveOrders, 60000);
+    updateLiveOrders();
+
+    const currentURL = window.location.href;
+    document.getElementById('waShare').href = `https://api.whatsapp.com/send?text=Best SMM Services at ₹1. Check: ${currentURL}`;
+    document.getElementById('tgShare').href = `https://t.me/share/url?url=${currentURL}&text=MD SUHEL SMM`;
+
+    function copyURL() { navigator.clipboard.writeText(currentURL); alert("Link Copied! ✅"); }
+    function openResellerModal() { document.getElementById('reseller-modal').style.display = 'flex'; }
+    function closeModal() { document.getElementById('reseller-modal').style.display = 'none'; }
+    
+    function openHistory() {
+        document.getElementById('history-modal').style.display = 'flex';
+        let orders = JSON.parse(localStorage.getItem('suhelOrders')) || [];
+        let list = document.getElementById('orderList');
+        if(orders.length === 0) {
+            list.innerHTML = "<p style='font-size:12px; color:#94a3b8;'>No orders yet.</p>";
+        } else {
+            list.innerHTML = orders.map(o => `
+                <div class="history-item">
+                    <b style="color:var(--primary)">${o.service}</b><br>
+                    Amt: ₹${o.price} | UTR: ${o.utr}<br>
+                    <small style="color:#64748b;">${o.date}</small>
+                </div>
+            `).join('');
+        }
+    }
+    function closeHistory() { document.getElementById('history-modal').style.display = 'none'; }
+
     const serviceData = {
-        "ig_views": [{name: "1k Views", price: 1, qty: 1000}, {name: "10k Views", price: 4, qty: 10000}],
-        "ig_likes": [{name: "1k Likes", price: 10, qty: 1000}],
-        "yt_sub_ng": [{name: "1k Subs [NG]", price: 10, qty: 1000}]
+        "ig_views": [{name: "1k Views", price: 1, qty: 1000}, {name: "10k Views", price: 4, qty: 10000}, {name: "100k Views", price: 30, qty: 100000}],
+        "ig_likes": [{name: "1k Likes", price: 10, qty: 1000}, {name: "10k Likes", price: 100, qty: 10000}],
+        "ig_likes_in": [{name: "1k Indian Likes 🇮🇳", price: 15, qty: 1000}],
+        "ig_shares": [{name: "1k Shares", price: 1.5, qty: 1000}],
+        "ig_f_no": [{name: "1k Followers (No Refill)", price: 20, qty: 1000}],
+        "ig_f_10": [{name: "1k Followers (0-10% Drop)", price: 36, qty: 1000}],
+        "ig_f_05": [{name: "1k Followers (0-05% Drop)", price: 50, qty: 1000}],
+        "ig_pkg_f": [{name: "5k Follower Package 📦", price: 380, qty: 5000}],
+        "ig_pkg_v": [{name: "100k Views Package 📦", price: 25, qty: 100000}],
+        "ig_pkg_l": [{name: "10k Likes Package 📦", price: 90, qty: 10000}],
+        "ig_comm": [{name: "100 Comments", price: 7, qty: 100}],
+        "yt_sub_ng": [{name: "1k Subs [NG]", price: 10, qty: 1000}],
+        "yt_sub_lr": [{name: "100 Subs [Lifetime]", price: 180, qty: 100}],
+        "yt_likes": [{name: "1k Likes", price: 8, qty: 1000}],
+        "yt_views_nr": [{name: "1k Views [No Refill]", price: 60, qty: 1000}],
+        "yt_views_r": [{name: "1k Views [Refill]", price: 80, qty: 1000}],
+        "yt_comm": [{name: "1k Comments", price: 10, qty: 1000}]
     };
+
+    function loginReseller() {
+        if(document.getElementById("rUser").value === "reseller" && document.getElementById("rPass").value === "suhel123") {
+            isReseller = true; document.getElementById("reseller-badge").style.display = "block";
+            closeModal(); loadServices(); alert("Reseller Mode Active! ✅");
+        } else { alert("Wrong Login! ❌"); }
+    }
 
     function loadServices() {
         const cat = document.getElementById("categorySelect").value;
@@ -118,12 +249,14 @@
         sSelect.innerHTML = "";
         if(cat && serviceData[cat]) {
             serviceData[cat].forEach(s => {
+                let p = isReseller ? (s.price - 2) : s.price;
+                if(p < 1 && s.price != 0) p = 1;
                 let opt = document.createElement("option");
-                opt.value = JSON.stringify(s);
-                opt.text = `${s.name} - ₹${s.price}`;
+                opt.value = JSON.stringify({...s, price: p});
+                opt.text = `${s.name} - ₹${p}`;
                 sSelect.add(opt);
             });
-        }
+        } else { sSelect.add(new Option("Select Category First", "")); }
         updatePrice();
     }
 
@@ -146,19 +279,25 @@
     async function submitOrder() {
         let utr = document.getElementById("utr").value.trim();
         if(utr.length < 12) return alert("Sahi 12-digit UTR daalo!");
-        alert("✅ Order Placed! Suhel Bhai check karke start kar denge.");
-        location.reload();
-    }
+        document.getElementById("confirmBtn").innerText = "Processing...";
+        const s = JSON.parse(document.getElementById("serviceSelect").value);
+        let orders = JSON.parse(localStorage.getItem('suhelOrders')) || [];
+        orders.unshift({ service: s.name, price: s.price, utr: utr, date: new Date().toLocaleString() });
+        localStorage.setItem('suhelOrders', JSON.stringify(orders.slice(0, 15)));
 
-    // Auto-update order count
-    let count = 315;
-    setInterval(() => {
-        if(Math.random() > 0.7) {
-            count++;
-            document.getElementById("totalOrdersCount").innerText = count;
-        }
-    }, 10000);
+        try {
+            await fetch(scriptURL, {
+                method: 'POST', mode: 'no-cors',
+                body: JSON.stringify({
+                    link: document.getElementById("targetLink").value,
+                    serviceName: s.name, qty: s.qty, amount: s.price, utr: utr,
+                    role: isReseller ? "Reseller" : "User"
+                })
+            });
+            alert("✅ Order Placed! Suhel Bhai check karke start kar denge.");
+            location.reload();
+        } catch (e) { alert("Error!"); }
+    }
 </script>
 </body>
 </html>
-
