@@ -142,31 +142,21 @@
     <h4 style="color:#facc15;"><i class="fas fa-exclamation-triangle"></i> Notice ⚠️</h4>
     <p>Agar aapke order mein koi bhi problem aati hai, toh aapki payment <b>1/2 Ghante</b> mein return ho jayegi. Aap bina tension ke hamari service use karein. <br><br> <b>Thanks 💝 for visiting!</b></p>
 </div>
+
 <div class="info-box" style="border: 1px solid var(--primary); background: rgba(56, 189, 248, 0.05); text-align: center;">
     <h4 style="color: var(--primary); justify-content: center;">
         <i class="fab fa-youtube" style="color: var(--youtube);"></i> How to Order? (Tutorial)
     </h4>
-    
     <div style="position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 12px; border: 2px solid #334155; margin: 10px 0;">
-        <iframe 
-            style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;"
-            src="https://www.youtube.com/embed/uRvrUQ4c-s4" 
-            title="SMMbyAS Tutorial" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
+        <iframe style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" src="https://www.youtube.com/embed/uRvrUQ4c-s4" title="SMMbyAS Tutorial" allowfullscreen></iframe>
     </div>
-    
     <p style="font-size: 11px; color: #94a3b8;">Video ko poora dekhein taaki aapka order galat na ho!</p>
 </div>
-<div class="info-box">
-    <h4 style="color:var(--gold)"><i class="fas fa-info-circle"></i> Terms & Conditions</h4>
-    ...
-    
+
 <div class="info-box">
     <h4 style="color:var(--gold)"><i class="fas fa-info-circle"></i> Terms & Conditions</h4>
     <p>1. <b>Galat Link:</b> Link check karke dalein, galat link par refund nahi milega.</p>
-    <p>2. <b>Order Time:</b> Order start hone mein 0.30 minte  tak lag sakte hain.</p>
+    <p>2. <b>Order Time:</b> Order start hone mein 0.30 minte tak lag sakte hain.</p>
     <p>3. <b>Drop Policy:</b> No-refill services mein drop hone par refill nahi hota.</p>
 </div>
 
@@ -206,7 +196,6 @@
     function openResellerModal() { document.getElementById('reseller-modal').style.display = 'flex'; }
     function closeModal() { document.getElementById('reseller-modal').style.display = 'none'; }
     
-    // History Functions
     function openHistory() {
         document.getElementById('history-modal').style.display = 'flex';
         let orders = JSON.parse(localStorage.getItem('suhelOrders')) || [];
@@ -310,6 +299,16 @@
         document.getElementById("confirmBtn").innerText = "Processing...";
         const s = JSON.parse(document.getElementById("serviceSelect").value);
         
-        // Save to History LocalStorage
         let orders = JSON.parse(localStorage.getItem('suhelOrders')) || [];
-        orders.unshift({ service: s.name, price: s.price, utr: utr, dat
+        orders.unshift({ service: s.name, price: s.price, utr: utr, date: new Date().toLocaleString() });
+        localStorage.setItem('suhelOrders', JSON.stringify(orders.slice(0, 20)));
+
+        setTimeout(() => {
+            alert("Payment Confirmed! Order process ho raha hai.");
+            location.reload();
+        }, 2000);
+    }
+</script>
+</body>
+</html>
+
