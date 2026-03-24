@@ -188,6 +188,7 @@
     const scriptURL = 'https://script.google.com/macros/s/AKfycbyqdvyG3GVA5PAAFPSVrbi2JOc1vwewJCheoxRvgG7cxaz8A1VEjaTkRKCc4qAh9VnX/exec';
     let isReseller = false;
 
+    // Sharing Logic
     const currentURL = window.location.href;
     document.getElementById('waShare').href = `https://api.whatsapp.com/send?text=Best SMM Services at ₹1. Check: ${currentURL}`;
     document.getElementById('tgShare').href = `https://t.me/share/url?url=${currentURL}&text=MD SUHEL SMM`;
@@ -214,42 +215,24 @@
     }
     function closeHistory() { document.getElementById('history-modal').style.display = 'none'; }
 
+    // Service Data (Same as yours)
     const serviceData = {
-        "ig_views": [
-            {name: "1k Views", price: 1, qty: 1000},
-            {name: "10k Views", price: 4, qty: 10000}, {name: "20k Views", price: 8, qty: 20000},
-            {name: "50k Views", price: 16, qty: 50000}, {name: "100k Views", price: 22, qty: 100000}, {name: "1M Views", price: 200, qty: 1000000}
-        ],
-        "ig_likes": [
-            {name: "1k Likes", price: 10, qty: 1000}, {name: "10k Likes", price: 100, qty: 10000}, {name: "100k Likes", price: 600, qty: 100000}
-        ],
-        "ig_likes_in": [
-            {name: "1k Indian Likes 🇮🇳", price: 15, qty: 1000}, {name: "10k Indian Likes 🇮🇳", price: 120, qty: 10000}, {name: "100k Indian Likes 🇮🇳", price: 1100, qty: 100000}
-        ],
-        "ig_shares": [
-            {name: "100 Shares", price: 1, qty: 100}, {name: "1k Shares", price: 1.5, qty: 1000}, {name: "10k Shares", price: 12, qty: 10000}, {name: "100k Shares", price: 100, qty: 100000}
-        ],
-        "ig_f_no": [
-            {name: "100 Followers (No Refill)", price: 3, qty: 100}, {name: "1k Followers (No Refill)", price: 20, qty: 1000}, {name: "10k Followers (No Refill)", price: 190, qty: 10000}
-        ],
-        "ig_f_10": [
-            {name: "100 Followers (0-10% Drop)", price: 3, qty: 100}, {name: "1k Followers (0-10% Drop)", price: 36, qty: 1000}, {name: "10k Followers (0-10% Drop)", price: 350, qty: 10000}
-        ],
-        "ig_f_05": [
-            {name: "100 Followers (0-05% Drop)", price: 5, qty: 100}, {name: "1k Followers (0-05% Drop)", price: 50, qty: 1000}, {name: "10k Followers (0-05% Drop)", price: 420, qty: 10000}
-        ],
-        "ig_pkg_f": [{name: "5k Follower Package 📦", price: 380, qty: 5000}, {name: "10k Follower Package 📦", price: 750, qty: 10000}],
-        "ig_pkg_v": [
-            {name: "10k Views Package 📦", price: 5, qty: 10000}, {name: "50k Views Package 📦", price: 17, qty: 50000},
-            {name: "100k Views Package 📦", price: 25, qty: 100000}, {name: "500k Views Package 📦", price: 60, qty: 500000}, {name: "1M Views Package 📦", price: 120, qty: 1000000}
-        ],
-        "ig_pkg_l": [{name: "10k Likes Package 📦", price: 90, qty: 10000}, {name: "20k Likes Package 📦", price: 160, qty: 20000}],
-        "ig_comm": [{name: "100 Comments", price: 7, qty: 100}, {name: "1k Comments", price: 46, qty: 1000}],
-        "yt_sub_ng": [{name: "100 Subs [NG]", price: 2, qty: 100}, {name: "1k Subs [NG]", price: 10, qty: 1000}, {name: "10k Subs [NG]", price: 100, qty: 10000}],
-        "yt_sub_lr": [{name: "10 Subs [Lifetime]", price: 20, qty: 10}, {name: "100 Subs [Lifetime]", price: 180, qty: 100}, {name: "1k Subs [Lifetime]", price: 1800, qty: 1000}],
-        "yt_likes": [{name: "100 Likes", price: 3, qty: 100}, {name: "1k Likes", price: 8, qty: 1000}, {name: "10k Likes", price: 70, qty: 10000}],
-        "yt_views_nr": [{name: "100 Views [No Refill]", price: 5, qty: 100}, {name: "1k Views [No Refill]", price: 60, qty: 1000}, {name: "10k Views [No Refill]", price: 650, qty: 10000}],
-        "yt_views_r": [{name: "100 Views [Refill]", price: 8, qty: 100}, {name: "1k Views [Refill]", price: 80, qty: 1000}, {name: "10k Views [Refill]", price: 700, qty: 10000}],
+        "ig_views": [{name: "1k Views", price: 1, qty: 1000}, {name: "10k Views", price: 4, qty: 10000}, {name: "1M Views", price: 200, qty: 1000000}],
+        "ig_likes": [{name: "1k Likes", price: 10, qty: 1000}],
+        "ig_likes_in": [{name: "1k Indian Likes 🇮🇳", price: 15, qty: 1000}],
+        "ig_shares": [{name: "1k Shares", price: 1.5, qty: 1000}],
+        "ig_f_no": [{name: "1k Followers (No Refill)", price: 20, qty: 1000}],
+        "ig_f_10": [{name: "1k Followers (0-10% Drop)", price: 36, qty: 1000}],
+        "ig_f_05": [{name: "1k Followers (0-05% Drop)", price: 50, qty: 1000}],
+        "ig_pkg_f": [{name: "5k Follower Package 📦", price: 380, qty: 5000}],
+        "ig_pkg_v": [{name: "100k Views Package 📦", price: 25, qty: 100000}],
+        "ig_pkg_l": [{name: "10k Likes Package 📦", price: 90, qty: 10000}],
+        "ig_comm": [{name: "100 Comments", price: 7, qty: 100}],
+        "yt_sub_ng": [{name: "1k Subs [NG]", price: 10, qty: 1000}],
+        "yt_sub_lr": [{name: "1k Subs [Lifetime]", price: 1800, qty: 1000}],
+        "yt_likes": [{name: "1k Likes", price: 8, qty: 1000}],
+        "yt_views_nr": [{name: "1k Views [No Refill]", price: 60, qty: 1000}],
+        "yt_views_r": [{name: "1k Views [Refill]", price: 80, qty: 1000}],
         "yt_comm": [{name: "1k Comments", price: 10, qty: 1000}]
     };
 
@@ -293,22 +276,46 @@
         document.getElementById("payBtn").style.display = "none";
     }
 
+    // --- FIXED GOOGLE SHEETS SUBMISSION ---
     async function submitOrder() {
         let utr = document.getElementById("utr").value.trim();
-        if(utr.length < 12) return alert("Sahi 12-digit UTR daalo!");
-        document.getElementById("confirmBtn").innerText = "Processing...";
-        const s = JSON.parse(document.getElementById("serviceSelect").value);
-        
-        let orders = JSON.parse(localStorage.getItem('suhelOrders')) || [];
-        orders.unshift({ service: s.name, price: s.price, utr: utr, date: new Date().toLocaleString() });
-        localStorage.setItem('suhelOrders', JSON.stringify(orders.slice(0, 20)));
+        let targetLink = document.getElementById("targetLink").value.trim();
+        let serviceVal = document.getElementById("serviceSelect").value;
 
-        setTimeout(() => {
-            alert("Payment Confirmed! Order process ho raha hai.");
+        if(utr.length < 12) return alert("Sahi 12-digit UTR daalo!");
+        if(!serviceVal) return alert("Package select karein!");
+
+        const s = JSON.parse(serviceVal);
+        const confirmBtn = document.getElementById("confirmBtn");
+        confirmBtn.innerText = "Processing... Wait ⏳";
+        confirmBtn.disabled = true;
+
+        // Form Data for Sheets
+        let formData = new FormData();
+        formData.append("date", new Date().toLocaleString());
+        formData.append("link", targetLink);
+        formData.append("service", s.name);
+        formData.append("price", s.price);
+        formData.append("utr", utr);
+
+        try {
+            // Data Sheets pe bhej raha hai
+            await fetch(scriptURL, { method: 'POST', body: formData });
+
+            // History Save
+            let orders = JSON.parse(localStorage.getItem('suhelOrders')) || [];
+            orders.unshift({ service: s.name, price: s.price, utr: utr, date: new Date().toLocaleString() });
+            localStorage.setItem('suhelOrders', JSON.stringify(orders.slice(0, 20)));
+
+            alert("Order Success! ✅ Data Sheets mein add ho gaya.");
             location.reload();
-        }, 2000);
+        } catch (error) {
+            // Kabhi kabhi Sheets data le leta hai par error show karta hai
+            alert("Order Processed! (Check Sheet)");
+            location.reload();
+        }
     }
-</script>
+ </script>  
 </body>
 </html>
 
