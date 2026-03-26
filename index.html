@@ -152,10 +152,10 @@
             {name: "40k Views", price: 13},
             {name: "50k Views", price: 15},
             {name: "60k Views", price: 17},
-            {name: "70k Views", price: 18},
-            {name: "80k Views", price: 19},
-            {name: "90k Views", price: 20},
-            {name: "100k Views", price: 21}         
+            {name: "70k Views", price: 19},
+            {name: "80k Views", price: 20},
+            {name: "90k Views", price: 21},
+            {name: "100k Views", price: 22}         
         ],
         
     
@@ -235,7 +235,7 @@ async function submitOrder() {
         orders.unshift({ service: s.name, price: s.price, utr: utr, date: new Date().toLocaleString() });
         localStorage.setItem('suhelOrders', JSON.stringify(orders.slice(0, 10)));
 
-        alert("Order Successful! ✅ Sheets mein check karein.");
+        alert("Order Successful! ✅ payment chek after start sevrice ✅.");
         location.reload();
     } catch (error) {
         console.log(error);
