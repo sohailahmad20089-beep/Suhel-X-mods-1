@@ -251,7 +251,40 @@ async function submitOrder() {
         location.reload();
     }
 }
+    // start 
+    <div class="pending-alert-card">
+    <div class="alert-head">
+        <i class="fas fa-exclamation-triangle"></i> 
+        <span>ATTENTION: WRONG DETAILS FOUND!</span>
+    </div>
     
+    <div class="pending-list">
+        <div class="list-row header">
+            <span>Target Link</span>
+            <span>UTR / Payment</span>
+        </div>
+
+        <div class="list-row">
+            <span class="p-link">https://www.instagram.com/p/C4...</span>
+            <span class="p-utr">4088XXXXXXXX</span>
+        </div>
+        
+        <div class="list-row">
+            <span class="p-link">https://youtu.be/XYZ...</span>
+            <span class="p-utr">9921XXXXXXXX</span>
+        </div>
+    </div>
+
+    <div class="alert-footer">
+        <p>⚠️ <b>Bhai, upar diye gaye orders mein link galat hai ya payment verify nahi hui.</b></p>
+        <p>Plzz humein WhatsApp par message karo <b>24 hours</b> ke andar, warna order cancel ho jayega!</p>
+        <a href="https://wa.me/917388720012" class="msg-admin-btn">
+            <i class="fab fa-whatsapp"></i> Contact Admin Now
+        </a>
+    </div>
+</div>
+    
+    // end 
 
     function openHistory() {
         document.getElementById('history-modal').style.display = 'flex';
