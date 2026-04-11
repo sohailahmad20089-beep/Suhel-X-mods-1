@@ -1,7 +1,111 @@
-<html>
-  <body>
-    <h1>suhel</h1>
-    <p1>ansariri</p1>
-    <img width="200pxl"src="https://photos.app.goo.gl/mtGQDzxAnLjXGhAz6" alt="iamgws">
-  </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SUHEL X MODS - WINGO VIP</title>
+    <style>
+        :root { --neon: #00ff41; --danger: #ff003c; --bg: #0a0a0a; }
+        body { background: var(--bg); color: #fff; font-family: 'Segoe UI', sans-serif; text-align: center; margin: 0; padding: 20px; }
+        
+        .main-card { max-width: 400px; margin: auto; background: #111; border: 2px solid var(--neon); border-radius: 25px; padding: 25px; box-shadow: 0 0 30px rgba(0,255,65,0.2); }
+        
+        .header { font-size: 28px; font-weight: 900; color: #fff; text-shadow: 0 0 10px var(--neon); margin-bottom: 5px; }
+        .sub-text { font-size: 10px; color: #555; letter-spacing: 2px; margin-bottom: 20px; }
+        
+        .info-row { display: flex; justify-content: space-between; margin-bottom: 15px; font-size: 13px; color: #888; }
+        
+        .prediction-box { background: rgba(255,255,255,0.02); border-radius: 15px; padding: 30px 10px; border: 1px solid #222; margin: 20px 0; }
+        .result-text { font-size: 60px; font-weight: 900; color: var(--neon); text-shadow: 0 0 20px var(--neon); margin: 0; }
+        
+        .timer-circle { font-size: 24px; font-family: monospace; color: #ffea00; margin-top: 10px; }
+        
+        .history-table { width: 100%; margin-top: 20px; border-collapse: collapse; font-size: 12px; }
+        .history-table th { color: #444; border-bottom: 1px solid #222; padding: 8px; }
+        .history-table td { padding: 10px; border-bottom: 1px solid #111; color: #aaa; }
+    </style>
+</head>
+<body>
+
+<div class="main-card">
+    <div class="header">SUHEL X MODS</div>
+    <div class="sub-text">WINGO VIP SERVER V3.0</div>
+
+    <div class="info-row">
+        <span>PERIOD: <b id="period">FETCHING...</b></span>
+        <span style="color: var(--neon);">ONLINE ✅</span>
+    </div>
+
+    <div class="prediction-box">
+        <div id="prediction" class="result-text">WAIT</div>
+        <div id="timer" class="timer-circle">00:00</div>
+    </div>
+
+    <table class="history-table">
+        <thead>
+            <tr><th>PERIOD</th><th>RESULT</th><th>SIZE</th></tr>
+        </thead>
+        <tbody id="history-logs">
+            </tbody>
+    </table>
+</div>
+
+<script>
+    let lastProcessedPeriod = "";
+
+    async function fetchWingoData() {
+        try {
+            // India Lottery API Link
+            const response = await fetch('https://indialotteryapi.com/wp-json/wingo/v1');
+            const data = await response.json();
+
+            // 1. Period Update
+            const currentPeriod = data.period;
+            document.getElementById('period').innerText = currentPeriod;
+
+            // 2. Timer Update
+            const timeRemaining = parseInt(data.timer);
+            document.getElementById('timer').innerText = `00:${timeRemaining < 10 ? '0' + timeRemaining : timeRemaining}`;
+
+            // 3. Smart Prediction Logic
+            // Timer 10s se zyada hai toh prediction dikhao, warna wait
+            if (timeRemaining > 5) {
+                // Yahan hum API ke pichle result ko analyze karke next dikha sakte hain
+                // Filhaal logic: API ka last result hi dikhayega as a base
+                const prediction = parseInt(data.last_result) >= 5 ? "BIG" : "SMALL";
+                document.getElementById('prediction').innerText = prediction;
+            } else {
+                document.getElementById('prediction').innerText = "WAITING";
+            }
+
+            // 4. History Update (Jab naya period aaye)
+            if (lastProcessedPeriod !== currentPeriod && timeRemaining > 55) {
+                updateHistory(data);
+                lastProcessedPeriod = currentPeriod;
+            }
+
+        } catch (error) {
+            console.error("API Error: ", error);
+            document.getElementById('period').innerText = "OFFLINE";
+        }
+    }
+
+    function updateHistory(data) {
+        const table = document.getElementById('history-logs');
+        const color = parseInt(data.last_result) >= 5 ? "#00ff41" : "#ff003c";
+        const row = `<tr>
+            <td>${data.period.slice(-4)}</td>
+            <td style="color:${color}">${data.last_result}</td>
+            <td>${parseInt(data.last_result) >= 5 ? 'BIG' : 'SMALL'}</td>
+        </tr>`;
+        table.insertAdjacentHTML('afterbegin', row);
+    }
+
+    // Har 2 second mein API se baat karega
+    setInterval(fetchWingoData, 2000);
+    fetchWingoData(); // First call
+</script>
+
+</body>
 </html>
+
